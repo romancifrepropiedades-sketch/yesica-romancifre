@@ -128,5 +128,60 @@
   "precio": 380000,
   "moneda": "USD",
   "link": "https://propiedades.adinco.net/aviso/local-venta-belgrano-belgrano-capital-federal--6545758"
+ },
+ {
+  "operacion": "alquiler",
+  "tipo": "Oficina",
+  "direccion": "Alsina 700",
+  "barrio": "Microcentro",
+  "detalle": "Oficina, 144 m²",
+  "banos": 4,
+  "precio": 500,
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/oficina-alquiler-centro-microcentro-capital-federal--6433896"
+ },
+ {
+  "operacion": "alquiler",
+  "tipo": "Oficina",
+  "direccion": "Alsina 700",
+  "barrio": "Microcentro",
+  "detalle": "Oficina, 271 m² (263 m² cubiertos)",
+  "banos": 4,
+  "precio": 950,
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/oficina-alquiler-centro-microcentro-capital-federal--6433907"
+ },
+ {
+  "operacion": "alquiler",
+  "tipo": "Oficina",
+  "direccion": "Alsina 700",
+  "barrio": "Monserrat",
+  "detalle": "Oficina, 175 m²",
+  "banos": 4,
+  "precio": 600,
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/oficina-alquiler-monserrat-capital-federal--6433910"
+ },
+ {
+  "operacion": "alquiler",
+  "tipo": "Oficina",
+  "direccion": "Alsina 700",
+  "barrio": "Monserrat",
+  "detalle": "Oficina, 111 m²",
+  "banos": 4,
+  "precio": 400,
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/oficina-alquiler-monserrat-capital-federal--6433912"
+ },
+ {
+  "operacion": "alquiler",
+  "tipo": "Oficina",
+  "direccion": "Alsina 700",
+  "barrio": "Microcentro",
+  "detalle": "Oficina, 129 m² (115 m² cubiertos)",
+  "banos": 1,
+  "precio": 450,
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/oficina-alquiler-centro-microcentro-capital-federal--6433918"
  }
 ]

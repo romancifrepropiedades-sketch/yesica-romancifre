@@ -490,6 +490,12 @@ body{padding-bottom:0}
 footer{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
 @media (max-width:640px){ footer{padding-bottom:calc(88px + env(safe-area-inset-bottom, 0px))} }
 
+/* Pin con varias unidades */
+.pop-multi{max-height:300px; overflow:auto; padding-right:4px}
+.pop-multi .pop{padding:10px 0; border-top:1px solid var(--line)}
+.pop-multi .pop:first-of-type{border-top:0}
+.pop-cab{display:block; font-size:1rem; margin-bottom:2px}
+
 /* Filtros del mapa */
 .mapfilters{display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px 14px; padding:14px 20px; background:var(--tint); border-bottom:1px solid var(--line)}
 .mapfilters[hidden], .mapfilters label[hidden]{display:none}
@@ -679,7 +685,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     <nav class="menu" id="menu" aria-label="Principal">
       <a href="#que-buscas">Propiedades</a>
       <a href="#visita">Visitas</a>
-      <a href="#condiciones">Cómo comprar</a>
+      <a href="#condiciones">Comprar</a>
       <a href="#agregamos-valor">Servicios</a>
       <a href="#tasacion">Tasaciones</a>
       <a href="#preguntas">Preguntas</a>
@@ -769,6 +775,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       <div class="mapbox" id="prop-map-box" hidden>
         <div class="mapbar"><b>Dónde están las propiedades</b><span>Tocá una para ver más o elegirla para tu visita. Los precios están en dólares.</span></div>
         <div class="mapfilters" id="map-filters" hidden>
+          <label>Operación<select id="f-op"><option value="venta">En venta</option><option value="alquiler">En alquiler</option></select></label>
           <label>Tipo<select id="f-tipo"><option value="">Todos</option></select></label>
           <label>Dormitorios<select id="f-dorm"><option value="">Todos</option></select></label>
           <label>Precio máximo (U$D)<select id="f-precio"><option value="">Cualquiera</option></select></label>
@@ -1880,7 +1887,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     var caja = document.getElementById('prop-map-box');
     if (!caja || typeof L === 'undefined') return;
     var nota = document.getElementById('map-note'), filtros = document.getElementById('map-filters');
-    var fT = document.getElementById('f-tipo'), fD = document.getElementById('f-dorm'), fP = document.getElementById('f-precio');
+    var fO = document.getElementById('f-op'), fT = document.getElementById('f-tipo'), fD = document.getElementById('f-dorm'), fP = document.getElementById('f-precio');
     var CLAVE = 'rcGeo2', REINTENTO = 6 * 3600 * 1000, cache = {};
     try { cache = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) { cache = {}; }
     function guardar(){ try { localStorage.setItem(CLAVE, JSON.stringify(cache)); } catch (e) {} }
@@ -1923,13 +1930,15 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     }
 
     var mapa, items = [], entradas = [], ubicando = true;
-    function contenido(x, exacta){
+    function esAlq(x){ return x.operacion === 'alquiler'; }
+    function claveDir(x){ return sinPiso(x.direccion).toLowerCase(); }
+    function contenido(x, exacta, enGrupo){
       var d = document.createElement('div'); d.className = 'pop';
-      var t = document.createElement('strong'); t.textContent = x.tipo + ' · ' + x.direccion; d.appendChild(t);
-      var s = document.createElement('span'); s.textContent = [x.barrio, x.detalle || x.m2].filter(Boolean).join(' · '); d.appendChild(s);
-      if (x.precio) { var pr = document.createElement('em'); pr.className = 'pop-precio'; pr.textContent = usd(x.precio); d.appendChild(pr);
+      var t = document.createElement('strong'); t.textContent = enGrupo ? x.tipo + (esAlq(x) ? ' · en alquiler' : ' · en venta') : x.tipo + ' · ' + x.direccion; d.appendChild(t);
+      var s = document.createElement('span'); s.textContent = [enGrupo ? '' : x.barrio, x.detalle || x.m2, !enGrupo && esAlq(x) ? 'En alquiler' : ''].filter(Boolean).join(' · '); d.appendChild(s);
+      if (x.precio) { var pr = document.createElement('em'); pr.className = 'pop-precio'; pr.textContent = usd(x.precio) + (esAlq(x) ? ' por mes' : ''); d.appendChild(pr);
         if (x.expensas) { var ex = document.createElement('small'); ex.className = 'pop-exp'; ex.textContent = 'Expensas: ' + pesos(x.expensas) + ' por mes'; d.appendChild(ex); } }
-      if (!exacta) { var ap = document.createElement('small'); ap.className = 'pop-aprox'; ap.textContent = 'Ubicación aproximada'; d.appendChild(ap); }
+      if (!exacta && !enGrupo) { var ap = document.createElement('small'); ap.className = 'pop-aprox'; ap.textContent = 'Ubicación aproximada'; d.appendChild(ap); }
       var acc = document.createElement('div'); acc.className = 'pop-acc';
       if (x.link) {
         var a = document.createElement('a'); a.className = 'pop-link'; a.href = x.link; a.target = '_blank'; a.rel = 'noopener';
@@ -1940,6 +1949,14 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       var bn = document.createElement('button'); bn.type = 'button'; bn.className = 'pop-btn'; bn.textContent = 'Preguntale a Nina';
       bn.addEventListener('click', function(){ if (mapa) mapa.closePopup(); if (window.ninaProp) window.ninaProp(x.direccion); }); acc.appendChild(bn);
       d.appendChild(acc); return d;
+    }
+    function contenidoPin(us, exacta){
+      if (us.length === 1) return contenido(us[0], exacta, false);
+      var d = document.createElement('div'); d.className = 'pop-multi';
+      var h = document.createElement('strong'); h.className = 'pop-cab'; h.textContent = us[0].direccion + ' · ' + us.length + ' propiedades'; d.appendChild(h);
+      if (!exacta) { var ap = document.createElement('small'); ap.className = 'pop-aprox'; ap.textContent = 'Ubicación aproximada'; d.appendChild(ap); }
+      us.forEach(function(x){ d.appendChild(contenido(x, exacta, true)); });
+      return d;
     }
     function elegir(x){
       var sel = document.getElementById('v-sel'); if (!sel || sel.hidden) return;
@@ -1953,27 +1970,34 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
 
     // --- Filtros ---
     function opcion(sel, valor, texto){ var o = document.createElement('option'); o.value = valor; o.textContent = texto; sel.appendChild(o); }
+    var PASOS_VENTA = [50000, 60000, 75000, 100000, 125000, 150000, 200000, 250000, 300000, 400000, 500000], PASOS_ALQ = [500, 750, 1000, 1500, 2000];
     function llenarFiltros(){
+      [fT, fD, fP].forEach(function(s){ while (s.options.length > 1) s.remove(1); s.value = ''; });
+      var ops = [];
+      items.forEach(function(x){ var o = esAlq(x) ? 'alquiler' : 'venta'; if (ops.indexOf(o) < 0) ops.push(o); });
+      fO.parentNode.hidden = ops.length < 2;
+      if (ops.length === 1) fO.value = ops[0]; else if (ops.indexOf(fO.value) < 0) fO.value = 'venta';
       var tipos = [], dorms = [], precios = [];
-      items.forEach(function(x){
+      items.filter(function(x){ return (esAlq(x) ? 'alquiler' : 'venta') === fO.value; }).forEach(function(x){
         if (tipos.indexOf(x.tipo) < 0) tipos.push(x.tipo);
         if (typeof x.dorm === 'number' && dorms.indexOf(x.dorm) < 0) dorms.push(x.dorm);
         if (x.precio) precios.push(x.precio);
       });
+      var alq = fO.value === 'alquiler';
+      fP.parentNode.firstChild.nodeValue = alq ? 'Alquiler máximo por mes (U$D)' : 'Precio máximo (U$D)';
       tipos.sort().forEach(function(v){ opcion(fT, v, v); });
       dorms.sort(function(a, b){ return a - b; }).forEach(function(v){ opcion(fD, String(v), v === 0 ? 'Monoambiente' : v + (v === 1 ? ' dormitorio' : ' dormitorios')); });
       if (precios.length > 1) {
         var min = Math.min.apply(null, precios), max = Math.max.apply(null, precios);
-        [50000, 60000, 75000, 100000, 125000, 150000, 200000, 250000, 300000, 400000, 500000]
-          .filter(function(v){ return v >= min && v < max; })
-          .forEach(function(v){ opcion(fP, String(v), 'Hasta ' + usd(v)); });
+        (alq ? PASOS_ALQ : PASOS_VENTA).filter(function(v){ return v >= min && v < max; }).forEach(function(v){ opcion(fP, String(v), 'Hasta ' + usd(v) + (alq ? ' por mes' : '')); });
       }
       fT.parentNode.hidden = tipos.length < 2;
       fD.parentNode.hidden = dorms.length < 2;
       fP.parentNode.hidden = fP.options.length < 2;
-      filtros.hidden = fT.parentNode.hidden && fD.parentNode.hidden && fP.parentNode.hidden;
+      filtros.hidden = fO.parentNode.hidden && fT.parentNode.hidden && fD.parentNode.hidden && fP.parentNode.hidden;
     }
     function coincide(x){
+      if ((esAlq(x) ? 'alquiler' : 'venta') !== fO.value) return false;
       if (fT.value && x.tipo !== fT.value) return false;
       if (fD.value && String(x.dorm) !== fD.value) return false;
       if (fP.value && !(x.precio && x.precio <= Number(fP.value))) return false;
@@ -1981,19 +2005,22 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     }
     function aplicar(){
       var visibles = [];
-      entradas.forEach(function(en){
-        if (coincide(en.x)) { if (!mapa.hasLayer(en.m)) en.m.addTo(mapa); visibles.push(en.m); }
-        else if (mapa.hasLayer(en.m)) en.m.remove();
+      entradas.forEach(function(g){
+        var ok = g.us.filter(coincide);
+        if (ok.length) { g.m.setPopupContent(contenidoPin(ok, g.exacta)); if (!mapa.hasLayer(g.m)) g.m.addTo(mapa); visibles.push(g.m); }
+        else if (mapa.hasLayer(g.m)) g.m.remove();
       });
       mapa.closePopup();
       if (visibles.length) mapa.fitBounds(L.featureGroup(visibles).getBounds().pad(0.3), {maxZoom: 16});
       if (ubicando) return;
-      var coinciden = items.filter(coincide).length, sinPin = items.filter(function(x){ return coincide(x) && !entradas.some(function(en){ return en.x === x; }); }).length;
-      var txt = coinciden === 0 ? 'No hay propiedades con esos filtros.' : (coinciden === 1 ? '1 propiedad' : coinciden + ' propiedades') + (coinciden === items.length ? '' : ' de ' + items.length);
+      var base = items.filter(function(x){ return (esAlq(x) ? 'alquiler' : 'venta') === fO.value; }).length;
+      var coinciden = items.filter(coincide).length, sinPin = items.filter(function(x){ return coincide(x) && !entradas.some(function(g){ return g.us.indexOf(x) > -1; }); }).length;
+      var txt = coinciden === 0 ? 'No hay propiedades con esos filtros.' : (coinciden === 1 ? '1 propiedad' : coinciden + ' propiedades') + (coinciden === base ? '' : ' de ' + base);
       if (sinPin > 0) txt += ' · ' + sinPin + (sinPin === 1 ? ' no se pudo ubicar en el mapa; elegila en el formulario de visita.' : ' no se pudieron ubicar en el mapa; elegilas en el formulario de visita.');
       nota.textContent = txt;
     }
     [fT, fD, fP].forEach(function(s){ s.addEventListener('change', aplicar); });
+    fO.addEventListener('change', function(){ llenarFiltros(); aplicar(); });
     document.getElementById('f-clear').addEventListener('click', function(){ fT.value = ''; fD.value = ''; fP.value = ''; aplicar(); });
 
     function iniciar(lista){
@@ -2004,12 +2031,15 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
       }).addTo(mapa);
       var icono = L.icon({iconUrl: 'favicon.png', iconSize: [46, 46], iconAnchor: [23, 23], popupAnchor: [0, -24], className: 'pin-img'});
-      Promise.all(items.map(function(x){
-        return ubicar(x).then(function(u){
+      var porDir = {};
+      items.forEach(function(x){ var k = claveDir(x); (porDir[k] = porDir[k] || []).push(x); });
+      Promise.all(Object.keys(porDir).map(function(k){
+        var us = porDir[k], ref = us.filter(function(x){ return typeof x.lat === 'number' && typeof x.lng === 'number'; })[0] || us[0];
+        return ubicar(ref).then(function(u){
           var c = u && u.c; if (!c) return;
-          var m = L.marker(c, {icon: icono, title: etiquetaProp(x), alt: etiquetaProp(x)});
-          m.bindPopup(contenido(x, u.exacta), {maxWidth: 260});
-          entradas.push({x: x, m: m});
+          var m = L.marker(c, {icon: icono, title: us[0].direccion, alt: us[0].direccion});
+          m.bindPopup('', {maxWidth: 280});
+          entradas.push({us: us, m: m, exacta: !!u.exacta});
           aplicar();
         });
       })).then(function(){ ubicando = false; aplicar(); });
@@ -2091,11 +2121,16 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     function respPropiedades(){
       return cargarPropiedades().then(function(l){
         if (!l || !l.length) return [{p: 'Podés ver las propiedades disponibles en el mapa de <a href="#visita">Coordiná tu visita</a>.'}];
-        var items = l.map(function(x){
-          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) : '', x.expensas && typeof x.expensas === 'number' ? 'expensas ' + dinero(x.expensas) + ' por mes' : ''].filter(Boolean).join(' · ');
+        function item(x){
+          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) + (enAlq(x) ? ' por mes' : '') : '', x.expensas && typeof x.expensas === 'number' ? 'expensas ' + dinero(x.expensas) + ' por mes' : ''].filter(Boolean).join(' · ');
           return '<strong>' + esc(x.tipo) + ' · ' + esc(x.direccion) + '</strong>' + (det ? '<br>' + esc(det) : '') + (x.link ? '<br><a href="' + esc(x.link) + '" target="_blank" rel="noopener">Ver publicación</a>' : '');
-        });
-        return [{p: 'Estas son las propiedades en venta que tenemos hoy:'}, {ul: items}, {p: 'Los precios están en dólares y pueden cambiar. Si querés saber más de una, tocala y preguntame lo que quieras (expensas, cochera, dormitorios…):'}, {bt: l.map(function(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; })}, {p: 'También las ves en el mapa de <a href="#visita">Coordiná tu visita</a>, con filtros.'}];
+        }
+        function boton(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; }
+        var ventas = l.filter(function(x){ return !enAlq(x); }), alqs = l.filter(enAlq);
+        var res = [{p: 'Estas son las propiedades en venta que tenemos hoy:'}, {ul: ventas.map(item)}];
+        if (alqs.length) res.push({p: 'Además, hay <strong>oficinas en alquiler</strong> (Alsina 700):'}, {ul: alqs.map(item)});
+        res.push({p: 'Los precios están en dólares y pueden cambiar. Si querés saber más de una, tocala y preguntame lo que quieras (expensas, cochera, dormitorios…):'}, {bt: ventas.concat(alqs).map(boton)}, {p: 'También las ves en el mapa de <a href="#visita">Coordiná tu visita</a>, con filtros.'});
+        return res;
       });
     }
 
@@ -2127,8 +2162,8 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
        r:[{p:'Trabajamos con departamentos, casas, PH, locales, terrenos y cocheras. Mirá las disponibles en el mapa de <a href="#visita">Coordiná tu visita</a>.'}]},
       {id:'negociable', chip:null, kw:['negociable|6','negociables|6','negociar|6','negociacion|5','rebaja|5','rebajan|5','descuento|5','mejor precio|6','bajan el precio|7','bajar el precio|7','pueden bajar|6','regatear|6','contraoferta|6','propuesta|2'],
        r:[{p:'Las ofertas se presentan mediante una reserva, que queda sujeta a la aceptación del propietario. Si querés hacer una propuesta, consultalo con Yesica:'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar si el precio es negociable.')]}]},
-      {id:'alquiler', chip:null, kw:['alquilar|4','alquiler|4','alquileres|4','alquilan|5','alquilo|4','locacion|4','inquilino|4','inquilinos|4'],
-       r:[{p:'Yesica se dedica a la <strong>venta</strong> de propiedades. Para alquileres, escribile a Magali: ella te ayuda con alquileres de viviendas y locales.'},{a:['Ver la página de Magali', 'https://romancifrepropiedades-sketch.github.io/magali-romancifre/']}]},
+      {id:'alquiler', chip:null, kw:['alquilar|4','alquiler|4','alquileres|4','alquilan|5','alquilo|4','locacion|4','inquilino|4','inquilinos|4','oficina|3','oficinas|3'],
+       r:[{p:'Yesica se dedica principalmente a la <strong>venta</strong>. Hoy también tiene <strong>oficinas en alquiler en Alsina 700</strong>: las ves en el mapa de <a href="#visita">Coordiná tu visita</a>, eligiendo «En alquiler». Para las condiciones, consultá con Yesica.'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar por las oficinas en alquiler de Alsina 700.')]},{p:'Para alquileres de viviendas y locales, escribile a Magali.'},{a:['Ver la página de Magali', 'https://romancifrepropiedades-sketch.github.io/magali-romancifre/']}]},
       {id:'derivar', chip:null, kw:['abl|4','impuestos|3','inmobiliario|3','seguro|3','mudanza|3','reformas|4','pintar|4','pintura|4','comision a propietarios|8','honorarios a propietarios|8'],
        r:[]},
       {id:'tasacion', chip:'Tasación', kw:['tasacion|3','tasar|3','tasarme|3','valuacion|3','valuar|3','cuanto vale|3','cuanto sale mi|3','vender mi|4','matriculado|3','informe profesional|3','tasan|3','tasaciones|3','vender|3','vendo|3','cuanto puedo pedir|5','cuanto pedir|4','gratis|2','sin cargo|3','cuanto vale mi|4'],
@@ -2210,12 +2245,13 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
     function etiq(x){ return x.tipo + ' · ' + x.direccion; }
     function dinero(n){ return '$ ' + Number(n).toLocaleString('es-AR'); }
     function usd(n){ return 'U$D ' + Number(n).toLocaleString('es-AR'); }
-    function rotulo(x){ return x.direccion + ' (' + x.tipo.toLowerCase() + (x.precio ? ' · ' + usd(x.precio) : '') + ')'; }
+    function enAlq(x){ return x.operacion === 'alquiler'; }
+    function rotulo(x){ return x.direccion + ' (' + x.tipo.toLowerCase() + (x.precio ? ' · ' + usd(x.precio) + (enAlq(x) ? ' por mes' : '') : '') + ')'; }
     function fmt(v){ if (v === true) return 'Sí'; if (v === false) return 'No'; if (v === null || v === undefined || v === '') return null; return String(v); }
     function dato(key){ return function(x){ return fmt(x[key]); }; }
     var ATRIBUTOS = [
       {id:'precio', label:'Precio', chip:'Precio', kw:['precio|3','precios|3','cuesta|3','cuanto sale|4','cuanto cuesta|4','cuanto es|2','valor|2','vale|3','monto|2'],
-       val:function(x){ return x.precio ? usd(x.precio) + (x.expensas && typeof x.expensas === 'number' ? ' (expensas: ' + dinero(x.expensas) + ' por mes)' : '') : null; }},
+       val:function(x){ return x.precio ? usd(x.precio) + (enAlq(x) ? ' por mes' : '') + (x.expensas && typeof x.expensas === 'number' ? ' (expensas: ' + dinero(x.expensas) + ' por mes)' : '') : null; }},
       {id:'expensas', label:'Expensas', chip:'Expensas', kw:['expensa|3','expensas|3'],
        val:function(x){ if (!x.expensas) return null; return typeof x.expensas === 'number' ? dinero(x.expensas) + ' por mes' : String(x.expensas); }},
       {id:'superficie', label:'Superficie', chip:'Superficie', kw:['metros|3','m2|3','superficie|3','tamano|3','metraje|3','cuantos metros|4','grande|2'],
@@ -2307,6 +2343,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       if (m) { var n = +m[2].replace(/\./g, ''); if (m[3] === 'mil') n *= 1000; else if (m[3]) n *= 1000000; else if (n < 10000) n *= 1000; if (n >= 20000) cr.max = n; }
       Object.keys(BUSCABLES).forEach(function(id){ if (puntuarLista(tx, [atributo(id)], 2)) cr.feats.push(id); });
       var verbo = /\b(busco|buscando|busca|necesito|necesitamos|buscamos|quiero|queria|quisiera|quisieramos|tienen|tenes|tenemos|hay|alguno|alguna|disponible|disponibles)\b/.test(tx);
+      cr.alq = /\balquil/.test(tx) || cr.tipo === 'Oficina';   // por defecto se busca entre las propiedades en venta
       cr.fuerte = !!(cr.amb || cr.dorm || cr.max || (verbo && (cr.feats.length || cr.tipo)));
       return cr.fuerte ? cr : null;
     }
@@ -2315,11 +2352,13 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       if (cr.amb) d.push(cr.amb === 1 ? 'monoambiente' : cr.amb + ' ambientes');
       if (cr.dorm) d.push(cr.dorm + (cr.dorm === 1 ? ' dormitorio' : ' dormitorios'));
       if (cr.tipo) d.push(cr.tipo.toLowerCase());
+      if (cr.alq) d.push('en alquiler');
       cr.feats.forEach(function(f){ d.push('con ' + BUSCABLES[f]); });
       if (cr.max) d.push('hasta ' + usd(cr.max));
       return d.join(', ');
     }
     function coincide(x, cr){
+      if (enAlq(x) !== !!cr.alq) return false;
       if (cr.tipo && x.tipo !== cr.tipo) return false;
       if ((cr.amb || cr.dorm) && ['Local', 'Terreno', 'Cochera', 'Oficina'].indexOf(x.tipo) > -1) return false;
       if (cr.dorm && x.dorm != cr.dorm) return false;
@@ -2339,10 +2378,10 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       var consulta = {a: ['Dejarle mi búsqueda a Yesica', waLink('Hola Yesica, estoy buscando: ' + texto)]};
       function botones(l){ return {bt: l.map(function(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; })}; }
       if (!res.length) {
-        bloquesR = [{p: 'Hoy no tengo una propiedad que cumpla con lo que buscás (' + esc(desc) + '). Son las que tengo disponibles:'}, botones(lista), {p: 'Si querés, dejale tu búsqueda a Yesica y te avisa cuando entre algo así.'}, consulta];
+        bloquesR = [{p: 'Hoy no tengo una propiedad que cumpla con lo que buscás (' + esc(desc) + '). Son las que tengo disponibles:'}, botones(lista.filter(function(x){ return enAlq(x) === !!cr.alq; }).length ? lista.filter(function(x){ return enAlq(x) === !!cr.alq; }) : lista), {p: 'Si querés, dejale tu búsqueda a Yesica y te avisa cuando entre algo así.'}, consulta];
       } else {
         var lineas = res.map(function(x){
-          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) : ''].filter(Boolean).join(' · ');
+          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) + (enAlq(x) ? ' por mes' : '') : ''].filter(Boolean).join(' · ');
           var fs = cr.feats.map(function(f){ var v = x[KEYS[f]]; if (v === undefined || v === null || v === '') { faltan = true; return esc(BUSCABLES[f]) + ': a confirmar'; } return esc(BUSCABLES[f]) + ': ' + esc(fmt(v)); });
           return '<strong>' + esc(etiq(x)) + '</strong><br>' + esc(det) + (fs.length ? '<br>' + fs.join('<br>') : '');
         });
