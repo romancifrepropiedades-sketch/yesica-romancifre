@@ -29,7 +29,8 @@
   "dorm": 0,
   "banos": 1,
   "precio": 51000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-retiro-capital-federal-1bano--6504368"
  },
  {
   "operacion": "venta",
@@ -39,7 +40,8 @@
   "detalle": "5 m²",
   "antiguedad": "30 años",
   "precio": 15000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/cochera-venta-retiro-capital-federal--6504426"
  },
  {
   "operacion": "venta",
@@ -51,7 +53,8 @@
   "banos": 1,
   "expensas": 150000,
   "precio": 98000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-recoleta-capital-federal-1dorm-1bano--6505799"
  },
  {
   "operacion": "venta",
@@ -62,7 +65,8 @@
   "dorm": 2,
   "banos": 1,
   "precio": 105000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-flores-flores-capital-federal-2dorm-1bano--6514357"
  },
  {
   "operacion": "venta",
@@ -74,7 +78,8 @@
   "banos": 1,
   "expensas": 130000,
   "precio": 59000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-belgrano-belgrano-capital-federal-1bano--6514434"
  },
  {
   "operacion": "venta",
@@ -83,7 +88,8 @@
   "barrio": "Belgrano",
   "detalle": "12 m²",
   "precio": 15000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/cochera-venta-belgrano-belgrano-capital-federal--6518437"
  },
  {
   "operacion": "venta",
@@ -95,7 +101,8 @@
   "banos": 1,
   "expensas": 200000,
   "precio": 130000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-belgrano-belgrano-capital-federal-1dorm-1bano--6519407"
  },
  {
   "operacion": "venta",
@@ -108,7 +115,8 @@
   "cochera": "Sí, 1 cochera",
   "antiguedad": "4 años",
   "precio": 225000,
-  "moneda": "USD"
+  "moneda": "USD",
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-palermo-palermo-capital-federal-1dorm-1bano--6528849"
  },
  {
   "operacion": "venta",
