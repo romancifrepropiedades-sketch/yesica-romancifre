@@ -1,0 +1,123 @@
+[
+ {
+  "operacion": "venta",
+  "tipo": "Terreno",
+  "direccion": "Av. Jujuy 2000",
+  "barrio": "Parque Patricios",
+  "detalle": "258 m²",
+  "precio": 400000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Esmeralda 600",
+  "barrio": "Retiro",
+  "detalle": "Monoamb., 30 m², con cochera",
+  "dorm": 0,
+  "banos": 1,
+  "cochera": "Sí, 1 cochera",
+  "precio": 61000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Esmeralda 600",
+  "barrio": "Retiro",
+  "detalle": "Monoamb., 30 m²",
+  "dorm": 0,
+  "banos": 1,
+  "precio": 51000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Cochera",
+  "direccion": "Esmeralda 600",
+  "barrio": "Retiro",
+  "detalle": "5 m²",
+  "antiguedad": "30 años",
+  "precio": 15000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Ayacucho 1400",
+  "barrio": "Recoleta",
+  "detalle": "1 dorm., 40 m² (32 m² cubiertos)",
+  "dorm": 1,
+  "banos": 1,
+  "expensas": 150000,
+  "precio": 98000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Av. Juan Bautista Alberdi 2200",
+  "barrio": "Flores",
+  "detalle": "2 dorm., 62 m² (60 m² cubiertos)",
+  "dorm": 2,
+  "banos": 1,
+  "precio": 105000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Av. Cabildo 2000",
+  "barrio": "Belgrano",
+  "detalle": "Monoamb., 26 m²",
+  "dorm": 0,
+  "banos": 1,
+  "expensas": 130000,
+  "precio": 59000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Cochera",
+  "direccion": "La Pampa 2479",
+  "barrio": "Belgrano",
+  "detalle": "12 m²",
+  "precio": 15000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Av. Cabildo 2500",
+  "barrio": "Belgrano",
+  "detalle": "1 dorm., 51 m² (49 m² cubiertos)",
+  "dorm": 1,
+  "banos": 1,
+  "expensas": 200000,
+  "precio": 130000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Departamento",
+  "direccion": "Av. Jorge Newbery 2400, 4°",
+  "barrio": "Palermo",
+  "detalle": "1 dorm., 44 m² (35 m² cubiertos)",
+  "dorm": 1,
+  "banos": 1,
+  "cochera": "Sí, 1 cochera",
+  "antiguedad": "4 años",
+  "precio": 225000,
+  "moneda": "USD"
+ },
+ {
+  "operacion": "venta",
+  "tipo": "Local",
+  "direccion": "Cuba 2400",
+  "barrio": "Belgrano",
+  "detalle": "96 m²",
+  "banos": 1,
+  "precio": 380000,
+  "moneda": "USD"
+ }
+]

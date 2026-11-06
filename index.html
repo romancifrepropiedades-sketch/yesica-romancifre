@@ -1,0 +1,2563 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yesica · ROMÁN CIFRE Propiedades</title>
+<meta name="description" content="Yesica, asesora inmobiliaria de ROMÁN CIFRE Propiedades. Propiedades en venta, cómo comprar y vender, tasaciones sin cargo y contacto por WhatsApp.">
+<meta name="theme-color" content="#732F84">
+<link rel="canonical" href="https://romancifrepropiedades-sketch.github.io/yesica-romancifre/">
+<!-- Vista previa al compartir el link (WhatsApp, Instagram, redes). Si se cambia la dirección de la página, actualizar estas URL. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="ROMÁN CIFRE Propiedades">
+<meta property="og:title" content="Yesica · Asesora inmobiliaria · ROMÁN CIFRE Propiedades">
+<meta property="og:description" content="Compra y venta de propiedades en CABA. Coordiná tu visita, conocé cómo es la compra y consultá con Nina, la asistente virtual.">
+<meta property="og:url" content="https://romancifrepropiedades-sketch.github.io/yesica-romancifre/">
+<meta property="og:image" content="https://romancifrepropiedades-sketch.github.io/yesica-romancifre/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yesica, asesora inmobiliaria de ROMÁN CIFRE Propiedades">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preload" as="image" href="esfera.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Identidad: violeta del logo de ROMÁN CIFRE (#732F84), blanco y grises neutros. Una sola apariencia, clara. */
+:root{
+  --violet:#732F84; --deep:#3F1650; --ink:#1E1128; --muted:#645C70; --line:#E7DFEC; --tint:#F5F0F8;
+  --wa:#12803F; --wa-ink:#FFFFFF;
+  --amber-bg:#FFF4DC; --amber-ink:#5E4210; --amber-line:#F0DBA6;
+  --font:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:#FFFFFF; color:var(--ink);
+  font-family:var(--font); font-size:16px; line-height:1.6;
+  padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px));
+}
+h1,h2,h3,p,dl,dd{margin:0}
+a{color:inherit}
+.container{
+  max-width:1080px; margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left, 0px));
+  padding-right:max(20px, env(safe-area-inset-right, 0px));
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:52px; padding:14px 24px; border-radius:999px;
+  font-family:inherit; font-weight:700; font-size:1rem; text-decoration:none; border:2px solid transparent; cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,.tile:focus-visible,.tab:focus-visible,.fab:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+.btn-wa{background:var(--wa); color:var(--wa-ink); box-shadow:0 8px 22px rgba(18,128,63,.3)}
+.btn-ghost{color:#fff; border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.ico-wa{width:22px; height:22px; flex:none}
+
+/* Barra superior */
+.bar{position:sticky; top:0; z-index:20; background:rgba(255,255,255,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top, 0px)}
+.bar .container{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px}
+.logo{height:44px; width:auto; display:block}
+.bar .btn{min-height:42px; padding:8px 18px; font-size:.92rem}
+
+/* Portada */
+.hero{
+  position:relative; overflow:hidden; color:#fff;
+  background:
+    radial-gradient(55% 90% at 82% 45%, rgba(190,130,215,.38), rgba(190,130,215,0) 65%),
+    linear-gradient(135deg, var(--deep) 0%, #5B2370 55%, var(--violet) 100%);
+  padding:72px 0 104px;
+}
+.hero .container{position:relative; z-index:1}
+/* Escena 3D del isologo */
+.hero .container{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:24px 32px; align-items:center}
+.stage{position:relative; width:min(470px, 100%); aspect-ratio:1; margin:0 auto; perspective:1200px; touch-action:pan-y}
+.float{position:absolute; inset:0; transform-style:preserve-3d; animation:flotar 6.5s ease-in-out infinite}
+.orb{position:absolute; inset:7%; transform-style:preserve-3d; transform:rotateX(0deg) rotateY(0deg); will-change:transform}
+.orb img{position:absolute; inset:0; width:100%; height:100%; display:block; user-select:none; -webkit-user-drag:none; pointer-events:none}
+.orb .halo{position:absolute; inset:-16%; border-radius:50%; transform:translateZ(-140px) scale(1.12);
+  background:radial-gradient(closest-side, rgba(205,160,230,.55), rgba(205,160,230,.12) 60%, rgba(205,160,230,0) 72%)}
+.orb .ring{position:absolute; inset:-9%; border-radius:50%; border:1px solid rgba(255,255,255,.2); transform:translateZ(-70px) scale(1.07)}
+.orb .sphere{transform:translateZ(0)}
+.orb .edif{transform:translateZ(60px) scale(.9500); filter:drop-shadow(0 22px 20px rgba(24,6,44,.5))}
+.orb .gloss{position:absolute; inset:0; border-radius:50%; transform:translateZ(100px) scale(.9167); pointer-events:none;
+  background:radial-gradient(circle at var(--gx,30%) var(--gy,22%), rgba(255,255,255,.5), rgba(255,255,255,0) 36%)}
+.floor{position:absolute; left:20%; right:20%; bottom:-1%; height:7%; border-radius:50%; filter:blur(8px);
+  background:radial-gradient(closest-side, rgba(12,0,28,.55), rgba(12,0,28,0)); animation:sombra 6.5s ease-in-out infinite}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes sombra{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(.84); opacity:.6}}
+@media (max-width:860px){
+  .hero .container{grid-template-columns:1fr}
+  .stage{width:min(300px, 78vw); margin-top:8px}
+  .hero{padding-bottom:120px}
+}
+@media (prefers-reduced-motion: reduce){.float,.floor{animation:none}}
+
+/* Aparición suave al hacer scroll (solo con JavaScript; sin JS todo se ve) */
+.rv{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1; transform:none; transition:none}}
+.eyebrow{font-size:.78rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; opacity:.8; margin-bottom:14px}
+h1{font-size:clamp(3rem, 11vw, 5.6rem); font-weight:800; letter-spacing:-0.04em; line-height:.95}
+.lead{font-size:clamp(1.1rem, 3.4vw, 1.35rem); max-width:30ch; margin-top:18px; opacity:.92}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px}
+.hours{
+  display:inline-flex; flex-wrap:wrap; gap:4px 20px; margin-top:32px;
+  padding:10px 20px; border-radius:18px; font-size:.92rem;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22);
+}
+.hours b{font-weight:700}
+
+/* Aviso: notificación que aparece, se puede cerrar y no vuelve a salir en esa visita */
+.toast-aviso{
+  position:fixed; z-index:35; top:calc(80px + env(safe-area-inset-top, 0px)); left:50%;
+  width:min(560px, calc(100vw - 32px)); display:flex; gap:14px; align-items:flex-start;
+  background:var(--amber-bg); color:var(--amber-ink); border:1px solid var(--amber-line);
+  border-radius:16px; padding:16px 48px 16px 18px; box-shadow:0 18px 44px rgba(30,17,40,.25);
+  opacity:0; transform:translate(-50%, -14px); transition:opacity .3s ease, transform .3s ease;
+}
+.toast-aviso[hidden]{display:none}
+.toast-aviso.show{opacity:1; transform:translate(-50%, 0)}
+.toast-aviso .ta-ico{flex:none; width:22px; height:22px; margin-top:2px}
+.toast-aviso strong{display:block; font-weight:800; margin-bottom:2px}
+.toast-aviso p{margin:0; font-size:.95rem; line-height:1.5}
+.toast-aviso .ta-x{position:absolute; top:8px; right:8px; width:36px; height:36px; border:0; border-radius:50%; background:transparent; color:inherit; font-size:1.5rem; line-height:1; cursor:pointer}
+.toast-aviso .ta-x:hover{background:rgba(0,0,0,.08)}
+.toast-aviso .ta-x:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+
+/* Secciones */
+section{padding:72px 0}
+.alt{background:var(--tint)}
+h2{font-size:clamp(1.8rem, 5.5vw, 2.6rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; text-wrap:balance}
+.sub{color:var(--muted); margin-top:10px; max-width:52ch}
+.sec-head{margin-bottom:32px}
+
+/* Accesos */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px}
+.tile{
+  display:flex; flex-direction:column; gap:10px; padding:26px; min-width:0;
+  background:#fff; border:1px solid var(--line); border-radius:22px; text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.tile:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(115,47,132,.14); border-color:#D7C3E0}
+.tile .ico{width:52px; height:52px; border-radius:16px; background:var(--tint); color:var(--violet); display:grid; place-items:center}
+.tile .ico svg{width:26px; height:26px}
+.tile h3{font-size:1.2rem; font-weight:800; letter-spacing:-0.01em; margin-top:6px}
+.tile p{color:var(--muted); font-size:.96rem}
+.tile .go{margin-top:auto; padding-top:8px; color:var(--violet); font-weight:700}
+
+/* Condiciones */
+.tabs{display:inline-flex; background:#fff; border:1px solid var(--line); border-radius:999px; padding:5px; margin-bottom:24px}
+.tab{appearance:none; border:0; background:transparent; font:inherit; font-weight:700; color:var(--muted); padding:10px 22px; border-radius:999px; cursor:pointer}
+.tab[aria-selected="true"]{background:var(--violet); color:#fff}
+.stats{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-bottom:12px}
+.stat{background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px}
+.stat b{display:block; font-size:clamp(1.25rem, 4.6vw, 1.8rem); font-weight:800; letter-spacing:-0.02em; color:var(--violet); line-height:1.15}
+.stat span{display:block; color:var(--muted); font-size:.88rem; margin-top:4px}
+.rows{background:#fff; border:1px solid var(--line); border-radius:22px; padding:6px 24px}
+.row{display:grid; grid-template-columns:180px minmax(0,1fr); gap:6px 24px; padding:18px 0; border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row dt{font-weight:700}
+.row dd{color:#3A3144}
+.fine{color:var(--muted); font-size:.92rem; margin-top:18px}
+.js .panel[hidden]{display:none}
+@media (max-width:640px){
+  .row{grid-template-columns:1fr}
+  .row dt{font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .rows{padding:4px 18px}
+  .stats{grid-template-columns:1fr}
+  .stat{display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:14px 18px}
+  .stat span{margin-top:0; text-align:right}
+}
+
+/* Agregamos valor */
+.valor{color:#fff; background:linear-gradient(160deg, var(--deep) 0%, #5B2370 60%, var(--violet) 100%)}
+.valor .eyebrow{margin-bottom:12px}
+.valor .intro{max-width:62ch; margin-top:14px; font-size:1.08rem; opacity:.95}
+.vgrid{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:16px; margin-top:40px}
+.vitem{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:22px; padding:28px; min-width:0}
+.vitem svg{width:46px; height:46px; stroke:#fff; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; display:block}
+.vitem h3{font-size:1.1rem; font-weight:800; letter-spacing:-0.01em; margin-top:18px}
+.vitem p{margin-top:8px; opacity:.92; font-size:.97rem}
+.valor .cta{margin-top:36px}
+.btn-white{background:#fff; color:var(--violet); box-shadow:0 10px 26px rgba(0,0,0,.2)}
+
+/* Tasación */
+.tasgrid{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr); gap:20px; align-items:start}
+@media (max-width:900px){.tasgrid{grid-template-columns:1fr}}
+.tpanel{position:relative; overflow:hidden; color:#fff; border-radius:28px; padding:clamp(24px, 5vw, 40px);
+  background:linear-gradient(160deg, var(--deep) 0%, #5B2370 55%, var(--violet) 100%)}
+.tpanel .eyebrow{margin-bottom:10px}
+.tpanel h2{max-width:14ch}
+.tpanel .lead2{margin-top:12px; opacity:.92; max-width:34ch}
+.checks{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:14px}
+.checks li{display:flex; gap:12px; align-items:flex-start; font-weight:700; line-height:1.35}
+.checks .tick{flex:none; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.2); display:grid; place-items:center}
+.checks .tick svg{width:14px; height:14px}
+.steps{list-style:none; margin:28px 0 0; padding:22px 0 0; border-top:1px solid rgba(255,255,255,.25); display:flex; flex-direction:column; gap:12px; counter-reset:paso}
+.steps li{counter-increment:paso; display:flex; gap:12px; align-items:flex-start; font-size:.95rem}
+.steps li::before{content:counter(paso); flex:none; width:24px; height:24px; border-radius:50%; background:#fff; color:var(--violet); font-weight:800; font-size:.82rem; display:grid; place-items:center}
+.tform h3{font-size:1.02rem; font-weight:800; margin:0 0 10px}
+.tform h3:not(:first-child){margin-top:24px}
+.fgrid{display:grid; grid-template-columns:1fr 1fr; gap:0 16px}
+.fgrid .full{grid-column:1 / -1}
+@media (max-width:640px){.fgrid{grid-template-columns:1fr}}
+.opt{font-weight:500; color:var(--muted)}
+.chip{position:relative; display:inline-block}
+.chip input{position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer}
+.chip span{display:inline-block; padding:11px 20px; border:1px solid #CFC4D6; border-radius:999px; font-weight:700; background:#fff}
+.chip input:checked + span{background:var(--violet); border-color:var(--violet); color:#fff}
+.chip input:focus-visible + span{outline:3px solid var(--ink); outline-offset:2px}
+.seg{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px}
+.frow{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; padding:12px 0; border-top:1px solid var(--line)}
+.frow:first-child{border-top:0}
+.frow > b{min-width:104px; font-weight:800}
+.fbtns{display:flex; flex-wrap:wrap; gap:8px}
+.fbtn{padding:10px 14px; border-radius:12px; border:1px solid #CFC4D6; background:#fff; font:inherit; font-size:.92rem; font-weight:700; color:var(--ink); cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--tint); border-color:var(--violet); color:var(--violet); box-shadow:inset 0 0 0 1px var(--violet)}
+.fbtn:disabled{opacity:.35; cursor:not-allowed; background:#F4F1F6}
+.tform .btn-wa{width:100%; margin-top:6px}
+
+/* Reseñas */
+.review{background:var(--tint); border:1px solid var(--line); border-radius:28px; padding:clamp(24px, 5vw, 44px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px}
+.review h2{font-size:clamp(1.5rem, 4.8vw, 2.1rem); max-width:20ch}
+.review p{color:var(--muted); margin-top:8px; max-width:46ch}
+.stars{display:flex; gap:4px; margin-bottom:14px}
+.stars svg{width:30px; height:30px; fill:#F5B301}
+.btn-violet{background:var(--violet); color:#fff; box-shadow:0 8px 22px rgba(115,47,132,.28)}
+
+/* Contacto */
+.contact{
+  background:linear-gradient(135deg, var(--deep), var(--violet)); color:#fff; border-radius:28px;
+  padding:clamp(28px, 6vw, 56px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px;
+}
+.contact h2{max-width:16ch}
+.contact p{opacity:.9; margin-top:10px; max-width:42ch}
+.contact .cta-row{margin-top:0}
+
+/* Coordinar visita */
+.visit{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:20px; align-items:start}
+@media (max-width:820px){.visit{grid-template-columns:1fr}}
+.vcard{background:#fff; border:1px solid var(--line); border-radius:22px; padding:clamp(18px, 4vw, 28px); min-width:0}
+.vcard h3{font-size:1.02rem; font-weight:800; margin:0 0 8px}
+.vcard h3:not(:first-child){margin-top:20px}
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field label{font-weight:700; font-size:.92rem}
+.field input,.field select{
+  font:inherit; width:100%; min-height:50px; padding:12px 14px; color:var(--ink);
+  background:#fff; border:1px solid #CFC4D6; border-radius:12px;
+}
+.field input:focus,.field select:focus{outline:3px solid rgba(115,47,132,.3); border-color:var(--violet)}
+.days{display:flex; gap:8px; overflow-x:auto; padding:4px 2px 10px; scroll-snap-type:x proximity}
+.day{
+  flex:none; scroll-snap-align:start; min-width:66px; padding:10px 8px; border-radius:14px;
+  border:1px solid var(--line); background:#fff; font:inherit; color:var(--ink); cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+}
+.day small{font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700}
+.day b{font-size:1.25rem; line-height:1.1; font-weight:800}
+.day i{width:6px; height:6px; border-radius:50%; background:var(--violet); visibility:hidden}
+.day.has i{visibility:visible}
+.day[aria-pressed="true"]{background:var(--violet); border-color:var(--violet); color:#fff}
+.day[aria-pressed="true"] small{color:rgba(255,255,255,.85)}
+.day[aria-pressed="true"] i{background:#fff}
+.day.full{background:#F4F1F6; color:#8C8496}
+.day.full b{text-decoration:line-through}
+.day.full[aria-pressed="true"]{background:#6E6579; border-color:#6E6579; color:#fff}
+.slots{display:flex; flex-direction:column; gap:6px; margin-top:8px}
+.hour{display:grid; grid-template-columns:46px repeat(4, minmax(0,1fr)); gap:6px; align-items:center}
+.hour > span{font-weight:800; font-size:.85rem; color:var(--muted)}
+.slot{padding:10px 2px; border-radius:10px; border:1px solid #CFC4D6; background:#fff; font:inherit; font-size:.92rem; font-weight:700; color:var(--ink); cursor:pointer; font-variant-numeric:tabular-nums}
+.slot:disabled{opacity:.35; cursor:not-allowed; background:#F4F1F6}
+.slot[aria-pressed="true"]{background:var(--tint); border-color:var(--violet); color:var(--violet); box-shadow:inset 0 0 0 1px var(--violet)}
+.picked{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0; padding:0; list-style:none}
+.picked li{display:inline-flex; align-items:center; gap:8px; padding:5px 6px 5px 12px; background:var(--tint); border-radius:999px; font-size:.9rem; font-weight:600}
+.picked button{border:0; background:#fff; border-radius:50%; width:26px; height:26px; cursor:pointer; font-size:1rem; line-height:1; color:var(--violet)}
+.help{color:var(--muted); font-size:.92rem}
+.msg{margin-top:12px; color:#8A1F11; font-weight:600; min-height:1.3em}
+.msg.ok{color:#12803F}
+.consent{display:flex; gap:10px; align-items:flex-start; margin-top:16px; font-size:.9rem; line-height:1.45; color:var(--muted); cursor:pointer}
+.consent input{flex:none; width:20px; height:20px; margin:1px 0 0; accent-color:var(--violet); cursor:pointer}
+.consent a{color:var(--violet); font-weight:700}
+.visit .btn-wa{width:100%; margin-top:6px}
+
+/* Pie */
+footer{border-top:1px solid var(--line); padding:32px 0}
+footer .container{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 24px}
+footer .logo{height:36px}
+footer p{color:var(--muted); font-size:.9rem}
+footer .container{align-items:flex-start}
+.branches{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:16px 32px; flex:1 1 520px}
+.branches strong{display:block; color:var(--ink); font-weight:700; margin-bottom:2px}
+.branches a{color:var(--violet); font-weight:600; text-decoration:none}
+.branches a:hover{text-decoration:underline}
+.contact .links{font-size:.95rem; margin-top:14px}
+.contact .links a{color:#fff; font-weight:600; text-underline-offset:3px}
+
+/* Botón flotante */
+.fab{
+  position:fixed; z-index:30;
+  right:max(16px, env(safe-area-inset-right, 0px)); bottom:max(16px, env(safe-area-inset-bottom, 0px));
+  display:inline-flex; align-items:center; gap:10px; padding:15px 22px;
+  background:var(--violet); color:#fff; border-radius:999px;
+  font-weight:700; text-decoration:none; box-shadow:0 0 0 3px #fff, 0 12px 32px rgba(0,0,0,.28);
+}
+.fab:hover{transform:translateY(-2px); background:var(--deep)}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; scroll-behavior:auto !important}}
+
+/* ===== Celular: mejor distribución ===== */
+@media (max-width:860px){
+  .hero{padding:40px 0 92px}
+  .hero .container{
+    grid-template-columns:minmax(0,1fr) 142px; gap:0 6px;
+    grid-template-areas:"eyebrow stage" "title stage" "lead lead" "cta cta" "hours hours";
+    align-items:start;
+  }
+  .hero-copy{display:contents}
+  .hero .eyebrow{grid-area:eyebrow; align-self:end; margin-bottom:6px}
+  .hero h1{grid-area:title; align-self:start}
+  .hero .lead{grid-area:lead; margin-top:34px; max-width:none}
+  .hero .cta-row{grid-area:cta; margin-top:24px}
+  .hero .hours{grid-area:hours; margin-top:22px}
+  .stage{grid-area:stage; width:150px; margin:20px -8px -44px 0; justify-self:end; align-self:start}
+}
+@media (max-width:640px){
+  section{padding:48px 0}
+  .sec-head{margin-bottom:22px}
+  .hero .cta-row .btn{flex:1 1 100%}
+
+  /* Accesos: grilla 2 x 2 compacta */
+  .tiles{grid-template-columns:1fr 1fr; gap:12px}
+  .tile{padding:16px; gap:8px; border-radius:18px}
+  .tile .ico{width:42px; height:42px; border-radius:13px}
+  .tile .ico svg{width:22px; height:22px}
+  .tile h3{font-size:1rem; line-height:1.25; margin-top:2px}
+  .tile p{display:none}
+  .tile .go{font-size:.88rem; padding-top:2px}
+
+  /* Agregamos valor: carrusel horizontal */
+  .vgrid{display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-left:20px;
+    margin:26px -20px 0; padding:0 20px 8px; scrollbar-width:none}
+  .vgrid::-webkit-scrollbar{display:none}
+  .vitem{flex:0 0 80%; scroll-snap-align:start; padding:22px}
+  .vitem svg{width:38px; height:38px}
+  .vitem h3{font-size:1.02rem; margin-top:14px}
+  .valor .cta{margin-top:22px}
+  .valor .cta .btn{width:100%}
+
+  /* Tasación: panel más corto */
+  .tpanel{padding:22px}
+  .steps{display:none}
+  .checks{margin-top:18px; gap:10px}
+
+  /* Contacto y reseñas */
+  .contact .cta-row, .contact .cta-row .btn, .review > .btn{width:100%}
+  .review{padding:24px}
+
+  /* Botón flotante: solo el ícono, para no tapar el contenido */
+  .fab{padding:0; width:56px; height:56px; justify-content:center}
+  .fab-txt{display:none}
+  body{padding-bottom:calc(84px + env(safe-area-inset-bottom, 0px))}
+}
+
+/* ===== Menú de la barra ===== */
+section[id], #aviso, #hero{scroll-margin-top:84px}
+.bar .container{justify-content:flex-start; gap:20px}
+.bar-actions{display:flex; align-items:center; gap:10px; margin-left:auto}
+.menu{display:flex; align-items:center; gap:2px; margin-left:auto}
+.menu + .bar-actions{margin-left:0}
+.menu a{padding:9px 14px; border-radius:999px; text-decoration:none; font-weight:600; font-size:.95rem; color:var(--ink); transition:background .15s ease, color .15s ease}
+.menu a:hover{background:var(--tint); color:var(--violet)}
+.menu a.on{background:var(--tint); color:var(--violet)}
+.menu a:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+.burger{display:none; width:44px; height:44px; border:1px solid var(--line); border-radius:12px; background:#fff; cursor:pointer; padding:0; flex-direction:column; align-items:center; justify-content:center; gap:5px}
+.burger span{display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform .2s ease, opacity .2s ease}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.burger:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+@media (max-width:1100px){
+  .burger{display:flex}
+  .bar .container{justify-content:space-between}
+  .menu{display:none; position:absolute; left:0; right:0; top:100%; margin:0; flex-direction:column; align-items:stretch; gap:0;
+    background:#fff; border-bottom:1px solid var(--line); box-shadow:0 18px 30px rgba(30,17,40,.12);
+    padding:6px max(20px, env(safe-area-inset-right, 0px)) 14px max(20px, env(safe-area-inset-left, 0px))}
+  .menu.open{display:flex}
+  .menu a{padding:15px 4px; border-radius:0; border-bottom:1px solid var(--line); font-size:1.05rem}
+  .menu a:last-child{border-bottom:0}
+  .menu a:hover,.menu a.on{background:transparent}
+  .bar-actions{margin-left:0}
+}
+@media (max-width:480px){
+  .bar .container{gap:10px}
+  .bar-actions .btn{display:none}
+  .logo{height:40px}
+}
+
+/* ===== Foto de Yesica (se muestra solo si existe yesica.jpg) ===== */
+.avatar,.portrait{overflow:hidden; border-radius:50%; flex:none; background:var(--tint)}
+.avatar[hidden],.portrait[hidden]{display:none}
+.avatar img,.portrait img{display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%}
+.eyebrow{display:flex; align-items:center; gap:10px}
+.avatar{width:40px; height:40px; border:2px solid rgba(255,255,255,.9); box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.contact-who{display:flex; align-items:center; gap:24px; min-width:0}
+.portrait{margin:0; width:136px; height:136px; border:4px solid rgba(255,255,255,.9); box-shadow:0 16px 34px rgba(0,0,0,.3)}
+@media (max-width:640px){
+  .contact-who{flex-direction:column; align-items:flex-start; gap:18px}
+  .portrait{width:112px; height:112px}
+}
+
+/* ===== Mapa de propiedades ===== */
+.mapbox{margin-bottom:20px; background:#fff; border:1px solid var(--line); border-radius:22px; overflow:hidden}
+.mapbox[hidden]{display:none}
+.mapbar{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:4px 16px; padding:16px 20px; border-bottom:1px solid var(--line)}
+.mapbar span{color:var(--muted); font-size:.92rem}
+.map{height:380px; background:#EEE9F2; position:relative; z-index:0; isolation:isolate}
+.mapnote{margin:0; padding:10px 20px; border-top:1px solid var(--line)}
+.mapnote[hidden]{display:none}
+.leaflet-container{font-family:var(--font)}
+.pin-img{border-radius:50%; border:3px solid #fff; background:#fff; box-shadow:0 8px 18px rgba(63,22,80,.45)}
+.leaflet-popup-content-wrapper{border-radius:16px; box-shadow:0 14px 32px rgba(30,17,40,.25)}
+.leaflet-popup-content{margin:14px 16px; line-height:1.4}
+.pop strong{display:block; font-size:1rem; color:var(--ink)}
+.pop span{display:block; margin-top:2px; font-size:.88rem; color:var(--muted)}
+.pop-acc{display:flex; flex-direction:column; gap:8px; margin-top:12px}
+.pop-link{display:block; text-align:center; padding:10px 14px; border-radius:999px; background:var(--violet); color:#fff !important; font-weight:700; font-size:.9rem; text-decoration:none}
+.pop-btn{padding:9px 14px; border-radius:999px; border:1px solid var(--violet); background:#fff; color:var(--violet); font:inherit; font-weight:700; font-size:.9rem; cursor:pointer}
+@media (max-width:640px){ .map{height:300px} .mapbar{padding:14px 16px} }
+
+/* ===== Sucursales ===== */
+.btn-line{background:#fff; color:var(--violet); border-color:var(--violet)}
+.branch-grid{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr); gap:20px; align-items:stretch}
+@media (max-width:860px){.branch-grid{grid-template-columns:1fr}}
+.branch-list{display:flex; flex-direction:column; gap:12px}
+.branch{text-align:left; padding:18px 20px; border-radius:18px; border:1px solid var(--line); background:#fff; font:inherit; color:var(--ink); cursor:pointer; display:flex; flex-direction:column; gap:2px}
+.branch b{font-size:1.05rem; font-weight:800}
+.branch span{color:var(--muted); font-size:.93rem}
+.branch[aria-pressed="true"]{border-color:var(--violet); background:var(--tint); box-shadow:inset 0 0 0 1px var(--violet)}
+.branch:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+.branch-actions{display:flex; flex-direction:column; gap:10px; margin-top:6px}
+.gmap{border-radius:22px; overflow:hidden; border:1px solid var(--line); background:var(--tint); min-height:340px}
+.gmap iframe{display:block; width:100%; height:100%; min-height:340px; border:0}
+
+/* ===== Pie de página ===== */
+footer{background:var(--tint); border-top:1px solid var(--line); padding:52px 0 28px}
+footer .container{display:block}
+.f-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:32px 28px}
+@media (max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}
+/* Celular: pie ordenado en bloques fáciles de tocar */
+@media (max-width:520px){
+  footer{padding-top:34px}
+  .f-grid{grid-template-columns:1fr; gap:26px}
+  .f-brand p{max-width:none; margin:10px 0 16px}
+  .f-btn{width:100%; min-height:52px}
+  .f-col h4{margin-bottom:10px}
+  /* Sucursales: dos tarjetas lado a lado */
+  .f-col:nth-child(2){display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .f-col:nth-child(2) h4{grid-column:1 / -1; margin-bottom:0}
+  .f-col:nth-child(2) p{margin:0; background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px 14px; font-size:.92rem}
+  /* Contacto: filas completas, cómodas para el dedo */
+  .f-col:nth-child(3) a{display:flex; align-items:center; min-height:50px; margin-bottom:8px; padding:10px 14px; background:#fff; border:1px solid var(--line); border-radius:14px}
+  /* En esta página: botones chicos que se acomodan en filas */
+  .f-col:nth-child(4){display:flex; flex-wrap:wrap; gap:8px}
+  .f-col:nth-child(4) h4{width:100%; margin-bottom:2px}
+  .f-col:nth-child(4) a{display:inline-flex; align-items:center; min-height:44px; padding:8px 16px; background:#fff; border:1px solid #CFC4D6; border-radius:999px; color:var(--violet); font-size:.9rem}
+  .f-bottom{flex-direction:column; gap:6px; margin-top:26px; padding-top:16px}
+  .f-bottom a{display:inline-block; padding:12px 0; align-self:flex-start}
+}
+.f-brand .logo{height:40px}
+.f-brand p{margin:14px 0 18px; max-width:30ch; color:var(--muted); font-size:.95rem}
+.f-btn{min-height:46px; padding:10px 20px; font-size:.95rem}
+.f-col h4{margin:0 0 14px; font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+footer .f-col p{margin:0 0 12px; color:var(--ink); font-size:.95rem; line-height:1.5}
+.f-col a{display:block; padding:4px 0; color:var(--ink); font-weight:600; font-size:.95rem; text-decoration:none; overflow-wrap:anywhere}
+.f-col a:hover{color:var(--violet); text-decoration:underline}
+.f-bottom{display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; margin-top:36px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem}
+.f-bottom a{color:var(--muted); font-weight:600}
+.f-mat{flex-basis:100%; margin:0; color:var(--muted); font-size:.88rem}
+
+/* Pie sin franja blanca: el espacio del botón flotante queda dentro del pie */
+body{padding-bottom:0}
+footer{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
+@media (max-width:640px){ footer{padding-bottom:calc(88px + env(safe-area-inset-bottom, 0px))} }
+
+/* Filtros del mapa */
+.mapfilters{display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px 14px; padding:14px 20px; background:var(--tint); border-bottom:1px solid var(--line)}
+.mapfilters[hidden], .mapfilters label[hidden]{display:none}
+.mapfilters label{display:flex; flex-direction:column; gap:4px; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.mapfilters select{font:inherit; font-size:.95rem; font-weight:600; letter-spacing:0; text-transform:none; color:var(--ink); min-height:42px; padding:8px 34px 8px 12px; border:1px solid #CFC4D6; border-radius:12px; background:#fff}
+.mapfilters select:focus-visible{outline:3px solid rgba(115,47,132,.3); border-color:var(--violet)}
+.f-clear{margin-left:auto; border:0; background:none; font:inherit; font-size:.9rem; font-weight:700; color:var(--violet); cursor:pointer; padding:10px 4px; text-decoration:underline; text-underline-offset:3px}
+.pop-aprox{display:block; margin-top:6px; font-size:.8rem; font-weight:600; color:#8A5A00}
+.pop-exp{display:block; margin-top:2px; font-size:.82rem; font-weight:600; color:var(--muted)}
+.pop-precio{display:block; margin-top:8px; font-style:normal; font-weight:800; color:var(--violet); font-size:1.02rem}
+@media (max-width:640px){ .mapfilters{padding:12px 16px} .mapfilters label{flex:1 1 140px} .mapfilters select{width:100%} .f-clear{margin-left:0} }
+
+/* Calendario mensual de visitas */
+.cal{border:1px solid var(--line); border-radius:18px; padding:14px 14px 10px; background:#fff; margin-bottom:6px}
+.cal-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px}
+.cal-head strong{font-size:1.05rem; font-weight:800; text-transform:capitalize}
+.cal-nav{width:42px; height:42px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); font:inherit; font-size:1.4rem; line-height:1; cursor:pointer}
+.cal-nav:hover:not(:disabled){background:var(--tint)}
+.cal-nav:disabled{opacity:.3; cursor:not-allowed}
+.cal-nav:focus-visible,.cal-dia:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+.cal-sem,.cal-grid{display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:4px}
+.cal-sem{text-align:center; margin-bottom:4px; font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.cal-dia{position:relative; aspect-ratio:1; min-height:40px; border:0; border-radius:12px; background:transparent; color:var(--ink); font:inherit; font-weight:700; cursor:pointer}
+.cal-dia:hover:not(:disabled){background:var(--tint)}
+.cal-dia.hoy{box-shadow:inset 0 0 0 1px var(--violet)}
+.cal-dia.off{color:#BDB6C6; font-weight:500; cursor:not-allowed}
+.cal-dia.full{color:#BDB6C6; text-decoration:line-through}
+.cal-dia[aria-pressed="true"]{background:var(--violet); color:#fff; text-decoration:none}
+.cal-dia.has::after{content:''; position:absolute; left:50%; bottom:5px; width:5px; height:5px; margin-left:-2.5px; border-radius:50%; background:var(--violet)}
+.cal-dia[aria-pressed="true"].has::after{background:#fff}
+.cal-ley{margin:8px 0 0; font-size:.84rem}
+.dia-sel{margin:10px 0 4px; font-size:1.02rem; font-weight:800}
+
+/* ===== Visitas: tres columnas (datos, calendario, horarios) y franja de envío ===== */
+.visit{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr) minmax(0,1.05fr); gap:20px; align-items:stretch}
+.visit .vcard{display:flex; flex-direction:column}
+.visit .vcard h3{margin:0 0 14px; font-size:1.05rem; font-weight:800}
+.vc-datos .field:last-child{margin-bottom:0}
+.vc-cal .cal{margin-bottom:0}
+.vc-hor .help{margin:0 0 6px}
+.vc-hor .dia-sel{margin:8px 0 8px}
+.vc-hor .hour{grid-template-columns:40px repeat(4, minmax(0,1fr)); gap:5px}
+.vc-hor .slot{padding:9px 0; font-size:.86rem}
+.cal-sem,.cal-grid{gap:3px}
+.cal-dia{min-height:38px}
+.vfoot{grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"c b" "m b" "n n"; gap:6px 28px; align-items:center;
+  background:#fff; border:1px solid var(--line); border-radius:22px; padding:20px 28px}
+.vfoot .consent{grid-area:c; margin:0}
+.vfoot .msg{grid-area:m; margin:0; min-height:1.3em}
+.btn-send{background:var(--violet); color:#fff; box-shadow:0 8px 22px rgba(115,47,132,.3)}
+.btn-send:disabled{opacity:.7; cursor:default}
+.btn-wsp{background:#fff; color:var(--wa); border:2px solid var(--wa)}
+.vacts,.tacts{display:flex; flex-direction:column; gap:10px}
+.vacts .btn,.tacts .btn{width:100%; margin:0}
+.tacts{margin-top:6px}
+.vfoot .vacts{grid-area:b; min-width:300px}
+.vfoot .vnote{grid-area:n; margin:6px 0 0}
+.vfoot noscript{grid-column:1 / -1}
+/* Tablet: datos arriba en dos columnas; calendario y horarios lado a lado */
+@media (max-width:980px){
+  .visit{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .visit .vc-datos{grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:0 16px}
+  .visit .vc-datos h3, .visit .vc-datos .vf-prop{grid-column:1 / -1}
+}
+/* Celular: una sola columna */
+@media (max-width:700px){
+  .visit{grid-template-columns:1fr}
+  .visit .vc-datos{display:flex}
+  .vc-cal .cal{max-width:440px}
+  .vc-hor .slots{max-width:520px}
+  .vfoot{grid-template-columns:1fr; grid-template-areas:"c" "m" "b" "n"; padding:18px}
+  .vfoot .vacts{min-width:0; margin-top:8px}
+}
+
+/* Calendario de tasación */
+.t-agenda{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start}
+.t-agenda .cal{margin-bottom:0}
+.t-fr .help{margin:4px 0 0}
+.t-fr .frow{padding:10px 0}
+.t-fr .frow > b{min-width:0; flex-basis:100%}
+.t-fr[hidden], #t-fr-vacio[hidden]{display:none}
+@media (max-width:560px){ .t-agenda{grid-template-columns:1fr} }
+
+/* ===== Celular: formularios compactos y fáciles de tocar ===== */
+.seg-2{grid-template-columns:repeat(2, 1fr) !important}
+.fbtn{min-height:44px}
+@media (max-width:900px){
+  .tpanel .steps{display:none}                     /* los pasos se ven en el propio formulario */
+  .tpanel .checks{margin-top:18px; gap:10px}
+  .tpanel{padding:22px 20px}
+}
+@media (max-width:640px){
+  .tform .fgrid{grid-template-columns:1fr 1fr; gap:0 12px}
+  .tform .fgrid.fgrid-1{grid-template-columns:1fr}
+  .tform .fgrid:not(.fgrid-1) .field:nth-child(2){grid-column:1 / -1}          /* Tipo de propiedad: ancho completo para que se lea entero */
+  .tform .fgrid:not(.fgrid-1) .field:nth-child(4){grid-column:auto}           /* Metros cuadrados junto a Ambientes */
+  .tform .field select, .tform .field input{min-width:0}
+  .tform .seg{display:grid; grid-template-columns:repeat(3, 1fr); gap:8px}
+  .tform .chip{display:block}
+  .tform .chip span{display:flex; align-items:center; justify-content:center; text-align:center; min-height:48px; padding:6px 8px; font-size:.9rem; line-height:1.2}
+  .t-fr .fbtns{width:100%}
+  .t-fr .fbtn{flex:1 1 28%; text-align:center; padding:10px 6px}
+  .t-fr #t-fr-vacio{display:none}
+  .tform .help{font-size:.9rem}
+  .slot{min-height:44px}
+  .tform .tacts{position:static}
+  .vcard{padding:16px}
+  .cal{padding:10px}
+  .cal-dia{aspect-ratio:auto; min-height:44px}
+  .cal-nav{width:44px; height:44px}
+}
+
+/* ===== Preguntas frecuentes ===== */
+.faq-grid{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr); gap:32px 56px; align-items:start}
+.faq-intro{position:sticky; top:96px}
+.faq-intro .sub{margin:12px 0 22px}
+@media (max-width:860px){ .faq-grid{grid-template-columns:1fr} .faq-intro{position:static} }
+.faq-grupo{margin:28px 0 12px; font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+.faq-grupo:first-child{margin-top:0}
+.qa{background:#fff; border:1px solid var(--line); border-radius:16px; margin-bottom:10px; overflow:hidden}
+.qa[open]{border-color:#D7C3E0; box-shadow:0 10px 24px rgba(115,47,132,.08)}
+.qa summary{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 20px; font-weight:700; cursor:pointer; list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+'; flex:none; font-size:1.5rem; font-weight:500; line-height:1; color:var(--violet)}
+.qa[open] summary::after{content:'–'}
+.qa summary:focus-visible{outline:3px solid var(--ink); outline-offset:-3px}
+.qa-r{padding:0 20px 18px; color:#3A3144}
+.qa-r p{margin:0 0 10px}
+.qa-r p:last-child{margin-bottom:0}
+.qa-r a{color:var(--violet); font-weight:700}
+
+/* ===== Nina: asistente virtual ===== */
+button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
+.nina{position:fixed; z-index:40; padding:0; gap:0;
+  right:max(16px, env(safe-area-inset-right, 0px)); bottom:calc(88px + env(safe-area-inset-bottom, 0px));
+  width:min(380px, calc(100vw - 32px)); max-height:min(600px, calc(100vh - 130px));
+  display:flex; flex-direction:column; overflow:hidden;
+  background:#fff; border:1px solid var(--line); border-radius:22px; box-shadow:0 24px 60px rgba(30,17,40,.3)}
+.nina[hidden]{display:none}
+.nina-head{display:flex; align-items:center; gap:12px; padding:14px 16px; color:#fff; background:linear-gradient(135deg, var(--deep), var(--violet))}
+.nina-head img{width:40px; height:40px; border-radius:50%; background:#fff; border:2px solid rgba(255,255,255,.85); flex:none}
+.nina-head div{flex:1; min-width:0; display:flex; flex-direction:column; line-height:1.25}
+.nina-head strong{font-size:1.05rem; font-weight:800}
+.nina-head span{font-size:.82rem; opacity:.9}
+.nina-x{border:0; background:rgba(255,255,255,.18); color:#fff; width:34px; height:34px; border-radius:50%; font-size:1.3rem; line-height:1; cursor:pointer}
+.nina-x:hover{background:rgba(255,255,255,.3)}
+.nina-head,.nina-chips,.nina-form,.nina-wa{flex:none}
+.nina-msgs{flex:1 1 auto; min-height:60px; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; background:#FAF8FC}
+.nm{max-width:88%; padding:11px 14px; border-radius:16px; font-size:.94rem; line-height:1.45; overflow-wrap:anywhere}
+.nm p{margin:0 0 8px}
+.nm p:last-child{margin-bottom:0}
+.nm ul{margin:0 0 8px; padding-left:18px}
+.nm li{margin-bottom:10px}
+.nm a{color:var(--violet); font-weight:700}
+.nm small{color:var(--muted)}
+.nm.bot{align-self:flex-start; background:#fff; border:1px solid var(--line); border-bottom-left-radius:4px}
+.nm.yo{align-self:flex-end; background:var(--violet); color:#fff; border-bottom-right-radius:4px}
+.nm-esc{color:var(--muted); font-style:italic}
+.nina-btn{display:block; margin-top:6px; padding:10px 14px; border-radius:999px; background:var(--wa); color:#fff !important; text-align:center; text-decoration:none; font-weight:700}
+.nina-btn.alt{background:#fff; color:var(--violet) !important; border:1px solid var(--violet); font:inherit; font-weight:700; font-size:.86rem; padding:8px 12px; width:100%; cursor:pointer}
+.nina-lead label{display:block; margin-top:8px; font-size:.82rem; font-weight:700; color:var(--muted)}
+.nina-lead input[type=text],.nina-lead input[type=tel]{display:block; width:100%; margin-top:4px; font:inherit; font-size:1rem; padding:10px 12px; border:1px solid #CFC4D6; border-radius:12px; color:var(--ink)}
+.nina-lead .chk{display:flex; gap:8px; align-items:flex-start; font-weight:500; font-size:.8rem; line-height:1.4}
+.nina-lead .chk input{margin-top:3px; flex:none; width:18px; height:18px}
+.nina-lead .lead-err{margin:8px 0 0; color:#B3261E; font-weight:700; font-size:.85rem}
+.nina-lead .lead-go:disabled{opacity:.6; cursor:default}
+.nina-chips{display:flex; gap:8px; overflow-x:auto; padding:10px 14px; border-top:1px solid var(--line); background:#fff; scrollbar-width:thin}
+.nina-chips button{flex:none; padding:8px 14px; border-radius:999px; border:1px solid #CFC4D6; background:#fff; color:var(--violet); font:inherit; font-size:.86rem; font-weight:700; cursor:pointer; white-space:nowrap}
+.nina-chips button:hover{background:var(--tint); border-color:var(--violet)}
+.nina-form{display:flex; gap:8px; padding:10px 14px; border-top:1px solid var(--line); background:#fff}
+.nina-form input{flex:1; min-width:0; font:inherit; font-size:.95rem; padding:11px 14px; border:1px solid #CFC4D6; border-radius:999px}
+.nina-form input:focus{outline:3px solid rgba(115,47,132,.3); border-color:var(--violet)}
+.nina-form button{flex:none; width:44px; border:0; border-radius:50%; background:var(--violet); color:#fff; font-size:1rem; cursor:pointer}
+.nina-wa{display:block; padding:12px 14px; text-align:center; text-decoration:none; font-weight:700; font-size:.92rem; color:var(--wa); border-top:1px solid var(--line); background:#fff}
+.nina-wa:hover{background:var(--tint)}
+.nina-chips button:focus-visible,.nina-form button:focus-visible,.nina-x:focus-visible,.nina-wa:focus-visible{outline:3px solid var(--ink); outline-offset:-3px}
+@media (max-width:640px){
+  .nina{left:max(12px, env(safe-area-inset-left, 0px)); right:max(12px, env(safe-area-inset-right, 0px)); width:auto; bottom:calc(84px + env(safe-area-inset-bottom, 0px)); max-height:calc(100vh - 110px)}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="container">
+    <a class="brand" href="#" aria-label="ROMÁN CIFRE Propiedades, inicio"><img class="logo" src="logo.webp" width="465" height="126" alt="Román Cifre Propiedades"></a>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#que-buscas">Propiedades</a>
+      <a href="#visita">Visitas</a>
+      <a href="#condiciones">Cómo comprar</a>
+      <a href="#agregamos-valor">Servicios</a>
+      <a href="#tasacion">Tasaciones</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#sucursales">Sucursales</a>
+    </nav>
+    <div class="bar-actions">
+      <a class="btn btn-wa" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Escribime</a>
+      <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero" id="hero">
+    <div class="container">
+      <div class="hero-copy">
+      <p class="eyebrow"><span class="avatar" hidden><img src="yesica.jpg" alt="Yesica" width="64" height="64" onload="this.parentNode.hidden=false"></span>Asesora inmobiliaria</p>
+      <h1>Yesica</h1>
+      <p class="lead">Te acompaño a comprar o vender tu propiedad, con atención personalizada.</p>
+      <div class="cta-row">
+        <a class="btn btn-wa" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">
+          <svg class="ico-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/><path d="M9 9.2c.3 2.2 2.4 4.3 4.8 5.2l1.3-1.3-1.9-1-.8.6a4 4 0 0 1-1.7-1.7l.6-.8-1-1.9L9 9.2z" fill="currentColor" stroke="none"/></svg>
+          Hablar conmigo por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#que-buscas">Ver opciones</a>
+      </div>
+      <p class="hours"><span><b>Lunes a viernes</b> 10:00 a 18:00 h</span><span><b>Sábados</b> 10:00 a 13:00 h</span></p>
+      </div>
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="float">
+          <div class="orb" id="orb">
+            <div class="halo"></div>
+            <div class="ring"></div>
+            <img class="sphere" src="esfera.webp" alt="" width="900" height="900" decoding="async">
+            <img class="edif" src="edificios.webp" alt="" width="900" height="900" decoding="async">
+            <div class="gloss"></div>
+          </div>
+        </div>
+        <div class="floor"></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="que-buscas">
+    <div class="container">
+      <div class="sec-head">
+        <h2>¿Qué estás buscando?</h2>
+        <p class="sub">Elegí una opción. Todo en un solo lugar, sin vueltas.</p>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="#visita">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V12l6 3v6"/><path d="M7 21v-4h4v4M7 11h4"/></svg></span>
+          <h3>Propiedades en venta</h3>
+          <p>Departamentos, casas, locales y terrenos. Filtrá por tipo, dormitorios y precio.</p>
+          <span class="go">Ver propiedades →</span>
+        </a>
+        <a class="tile" href="#tasacion">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-8 9 8"/><path d="M5 10.5V20h14v-9.5"/><path d="M12 8.5v7M14 10h-3a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3h-3"/></svg></span>
+          <h3>Vender mi propiedad</h3>
+          <p>Tasación sin cargo en 24 hs, con informe profesional firmado por un matriculado.</p>
+          <span class="go">Solicitar tasación →</span>
+        </a>
+        <a class="tile" href="#visita">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M8 15l2.5 2.5L16 13"/></svg></span>
+          <h3>Coordinar una visita</h3>
+          <p>Elegí la propiedad y tus horarios disponibles. Cada visita dura 30 minutos.</p>
+          <span class="go">Pedir visita →</span>
+        </a>
+        <a class="tile" href="#condiciones">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 14l2 2 4-4"/></svg></span>
+          <h3>Cómo comprar</h3>
+          <p>Reserva, escritura y honorarios, paso a paso.</p>
+          <span class="go">Ver los pasos →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visita">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Coordiná tu visita</h2>
+        <p class="sub">Elegí los días y horarios en que podés. Yesica recibe tu solicitud y te confirma la visita.</p>
+      </div>
+      <div class="mapbox" id="prop-map-box" hidden>
+        <div class="mapbar"><b>Dónde están las propiedades</b><span>Tocá una para ver más o elegirla para tu visita. Los precios están en dólares.</span></div>
+        <div class="mapfilters" id="map-filters" hidden>
+          <label>Tipo<select id="f-tipo"><option value="">Todos</option></select></label>
+          <label>Dormitorios<select id="f-dorm"><option value="">Todos</option></select></label>
+          <label>Precio máximo (U$D)<select id="f-precio"><option value="">Cualquiera</option></select></label>
+          <button type="button" class="f-clear" id="f-clear">Limpiar filtros</button>
+        </div>
+        <div id="prop-map" class="map" role="region" aria-label="Mapa de las propiedades en venta"></div>
+        <p class="help mapnote" id="map-note" aria-live="polite">Ubicando propiedades…</p>
+      </div>
+      <form class="visit" id="visit-form" novalidate>
+        <div class="vcard vc-datos">
+          <h3>Tus datos</h3>
+          <div class="field vf-prop">
+            <label for="v-prop" id="v-lab">Propiedad</label>
+            <select id="v-sel" hidden>
+              <option value="">Elegí una propiedad…</option>
+              <option value="otra">Otra: escribir link, código o dirección</option>
+            </select>
+            <input id="v-prop" type="text" placeholder="Link o código del aviso, o dirección" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="v-name">Tu nombre</label>
+            <input id="v-name" type="text" placeholder="Nombre y apellido" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="v-phone">Tu celular</label>
+            <input id="v-phone" type="tel" inputmode="tel" placeholder="Ej: 11 5555-1234" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="v-people">Personas que asisten</label>
+            <select id="v-people"><option>1</option><option>2</option><option>3</option><option>4</option><option>5 o más</option></select>
+          </div>
+        </div>
+
+        <div class="vcard vc-cal">
+          <h3>1. Elegí el día</h3>
+          <div class="cal" id="cal">
+            <div class="cal-head">
+              <button type="button" class="cal-nav" id="cal-prev" aria-label="Mes anterior">‹</button>
+              <strong id="cal-mes" aria-live="polite"></strong>
+              <button type="button" class="cal-nav" id="cal-next" aria-label="Mes siguiente">›</button>
+            </div>
+            <div class="cal-sem" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+            <div class="cal-grid" id="days" role="group" aria-label="Días disponibles"></div>
+            <p class="help cal-ley">Los días en gris no tienen horarios disponibles.</p>
+          </div>
+        </div>
+
+        <div class="vcard vc-hor">
+          <h3>2. Elegí los horarios</h3>
+          <p class="help">Cada visita dura 30 minutos. Podés marcar varios horarios y de distintos días.</p>
+          <p class="help" id="legend" hidden><b>Los horarios en gris no están disponibles</b> (ya reservados o fuera de plazo).</p>
+          <p class="dia-sel" id="dia-sel" aria-live="polite"></p>
+          <div class="slots" id="slots" role="group" aria-label="Horarios disponibles"></div>
+          <ul class="picked" id="picked" aria-live="polite"></ul>
+        </div>
+
+        <div class="vfoot">
+          <label class="consent"><input type="checkbox" id="v-ok"><span>Acepto que usen mis datos para contactarme y que se envíen a los proveedores indicados en el <a href="privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a>.</span></label>
+          <p class="msg" id="msg" role="alert"></p>
+          <div class="vacts"><button class="btn btn-send" type="submit">Enviar solicitud</button><button class="btn btn-wsp" type="button" id="v-wsp">Escribir por WhatsApp</button></div>
+          <p class="help vnote">No es una reserva automática: Yesica te confirma o te propone otro horario. Atiende de lunes a viernes de 10 a 18 h y sábados de 10 a 13 h.</p>
+          <noscript><p class="help"><a href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20quiero%20coordinar%20una%20visita" target="_blank" rel="noopener">Pedir una visita por WhatsApp</a></p></noscript>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="alt" id="condiciones">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Cómo comprar y vender</h2>
+        <p class="sub">Los pasos y las condiciones generales. Cada operación puede tener particularidades: Yesica te confirma los detalles.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Comprar o vender">
+        <button class="tab" role="tab" id="tab-comprar" aria-controls="panel-comprar" aria-selected="true" type="button">Quiero comprar</button>
+        <button class="tab" role="tab" id="tab-vender" aria-controls="panel-vender" aria-selected="false" type="button">Quiero vender</button>
+      </div>
+
+      <div class="panel" id="panel-comprar" role="tabpanel" aria-labelledby="tab-comprar">
+        <div class="stats">
+          <div class="stat"><b>4% + IVA</b><span>Honorarios del comprador</span></div>
+          <div class="stat"><b>Dólares</b><span>Reserva en billetes, en efectivo</span></div>
+          <div class="stat"><b>60 días</b><span>Para escriturar desde la aceptación</span></div>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Visita</dt><dd>Se coordina con cita y dura 30 minutos. Podés conocer la propiedad antes de hacer tu oferta.</dd></div>
+          <div class="row"><dt>Reserva</dt><dd>Se entrega en dólares billetes, en efectivo. La oferta queda sujeta a la aceptación del propietario. Los montos quedan en guarda del corredor y se descuentan del precio.</dd></div>
+          <div class="row"><dt>Respuesta del propietario</dt><dd>Tiene 7 días hábiles para responder. Si no acepta, la reserva se devuelve de inmediato, sin cargo ni intereses.</dd></div>
+          <div class="row"><dt>Refuerzo de la reserva</dt><dd>Se acuerda en cada caso. Consultalo con Yesica.</dd></div>
+          <div class="row"><dt>Escritura</dt><dd>Dentro de los 60 días corridos desde la aceptación de la reserva, ante el escribano que designe el comprador. El lugar de la firma lo define el vendedor, dentro de la jurisdicción de ese escribano.</dd></div>
+          <div class="row"><dt>Entrega</dt><dd>La propiedad se entrega desocupada, con títulos perfectos, libre de deuda y gravamen, y con impuestos y expensas al día.</dd></div>
+          <div class="row"><dt>Gastos de escrituración</dt><dd>Se soportan según los usos y costumbres y lo que marca la ley. El impuesto cedular, si corresponde, lo paga el vendedor.</dd></div>
+          <div class="row"><dt>Honorarios</dt><dd>4% + IVA del valor total de la operación, que se abona al firmar la escritura, en la misma moneda de la operación.</dd></div>
+          <div class="row"><dt>Origen de los fondos</dt><dd>El comprador declara el origen lícito de los fondos y presenta la documentación que se le solicite, según la normativa de la UIF para corredores inmobiliarios.</dd></div>
+        </dl>
+      </div>
+
+      <div class="panel" id="panel-vender" role="tabpanel" aria-labelledby="tab-vender">
+        <div class="stats">
+          <div class="stat"><b>3% + IVA</b><span>Honorarios del vendedor</span></div>
+          <div class="stat"><b>Sin cargo</b><span>Tasación en 24 hs</span></div>
+          <div class="stat"><b>Exclusiva</b><span>Autorización de venta, 120 días</span></div>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Tasación</dt><dd>Sin cargo y en 24 hs, con informe profesional firmado por un matriculado. Pedila en <a href="#tasacion">Tasá tu propiedad</a>.</dd></div>
+          <div class="row"><dt>Autorización de venta</dt><dd>Es exclusiva y rige por 120 días corridos. Durante ese plazo nos ocupamos de exhibir el inmueble, colocar carteles, publicar, recibir la reserva y confeccionar el boleto de compraventa.</dd></div>
+          <div class="row"><dt>Documentación</dt><dd>Título de propiedad, reglamento de copropiedad y planos, si los hubiere. La venta se hace con títulos perfectos, libre de deuda y gravamen.</dd></div>
+          <div class="row"><dt>Honorarios</dt><dd>3% + IVA del precio total de venta, que se abona al firmar la escritura, en la misma moneda de la operación.</dd></div>
+          <div class="row"><dt>Impuesto cedular</dt><dd>Si corresponde, lo paga el vendedor.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="valor" id="agregamos-valor">
+    <div class="container">
+      <p class="eyebrow">Para propietarios</p>
+      <h2>Agregamos valor a tu inmueble</h2>
+      <p class="intro">Publicar en portales lo puede hacer cualquiera. Nosotros sabemos cómo obtener el mejor precio por tu inmueble, incrementando su valor a través de:</p>
+      <div class="vgrid">
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/><path d="M6 18l4-4 3 2 5-6" stroke-width="1.8"/></svg>
+          <h3>Market analysis</h3>
+          <p>Con big data sabemos qué se ofrece en la zona y cuál es el valor real de venta.</p>
+        </div>
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M12 12.5v4M10 14.5h4"/></svg>
+          <h3>Puesta en valor</h3>
+          <p>Nuestro arquitecto propone mejoras simples que realzan los aspectos más importantes de tu unidad.</p>
+        </div>
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20 3.5V7h-3.5"/><text x="12" y="14.6" font-size="6.6" font-weight="800" text-anchor="middle" fill="#fff" stroke="none" font-family="Plus Jakarta Sans, Arial, sans-serif">360</text></svg>
+          <h3>Tour virtual 360°</h3>
+          <p>Aumentamos la visualización de tu unidad destacándose sobre el resto con tecnología RICOH y MATTERPORT.</p>
+        </div>
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8h3.2l1.6-2.2h7.4L17.3 8h3.2v11.5h-17z"/><circle cx="12" cy="13.5" r="3.6"/></svg>
+          <h3>Fotografía inmobiliaria</h3>
+          <p>Fotografía profesional que impacta y atrae interesados.</p>
+        </div>
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.6 14.2l2 2 3.6-4.2"/></svg>
+          <h3>Asesoría integral inmobiliaria</h3>
+          <p>Convenio con Escribanía para asesorarte en lo jurídico notarial y asesoría contable dentro del equipo.</p>
+        </div>
+        <div class="vitem">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="#fff"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>
+          <h3>Publicidad digital</h3>
+          <p>Invertimos en posicionar tu unidad al tope del ranking de los portales.</p>
+        </div>
+      </div>
+      <div class="cta"><a class="btn btn-white" href="#tasacion">Quiero asesoramiento inmobiliario</a></div>
+    </div>
+  </section>
+
+  <section id="tasacion">
+    <div class="container">
+      <div class="tasgrid">
+        <div class="tpanel">
+          <p class="eyebrow">Tasaciones</p>
+          <h2>Conocé el valor real de tu propiedad</h2>
+          <p class="lead2">Para vender con respaldo profesional.</p>
+          <ul class="checks">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Sin cargo</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Tasación en 24 hs</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Informe profesional firmado por un matriculado</span></li>
+          </ul>
+          <ol class="steps">
+            <li>Completás los datos de tu inmueble y tu disponibilidad.</li>
+            <li>Coordinamos la visita para tasar.</li>
+            <li>Recibís el informe profesional firmado por un matriculado.</li>
+          </ol>
+        </div>
+
+        <form class="vcard tform" id="tas-form" novalidate>
+          <h3>Tu inmueble</h3>
+          <div class="seg seg-2" role="radiogroup" aria-label="¿Qué querés hacer?">
+            <label class="chip"><input type="radio" name="t-op" value="Vender" checked><span>Vender</span></label>
+            <label class="chip"><input type="radio" name="t-op" value="Saber cuánto vale"><span>Saber cuánto vale</span></label>
+          </div>
+          <div class="fgrid">
+            <div class="field full">
+              <label for="t-dir">Dirección</label>
+              <input id="t-dir" type="text" placeholder="Calle, número y barrio" autocomplete="street-address">
+            </div>
+            <div class="field">
+              <label for="t-tipo">Tipo de propiedad</label>
+              <select id="t-tipo"><option>Departamento</option><option>Casa</option><option>PH</option><option>Local comercial</option><option>Oficina</option><option>Terreno</option><option>Otro</option></select>
+            </div>
+            <div class="field">
+              <label for="t-amb">Ambientes <span class="opt">(opcional)</span></label>
+              <select id="t-amb"><option value="">Elegí</option><option>Monoambiente</option><option>2 ambientes</option><option>3 ambientes</option><option>4 ambientes</option><option>5 o más</option></select>
+            </div>
+            <div class="field full">
+              <label for="t-m2">Metros cuadrados <span class="opt">(opcional)</span></label>
+              <input id="t-m2" type="number" inputmode="numeric" min="1" max="100000" placeholder="Ej: 65" autocomplete="off">
+            </div>
+          </div>
+
+          <h3>Tus datos</h3>
+          <div class="fgrid fgrid-1">
+            <div class="field">
+              <label for="t-name">Nombre y apellido</label>
+              <input id="t-name" type="text" placeholder="Tu nombre" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="t-phone">Celular</label>
+              <input id="t-phone" type="tel" inputmode="tel" placeholder="Ej: 11 5555-1234" autocomplete="tel">
+            </div>
+          </div>
+
+          <h3>¿Cuándo podemos ir a tasar?</h3>
+          <p class="help">Tocá los días que te quedan cómodos y elegí la franja horaria de cada uno.</p>
+          <div class="t-agenda">
+            <div class="cal" id="t-cal">
+              <div class="cal-head">
+                <button type="button" class="cal-nav" id="t-cal-prev" aria-label="Mes anterior">‹</button>
+                <strong id="t-cal-mes" aria-live="polite"></strong>
+                <button type="button" class="cal-nav" id="t-cal-next" aria-label="Mes siguiente">›</button>
+              </div>
+              <div class="cal-sem" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+              <div class="cal-grid" id="t-days" role="group" aria-label="Días disponibles para tasar"></div>
+              <p class="help cal-ley">Los días en gris no están disponibles.</p>
+            </div>
+            <div class="t-fr">
+              <p class="help" id="t-fr-vacio">Cuando elijas un día, acá aparecen sus franjas horarias.</p>
+              <div id="t-franjas"></div>
+            </div>
+          </div>
+
+          <label class="consent"><input type="checkbox" id="t-ok"><span>Acepto que usen mis datos para contactarme y que se envíen a los proveedores indicados en el <a href="privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a>.</span></label>
+          <p class="msg" id="t-msg" role="alert"></p>
+          <div class="tacts"><button class="btn btn-send" type="submit">Enviar solicitud</button><button class="btn btn-wsp" type="button" id="t-wsp">Escribir por WhatsApp</button></div>
+          <p class="help" style="margin-top:10px">«Enviar solicitud» le llega a Yesica por mail y a su panel. Si preferís, escribile por WhatsApp con el pedido ya escrito.</p>
+          <noscript><p class="help"><a href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20quiero%20solicitar%20una%20tasaci%C3%B3n" target="_blank" rel="noopener">Solicitar tasación por WhatsApp</a></p></noscript>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="preguntas">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-intro">
+          <h2>Preguntas frecuentes</h2>
+          <p class="sub">Lo que más nos consultan antes de comprar o de vender. Si tu duda no está acá, escribile a Yesica.</p>
+          <a class="btn btn-wa" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Preguntarle a Yesica</a>
+        </div>
+        <div class="faq">
+        <h3 class="faq-grupo">Comprar</h3>
+        <details class="qa" open><summary>¿Cómo es el proceso de compra?</summary><div class="qa-r"><p><strong>1.</strong> Visitás la propiedad. <strong>2.</strong> Hacés tu oferta con una reserva, en dólares billetes y en efectivo, que queda sujeta a la aceptación del propietario. <strong>3.</strong> El propietario tiene 7 días hábiles para responder. <strong>4.</strong> Si acepta, se acuerda el refuerzo de la reserva. <strong>5.</strong> Se firma la escritura dentro de los 60 días corridos, ante el escribano que designe el comprador.</p><p>La información es orientativa: rige el contrato de reserva. Más detalle en <a href="#condiciones">Cómo comprar y vender</a>.</p></div></details>
+        <details class="qa"><summary>¿Cuánto cobran de honorarios?</summary><div class="qa-r"><p><strong>Comprador:</strong> 4% + IVA. <strong>Vendedor:</strong> 3% + IVA. Se calculan sobre el valor total de la operación y se abonan al firmar la escritura, en la misma moneda de la operación.</p></div></details>
+        <details class="qa"><summary>¿Cómo funciona la reserva?</summary><div class="qa-r"><p>Se entrega en <strong>dólares billetes, en efectivo</strong>, y la oferta queda sujeta a la aceptación del propietario. Los montos quedan en guarda del corredor y se descuentan del precio.</p><p>El refuerzo de la reserva se acuerda en cada caso: consultalo con Yesica.</p></div></details>
+        <details class="qa"><summary>¿Qué pasa si el propietario no acepta mi oferta?</summary><div class="qa-r"><p>Tiene 7 días hábiles para responder. Si no la acepta, la reserva se devuelve de inmediato, sin cargo ni intereses.</p></div></details>
+        <details class="qa"><summary>¿Cuánto tarda la escritura y quién elige el escribano?</summary><div class="qa-r"><p>La escritura se firma dentro de los <strong>60 días corridos</strong> desde la aceptación de la reserva, ante el <strong>escribano que designe el comprador</strong>. El lugar de la firma lo define el vendedor, dentro de la jurisdicción de ese escribano.</p><p>Los gastos y honorarios de la escrituración se soportan según los usos y costumbres y lo que marca la ley. El impuesto cedular, si corresponde, lo paga el vendedor.</p></div></details>
+        <details class="qa"><summary>¿En qué moneda se paga?</summary><div class="qa-r"><p>La reserva se entrega en dólares billetes, en efectivo, y el precio total se paga al momento de la posesión y la firma de la escritura. Los honorarios se abonan en la misma moneda de la operación.</p></div></details>
+        <details class="qa"><summary>¿Aceptan crédito hipotecario, permuta o financiación?</summary><div class="qa-r"><p>Depende de cada operación. Consultalo con Yesica.</p></div></details>
+        <details class="qa"><summary>¿El precio es negociable?</summary><div class="qa-r"><p>Las ofertas se presentan mediante una reserva, que queda sujeta a la aceptación del propietario. Si querés hacer una propuesta, consultalo con Yesica.</p></div></details>
+        <h3 class="faq-grupo">Vender</h3>
+        <details class="qa"><summary>¿Cómo hago para vender mi propiedad?</summary><div class="qa-r"><p>El primer paso es la <a href="#tasacion">tasación</a>, sin cargo y en 24 hs. Después se firma una autorización de venta exclusiva y nos ocupamos de la publicación, las visitas, la reserva y el boleto de compraventa.</p></div></details>
+        <details class="qa"><summary>¿La autorización de venta es exclusiva?</summary><div class="qa-r"><p>Sí. Es exclusiva y rige por <strong>120 días corridos</strong>. Los honorarios del vendedor son del 3% + IVA del precio de venta.</p></div></details>
+        <details class="qa"><summary>¿Qué documentación necesito para vender?</summary><div class="qa-r"><p>Título de propiedad, reglamento de copropiedad y planos, si los hubiere. La venta se hace con títulos perfectos, libre de deuda y gravamen, y la propiedad se entrega desocupada.</p></div></details>
+        <details class="qa"><summary>¿Cuánto cuesta una tasación y cuánto tarda?</summary><div class="qa-r"><p>La tasación es <strong>sin cargo</strong> y se hace <strong>en 24 hs</strong>, con un informe profesional firmado por un matriculado.</p><p>Completá el formulario en <a href="#tasacion">Tasá tu propiedad</a> y elegí cuándo podemos ir a verla.</p></div></details>
+        <details class="qa"><summary>¿Qué servicios tienen para propietarios?</summary><div class="qa-r"><p>Análisis de mercado con big data, puesta en valor con un arquitecto, tour virtual 360° con tecnología RICOH y MATTERPORT, fotografía inmobiliaria profesional, asesoría integral con convenio con Escribanía y asesoría contable, y publicidad digital para posicionar tu unidad al tope del ranking de los portales.</p><p>Más información en <a href="#agregamos-valor">Agregamos valor a tu inmueble</a>.</p></div></details>
+        <h3 class="faq-grupo">Visitas y atención</h3>
+        <details class="qa"><summary>¿Cómo coordino una visita?</summary><div class="qa-r"><p>Elegí la propiedad, el día en el calendario y los horarios en que podés. Cada visita dura <strong>30 minutos</strong>. Enviás la solicitud (o escribís por WhatsApp) y Yesica te confirma o te propone otro horario. No es una reserva automática.</p></div></details>
+        <details class="qa"><summary>¿En qué horario atienden?</summary><div class="qa-r"><p>Yesica atiende de lunes a viernes de 10 a 18 h y sábados de 10 a 13 h. Fuera de ese horario podés dejar tu consulta por WhatsApp y te responde apenas retoma la atención.</p></div></details>
+        <details class="qa"><summary>¿Qué tipos de propiedades venden?</summary><div class="qa-r"><p>Departamentos, casas, PH, locales, terrenos y cocheras. Mirá las disponibles en el mapa de <a href="#visita">Coordiná tu visita</a>.</p></div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resenas">
+    <div class="container">
+      <div class="review">
+        <div>
+          <div class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg></div>
+          <h2>¿Te atendí? Tu opinión me ayuda</h2>
+          <p>Si te gustó la atención, dejame tu calificación en Google. Te lleva menos de un minuto y me ayuda a que más personas me encuentren.</p>
+        </div>
+        <a class="btn btn-violet" href="https://g.page/r/CcMc9ofe5SZfEBM/review" target="_blank" rel="noopener">Calificar mi atención en Google</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="contact">
+        <div class="contact-who">
+          <figure class="portrait" hidden><img src="yesica.jpg" alt="Yesica, asesora inmobiliaria de ROMÁN CIFRE Propiedades" width="264" height="264" onload="this.parentNode.hidden=false"></figure>
+          <div>
+          <h2>¿Hablamos?</h2>
+          <p>Contame qué buscás. Para una visita, indicame el link o código del aviso y los días y horarios en que podés.</p>
+          <p class="links"><a href="mailto:yesica@romancifre.com.ar">yesica@romancifre.com.ar</a><span aria-hidden="true"> · </span><a href="https://www.instagram.com/romancifrepropiedades/" target="_blank" rel="noopener">Instagram @romancifrepropiedades</a></p>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-wa" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sucursales">
+    <div class="container">
+      <div class="sec-head">
+        <h2>Nuestras sucursales</h2>
+        <p class="sub">Visitanos en Belgrano o en Colegiales.</p>
+      </div>
+      <div class="branch-grid">
+        <div class="branch-list">
+          <button class="branch" type="button" aria-pressed="true" data-dir="Av. Olazábal 2690, Belgrano, Ciudad Autónoma de Buenos Aires, Argentina"><b>Sucursal Belgrano</b><span>Av. Olazábal 2690, Belgrano, CABA</span></button>
+          <button class="branch" type="button" aria-pressed="false" data-dir="Ciudad de la Paz 1384, Colegiales, Ciudad Autónoma de Buenos Aires, Argentina"><b>Sucursal Colegiales</b><span>Ciudad de la Paz 1384, Colegiales, CABA</span></button>
+          <div class="branch-actions">
+            <a class="btn btn-violet" id="branch-go" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Olaz%C3%A1bal%202690%2C%20Belgrano%2C%20Ciudad%20Aut%C3%B3noma%20de%20Buenos%20Aires%2C%20Argentina" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">→</span></a>
+            <a class="btn btn-line" id="branch-view" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Olaz%C3%A1bal%202690%2C%20Belgrano%2C%20Ciudad%20Aut%C3%B3noma%20de%20Buenos%20Aires%2C%20Argentina" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+        <div class="gmap">
+          <iframe id="gmap" title="Mapa de la sucursal en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+            src="https://www.google.com/maps?q=Av.%20Olaz%C3%A1bal%202690%2C%20Belgrano%2C%20Ciudad%20Aut%C3%B3noma%20de%20Buenos%20Aires%2C%20Argentina&amp;hl=es&amp;z=16&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-brand">
+        <img class="logo" src="logo.webp" width="465" height="126" alt="Román Cifre Propiedades">
+        <p>Asesoramiento inmobiliario con atención personalizada.</p>
+        <a class="btn btn-wa f-btn" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+      </div>
+      <div class="f-col">
+        <h4>Sucursales</h4>
+        <p><strong>Belgrano</strong><br>Av. Olazábal 2690</p>
+        <p><strong>Colegiales</strong><br>Ciudad de la Paz 1384</p>
+      </div>
+      <div class="f-col">
+        <h4>Contacto</h4>
+        <a href="mailto:yesica@romancifre.com.ar">yesica@romancifre.com.ar</a>
+        <a href="https://www.instagram.com/romancifrepropiedades/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://g.page/r/CcMc9ofe5SZfEBM/review" target="_blank" rel="noopener">Dejá tu reseña en Google</a>
+      </div>
+      <div class="f-col">
+        <h4>En esta página</h4>
+        <a href="#que-buscas">Propiedades</a>
+        <a href="#visita">Coordinar una visita</a>
+        <a href="#tasacion">Tasaciones</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+        <a href="#sucursales">Sucursales</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-mat">Corredor inmobiliario: Ariel Luis Cifre · Matrícula CUCICBA 5634 / CMCPSI 5957</p>
+      <span>© 2026 ROMÁN CIFRE Propiedades</span>
+      <a href="privacidad.html">Aviso de privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<aside class="toast-aviso" id="aviso" role="status" aria-live="polite" hidden>
+  <svg class="ta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+  <div><strong>Aviso por fin de semana largo</strong><p>No hay atención desde el sábado 7 a las 13:00 hasta el miércoles 11 a las 10:00. Podés escribirme igual y te respondo apenas retomemos.</p></div>
+  <button type="button" class="ta-x" aria-label="Cerrar aviso">&times;</button>
+</aside>
+<noscript><p style="margin:0; padding:12px 16px; background:#FFF3D6; color:#5A4210; text-align:center">Aviso por fin de semana largo: no hay atención desde el sábado 7 a las 13:00 hasta el miércoles 11 a las 10:00.</p></noscript>
+<button class="fab" id="fab" type="button" aria-expanded="false" aria-controls="nina" aria-label="Hablar con Nina bot: abrir el chat con la asistente virtual de Yesica">
+  <svg class="ico-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/><path d="M9 9.2c.3 2.2 2.4 4.3 4.8 5.2l1.3-1.3-1.9-1-.8.6a4 4 0 0 1-1.7-1.7l.6-.8-1-1.9L9 9.2z" fill="currentColor" stroke="none"/></svg>
+  <span class="fab-txt">Hablar con Nina bot</span>
+</button>
+
+<section class="nina" id="nina" role="dialog" aria-label="Chat con Nina, asistente virtual de Yesica" hidden>
+  <header class="nina-head">
+    <img src="favicon.png" alt="" width="40" height="40">
+    <div><strong>Nina</strong><span>Asistente virtual de Yesica</span></div>
+    <button type="button" class="nina-x" id="nina-x" aria-label="Cerrar el chat">×</button>
+  </header>
+  <div class="nina-msgs" id="nina-msgs" aria-live="polite"></div>
+  <div class="nina-chips" id="nina-chips"></div>
+  <form class="nina-form" id="nina-form" autocomplete="off">
+    <input id="nina-in" type="text" maxlength="200" placeholder="Escribí tu pregunta…" aria-label="Escribí tu pregunta para Nina">
+    <button type="submit" aria-label="Enviar pregunta">➤</button>
+  </form>
+  <a class="nina-wa" id="nina-wa" href="https://wa.me/5491121641641?text=Hola%20Yesica%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Hablar por WhatsApp con Yesica</a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  // Registro de pedidos por mail (servicio FormSubmit). El destino se puede cambiar acá.
+  var MAIL_PEDIDOS = 'yesica@romancifre.com.ar';
+  // Dirección de la aplicación web de Google Apps Script (agenda de visitas + recepción de pedidos).
+  // Si está vacía, los pedidos van por FormSubmit y no se lee ningún calendario.
+  var SCRIPT_URL = '';
+  // FormSubmit no respondió en las pruebas: queda apagado. Los pedidos van por WhatsApp hasta conectar el script de Google.
+  var USAR_FORMSUBMIT = false;
+  // Para el chat de Nina: manda un contacto al script de Google (mail + hoja). Sin script publicado avisa con sinServicio.
+  // Mientras no esté conectado el script de Google, el botón principal es el de WhatsApp.
+  if (!SCRIPT_URL) { [].forEach.call(document.querySelectorAll('.btn-send'), function(b){ b.hidden = true; }); [].forEach.call(document.querySelectorAll('.btn-wsp'), function(b){ b.className = 'btn btn-wa'; }); }
+  window.rcEnviar = function(asunto, datos){
+    if (!SCRIPT_URL) return Promise.resolve({ok: false, sinServicio: true});
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var corte = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 10000);
+    return fetch(SCRIPT_URL, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify({asunto: asunto, datos: datos}), signal: ctrl ? ctrl.signal : undefined})
+      .then(function(r){ clearTimeout(corte); return r.json().catch(function(){ return {}; }).then(function(d){ return {ok: r.ok && d.ok === true}; }); })
+      .catch(function(){ clearTimeout(corte); return {ok: false}; });
+  };
+  function registrar(asunto, datos, el){
+    if (!SCRIPT_URL && !USAR_FORMSUBMIT) { el.className = 'msg'; el.textContent = 'Para enviar tu pedido, tocá «Escribir por WhatsApp».'; return Promise.resolve({ok: false, detalle: 'sin servicio'}); }
+    el.className = 'msg'; el.textContent = 'Registrando tu pedido…';
+    var cuerpo = {_subject: asunto, _template: 'table', _captcha: 'false'};
+    for (var k in datos) cuerpo[k] = datos[k];
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var corte = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 8000);
+    var pedido;
+    if (SCRIPT_URL) {
+      // Google Apps Script: texto plano para evitar la consulta previa de CORS.
+      pedido = fetch(SCRIPT_URL, {
+        method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+        body: JSON.stringify({asunto: asunto, datos: datos}), signal: ctrl ? ctrl.signal : undefined
+      }).then(function(r){
+        clearTimeout(corte);
+        return r.json().catch(function(){ return {}; }).then(function(d){
+          return {ok: r.ok && d.ok === true, detalle: (d && d.error) ? String(d.error) : ('respuesta ' + r.status)};
+        });
+      });
+    } else {
+      pedido = fetch('https://formsubmit.co/ajax/' + MAIL_PEDIDOS, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(cuerpo), signal: ctrl ? ctrl.signal : undefined
+      }).then(function(r){
+        clearTimeout(corte);
+        return r.json().catch(function(){ return {}; }).then(function(d){
+          var exito = r.ok && (d.success === true || d.success === 'true');
+          return {ok: exito, detalle: (d && d.message) ? String(d.message) : ('respuesta ' + r.status)};
+        });
+      });
+    }
+    return pedido.catch(function(e){
+      clearTimeout(corte);
+      return {ok: false, detalle: (e && e.name === 'AbortError') ? 'el servicio no respondió a tiempo' : 'no se pudo conectar con el servicio'};
+    }).then(function(res){
+      if (res.ok) { el.className = 'msg ok'; el.textContent = '✓ Solicitud enviada. Yesica la recibió y te contacta para confirmarla. Si querés, también podés escribirle por WhatsApp.'; }
+      else { el.className = 'msg'; el.textContent = 'No pudimos enviar la solicitud (' + res.detalle + '). Escribile a Yesica por WhatsApp con el botón de abajo y llega igual.'; }
+      return res;
+    });
+  }
+  // Texto con que se muestra una propiedad en el selector y en el mapa.
+  function etiquetaProp(x){
+    return x.tipo + ' · ' + x.direccion + (x.barrio ? ' · ' + x.barrio : '') + (x.detalle ? ' (' + x.detalle + ')' : (x.m2 ? ' (' + x.m2 + ')' : ''));
+  }
+  // Abre WhatsApp en la pestaña que se abrió al tocar el botón (así no lo bloquea el navegador).
+  function abrirWhatsApp(w, url){
+    if (w && !w.closed) { try { w.opener = null; } catch (e) {} w.location.href = url; }
+    else { window.location.href = url; }
+  }
+
+  (function(){
+    // Aviso del fin de semana largo: aparece como notificación (una vez por visita) y deja de salir después del miércoles 11 de noviembre de 2026, 10:00 (hora de Argentina).
+    (function(){
+      var a = document.getElementById('aviso'); if (!a) return;
+      var visto = false; try { visto = sessionStorage.getItem('rcAvisoVisto') === '1'; } catch (e) {}
+      if (Date.now() >= new Date('2026-11-11T10:00:00-03:00').getTime() || visto) return;
+      var auto;
+      var cerrar = function(){
+        clearTimeout(auto); a.classList.remove('show');
+        setTimeout(function(){ a.hidden = true; }, 300);
+        try { sessionStorage.setItem('rcAvisoVisto', '1'); } catch (e) {}
+      };
+      setTimeout(function(){
+        a.hidden = false;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ a.classList.add('show'); }); });
+        auto = setTimeout(cerrar, 25000);
+      }, 1200);
+      a.querySelector('.ta-x').addEventListener('click', cerrar);
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !a.hidden) cerrar(); });
+      var fab = document.getElementById('fab'); if (fab) fab.addEventListener('click', function(){ if (!a.hidden) cerrar(); });
+    })();
+
+    // Pestañas Comprar / Vender. Sin JavaScript se ven las dos secciones.
+    document.documentElement.className += ' js';
+    var tabs = document.querySelectorAll('.tab');
+    function show(id){
+      for (var i = 0; i < tabs.length; i++) {
+        var t = tabs[i], on = t.id === id;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        var p = document.getElementById(t.getAttribute('aria-controls'));
+        if (p) p.hidden = !on;
+      }
+    }
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function(){ show(this.id); });
+    }
+    show('tab-comprar');
+  })();
+
+  // Coordinar visita: el cliente marca días y horarios y se arma un mensaje de WhatsApp para Yesica, que confirma.
+  // Los horarios ocupados se leen de una hoja de Google Sheets (ver AGENDA_CSV_URL).
+  (function(){
+    var TZ = 'America/Argentina/Buenos_Aires';
+    var PASO = 30;               // duración de cada visita, en minutos
+    // Horario de atención por día de la semana (0 = domingo), en minutos desde las 00:00: [apertura, cierre]
+    var HORARIOS = {1:[600,1080], 2:[600,1080], 3:[600,1080], 4:[600,1080], 5:[600,1080], 6:[600,780]};
+    var DIAS_ADELANTE = 30;      // cuántos días hacia adelante se muestran
+    var AVISO_PREVIO_H = 3;      // no se ofrecen turnos con menos de 3 horas de anticipación
+    // Fin de semana largo: sin atención desde el sábado 7 a las 13:00 hasta el miércoles 11 a las 10:00.
+    var SIN_ATENCION_DESDE = new Date('2026-11-07T13:00:00-03:00').getTime();
+    var SIN_ATENCION_HASTA = new Date('2026-11-11T10:00:00-03:00').getTime();
+    var NUM = '5491121641641';
+    // Link CSV de la hoja de horarios ocupados. Vacío = no se leen ocupados.
+    // Formato: https://docs.google.com/spreadsheets/d/ID_DE_LA_HOJA/gviz/tq?tqx=out:csv&sheet=Ocupados
+    var AGENDA_CSV_URL = '';
+    var DIA = ['dom','lun','mar','mié','jue','vie','sáb'];
+    var DIA_LARGO = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+
+    var form = document.getElementById('visit-form');
+    if (!form) return;
+    var elDays = document.getElementById('days'), elSlots = document.getElementById('slots'),
+        elPicked = document.getElementById('picked'), elMsg = document.getElementById('msg'),
+        elLegend = document.getElementById('legend');
+
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function fmt(min){ return pad(Math.floor(min / 60)) + ':' + pad(min % 60); }
+    function hoyAR(){
+      var p = new Intl.DateTimeFormat('en-CA', {timeZone: TZ}).format(new Date()).split('-');
+      return {y:+p[0], m:+p[1], d:+p[2]};
+    }
+
+    var t = hoyAR(), ahora = Date.now(), days = [];
+    for (var i = 0; i <= DIAS_ADELANTE; i++) {
+      var dt = new Date(Date.UTC(t.y, t.m - 1, t.d + i)), wd = dt.getUTCDay(), cfg = HORARIOS[wd];
+      if (!cfg) continue;
+      var key = dt.getUTCFullYear() + '-' + pad(dt.getUTCMonth() + 1) + '-' + pad(dt.getUTCDate());
+      var base = {}, n = 0;
+      for (var m = cfg[0]; m + PASO <= cfg[1]; m += PASO) {
+        var ini = new Date(key + 'T' + fmt(m) + ':00-03:00').getTime();
+        var cae = ini + PASO * 60000 > SIN_ATENCION_DESDE && ini < SIN_ATENCION_HASTA;   // el turno toca el feriado
+        if (ini >= ahora + AVISO_PREVIO_H * 3600000 && !cae) { base[m] = true; n++; }
+      }
+      if (n) days.push({key:key, wd:wd, d:dt.getUTCDate(), m:dt.getUTCMonth() + 1, open:cfg[0], close:cfg[1], base:base, avail:{}, free:0});
+    }
+    var busy = {};   // key -> [[desde, hasta], ...] en minutos
+
+    function applyBusy(){
+      days.forEach(function(day){
+        day.avail = {}; day.free = 0;
+        var b = busy[day.key] || [];
+        Object.keys(day.base).forEach(function(k){
+          var m = +k, taken = b.some(function(r){ return m < r[1] && m + PASO > r[0]; });
+          if (!taken) { day.avail[m] = true; day.free++; }
+        });
+        // si algo elegido se ocupó mientras tanto, se descarta
+        if (sel[day.key]) {
+          sel[day.key] = sel[day.key].filter(function(m){ return day.avail[m]; });
+          if (!sel[day.key].length) delete sel[day.key];
+        }
+      });
+    }
+
+    var sel = {};          // key -> minutos elegidos
+    var current = days.length ? days[0].key : null;
+    var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var hoyClave = t.y + '-' + pad(t.m) + '-' + pad(t.d);
+    var ultimo = new Date(Date.UTC(t.y, t.m - 1, t.d + DIAS_ADELANTE));
+    var minMes = t.y * 12 + (t.m - 1), maxMes = ultimo.getUTCFullYear() * 12 + ultimo.getUTCMonth();
+    var vistaMes = current ? (+current.slice(0, 4)) * 12 + (+current.slice(5, 7) - 1) : minMes;
+    var elDiaSel = document.getElementById('dia-sel'), elMes = document.getElementById('cal-mes'),
+        calPrev = document.getElementById('cal-prev'), calNext = document.getElementById('cal-next');
+    calPrev.addEventListener('click', function(){ if (vistaMes > minMes) { vistaMes--; renderDays(); } });
+    calNext.addEventListener('click', function(){ if (vistaMes < maxMes) { vistaMes++; renderDays(); } });
+
+    function find(k){ for (var i = 0; i < days.length; i++) if (days[i].key === k) return days[i]; }
+    function count(k){ return (sel[k] || []).length; }
+
+    function renderDays(){
+      elDays.innerHTML = '';
+      var y = Math.floor(vistaMes / 12), mes = vistaMes % 12;
+      elMes.textContent = MESES[mes] + ' ' + y;
+      calPrev.disabled = vistaMes <= minMes; calNext.disabled = vistaMes >= maxMes;
+      var offset = (new Date(Date.UTC(y, mes, 1)).getUTCDay() + 6) % 7;      // la semana empieza el lunes
+      var total = new Date(Date.UTC(y, mes + 1, 0)).getUTCDate();
+      for (var i = 0; i < offset; i++) elDays.appendChild(document.createElement('span'));
+      for (var d = 1; d <= total; d++) {
+        var clave = y + '-' + pad(mes + 1) + '-' + pad(d), day = find(clave);
+        var b = document.createElement('button');
+        b.type = 'button'; b.textContent = d; b.className = 'cal-dia' + (clave === hoyClave ? ' hoy' : '');
+        var largo = DIA_LARGO[new Date(Date.UTC(y, mes, d)).getUTCDay()] + ' ' + d + ' de ' + MESES[mes];
+        if (!day) { b.disabled = true; b.className += ' off'; b.setAttribute('aria-label', largo + ', no disponible'); }
+        else {
+          if (!day.free) b.className += ' full';
+          if (count(clave)) b.className += ' has';
+          b.setAttribute('aria-pressed', clave === current ? 'true' : 'false');
+          b.setAttribute('aria-label', largo + (day.free ? '' : ', sin horarios disponibles'));
+          (function(k){ b.addEventListener('click', function(){ current = k; renderDays(); renderSlots(); }); })(clave);
+        }
+        elDays.appendChild(b);
+      }
+    }
+    function renderSlots(){
+      elSlots.innerHTML = '';
+      var day = find(current), anyOff = false;
+      if (!day) { elLegend.hidden = true; if (elDiaSel) elDiaSel.textContent = ''; return; }
+      if (elDiaSel) { var txt = DIA_LARGO[day.wd] + ' ' + day.d + ' de ' + MESES[day.m - 1]; elDiaSel.textContent = txt.charAt(0).toUpperCase() + txt.slice(1); }
+      if (!day.free) {
+        var p = document.createElement('p'); p.className = 'help';
+        p.textContent = 'Este día ya no tiene horarios disponibles. Probá con otro día.';
+        elSlots.appendChild(p);
+        elLegend.hidden = true; return;
+      }
+      for (var h = Math.floor(day.open / 60); h * 60 < day.close; h++) {
+        var row = document.createElement('div'); row.className = 'hour';
+        var lab = document.createElement('span'); lab.textContent = pad(h) + ' h'; row.appendChild(lab);
+        for (var q = 0; q < 60; q += PASO) {
+          var min = h * 60 + q;
+          if (min < day.open || min + PASO > day.close) { row.appendChild(document.createElement('span')); continue; }
+          if (!day.avail[min]) anyOff = true;
+          row.appendChild(slotBtn(day, min));
+        }
+        elSlots.appendChild(row);
+      }
+      elLegend.hidden = !anyOff;
+    }
+    function slotBtn(day, min){
+      var on = (sel[day.key] || []).indexOf(min) > -1;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'slot'; b.textContent = fmt(min);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (!day.avail[min]) { b.disabled = true; b.title = 'No disponible'; return b; }
+      b.addEventListener('click', function(){ toggle(day.key, min); });
+      return b;
+    }
+    function toggle(k, min){
+      var a = sel[k] || [], ix = a.indexOf(min);
+      if (ix > -1) a.splice(ix, 1); else a.push(min);
+      a.sort(function(x, y){ return x - y; });
+      sel[k] = a; if (!a.length) delete sel[k];
+      elMsg.textContent = '';
+      renderDays(); renderSlots(); renderPicked();
+    }
+    function renderPicked(){
+      elPicked.innerHTML = '';
+      days.forEach(function(day){
+        (sel[day.key] || []).forEach(function(min){
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(DIA[day.wd] + ' ' + day.d + '/' + day.m + ' · ' + fmt(min)));
+          var x = document.createElement('button');
+          x.type = 'button'; x.textContent = '×';
+          x.setAttribute('aria-label', 'Quitar ' + DIA_LARGO[day.wd] + ' ' + day.d + '/' + day.m + ' ' + fmt(min));
+          x.addEventListener('click', function(){ toggle(day.key, min); });
+          li.appendChild(x); elPicked.appendChild(li);
+        });
+      });
+    }
+    function refresh(){ applyBusy(); renderDays(); renderSlots(); renderPicked(); }
+
+    // --- Lectura de horarios ocupados (hoja de Google Sheets en CSV) ---
+    function parseCSV(text){
+      var rows = [], row = [], cur = '', q = false;
+      for (var i = 0; i < text.length; i++) {
+        var c = text[i];
+        if (q) {
+          if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c;
+        } else if (c === '"') q = true;
+        else if (c === ',') { row.push(cur); cur = ''; }
+        else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; }
+        else cur += c;
+      }
+      if (cur.length || row.length) { row.push(cur); rows.push(row); }
+      return rows;
+    }
+    function parseFecha(s){
+      s = (s || '').trim(); var m;
+      if ((m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return m[1] + '-' + pad(+m[2]) + '-' + pad(+m[3]);
+      if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/))) { var y = +m[3]; if (y < 100) y += 2000; return y + '-' + pad(+m[2]) + '-' + pad(+m[1]); }
+      return null;
+    }
+    function parseHora(s){
+      var m = (s || '').trim().match(/^(\d{1,2}):(\d{2})/);
+      return m ? (+m[1]) * 60 + (+m[2]) : null;
+    }
+    // Agenda de Google Calendar a través del script: solo recibe franjas ocupadas (sin títulos ni detalles).
+    function cargarAgendaGoogle(){
+      var url = SCRIPT_URL + (SCRIPT_URL.indexOf('?') > -1 ? '&' : '?') + 'accion=agenda&t=' + Date.now();
+      fetch(url).then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); }).then(function(d){
+        if (!d || !d.ok || !d.ocupados) return;
+        var nuevo = {};
+        days.forEach(function(day){
+          var ini = new Date(day.key + 'T00:00:00-03:00').getTime(), fin = ini + 86400000;
+          d.ocupados.forEach(function(o){
+            var s = new Date(o.s).getTime(), e = new Date(o.e).getTime();
+            if (isNaN(s) || isNaN(e) || e <= ini || s >= fin) return;
+            (nuevo[day.key] = nuevo[day.key] || []).push([Math.round((Math.max(s, ini) - ini) / 60000), Math.round((Math.min(e, fin) - ini) / 60000)]);
+          });
+        });
+        busy = nuevo; refresh();
+      }).catch(function(){ /* si falla la lectura, se muestran todos los horarios y Yesica confirma igual */ });
+    }
+    function cargarOcupados(){
+      if (SCRIPT_URL) { cargarAgendaGoogle(); return; }
+      if (!AGENDA_CSV_URL) return;
+      var url = AGENDA_CSV_URL + (AGENDA_CSV_URL.indexOf('?') > -1 ? '&' : '?') + 't=' + Date.now();
+      fetch(url).then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.text(); }).then(function(txt){
+        var nuevo = {};
+        parseCSV(txt).forEach(function(r){
+          var k = parseFecha(r[0]); if (!k) return;      // salta encabezados y filas vacías
+          var d = parseHora(r[1]), h = parseHora(r[2]);
+          if (d === null && h === null) { d = 0; h = 1440; }   // sin horas = todo el día
+          else if (d === null) d = 0;
+          else if (h === null) h = d + PASO;
+          (nuevo[k] = nuevo[k] || []).push([d, h]);
+        });
+        busy = nuevo; refresh();
+      }).catch(function(){ /* si falla la lectura, se muestran todos los horarios y Yesica confirma igual */ });
+    }
+
+    if (!days.length) {
+      elDays.innerHTML = '<p class="help">No hay horarios disponibles por ahora. Escribime por WhatsApp y coordinamos.</p>';
+    }
+    refresh();
+    cargarOcupados();
+    setInterval(cargarOcupados, 120000);
+
+    // Lista de propiedades (propiedades.json). Si no carga, queda el campo de texto.
+    var selProp = document.getElementById('v-sel'), inProp = document.getElementById('v-prop'), labProp = document.getElementById('v-lab');
+    function mostrarOtra(){ var otra = selProp.value === 'otra'; inProp.hidden = !otra; if (otra) inProp.focus(); }
+    function propSeleccionada(){
+      if (!selProp.hidden && selProp.value && selProp.value !== 'otra') return selProp.options[selProp.selectedIndex].text;
+      return inProp.value.trim();
+    }
+    function linkSeleccionado(){
+      if (!selProp.hidden && selProp.value && selProp.value !== 'otra') return selProp.options[selProp.selectedIndex].getAttribute('data-link') || '';
+      return '';
+    }
+    selProp.addEventListener('change', function(){ elMsg.textContent = ''; mostrarOtra(); });
+    fetch('propiedades.json', {cache: 'no-cache'}).then(function(r){ if (!r.ok) throw new Error('sin lista'); return r.json(); }).then(function(lista){
+      if (!lista || !lista.length) return;
+      var nombres = {alquiler: 'En alquiler', venta: 'En venta'};
+      ['alquiler', 'venta'].forEach(function(op){
+        var items = lista.filter(function(x){ return x.operacion === op; });
+        if (!items.length) return;
+        var og = document.createElement('optgroup'); og.label = nombres[op];
+        items.forEach(function(x){
+          var o = document.createElement('option');
+          o.textContent = etiquetaProp(x);
+          if (x.link) o.setAttribute('data-link', x.link);
+          og.appendChild(o);
+        });
+        selProp.insertBefore(og, selProp.querySelector('option[value="otra"]'));
+      });
+      selProp.hidden = false; inProp.hidden = true; labProp.setAttribute('for', 'v-sel');
+    }).catch(function(){ /* sin lista: queda el campo de texto */ });
+
+    var enviadoFirma = '';
+    function leer(){
+      elMsg.className = 'msg';
+      var prop = propSeleccionada(),
+          name = document.getElementById('v-name').value.trim(),
+          phone = document.getElementById('v-phone').value.trim(),
+          people = document.getElementById('v-people').value;
+      var picked = days.filter(function(d){ return count(d.key); });
+      if (!prop) { elMsg.textContent = 'Elegí o indicá la propiedad o local que querés visitar.'; (selProp.hidden ? inProp : selProp).focus(); return null; }
+      if (!name) { elMsg.textContent = 'Escribí tu nombre.'; document.getElementById('v-name').focus(); return null; }
+      if (phone.replace(/\D/g, '').length < 8) { elMsg.textContent = 'Escribí tu número de celular con código de área.'; document.getElementById('v-phone').focus(); return null; }
+      if (!picked.length) { elMsg.textContent = 'Marcá al menos un día y horario.'; return null; }
+      if (!document.getElementById('v-ok').checked) { elMsg.textContent = 'Para enviar, aceptá el aviso de privacidad.'; document.getElementById('v-ok').focus(); return null; }
+      elMsg.textContent = '';
+      var lines = picked.map(function(d){
+        return '- ' + DIA_LARGO[d.wd] + ' ' + d.d + '/' + d.m + ': ' + sel[d.key].map(fmt).join(', ');
+      });
+      var text = 'Hola Yesica, quiero coordinar una visita.\n' +
+        'Propiedad: ' + prop + '\n' +
+        (linkSeleccionado() ? 'Aviso: ' + linkSeleccionado() + '\n' : '') +
+        'Nombre: ' + name + '\n' +
+        'Celular: ' + phone + '\n' +
+        'Personas: ' + people + '\n' +
+        'Días y horarios que me sirven (visitas de 15 min):\n' + lines.join('\n') + '\n' +
+        'Quedo a la espera de tu confirmación. ¡Gracias!';
+      return {
+        asunto: 'Nueva solicitud de visita - ' + name,
+        url: 'https://wa.me/' + NUM + '?text=' + encodeURIComponent(text),
+        datos: {
+          'Propiedad o local': prop, 'Link del aviso': linkSeleccionado() || '-', 'Nombre': name, 'Celular': phone, 'Personas': people,
+          'Días y horarios (visitas de 15 min)': lines.join('\n'),
+          'Aceptó el aviso de privacidad': 'Sí'
+        }
+      };
+    }
+    var sbtn = form.querySelector('button[type=submit]'), wbtn = document.getElementById('v-wsp');
+    // «Enviar solicitud»: le llega a Yesica por mail y al panel.
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = leer(); if (!d) return;
+      var firma = JSON.stringify(d.datos);
+      if (enviadoFirma === firma) { elMsg.className = 'msg ok'; elMsg.textContent = '✓ Esta solicitud ya fue enviada. Yesica te contacta para confirmarla.'; return; }
+      sbtn.disabled = true; sbtn.textContent = 'Enviando…';
+      d.datos['Canal'] = 'Botón Enviar solicitud';
+      registrar(d.asunto, d.datos, elMsg).then(function(res){ sbtn.disabled = false; sbtn.textContent = 'Enviar solicitud'; if (res.ok) enviadoFirma = firma; });
+    });
+    // «Escribir por WhatsApp»: abre el chat con el pedido escrito. Si todavía no se envió, también lo registra para que no se pierda.
+    wbtn.addEventListener('click', function(){
+      var d = leer(); if (!d) return;
+      var firma = JSON.stringify(d.datos);
+      abrirWhatsApp(window.open('', '_blank'), d.url);
+      if (enviadoFirma !== firma) {
+        d.datos['Canal'] = 'Botón WhatsApp';
+        registrar(d.asunto, d.datos, document.createElement('p')).then(function(res){ if (res.ok) enviadoFirma = firma; });
+      }
+    });
+  })();
+
+  // Tasación: el cliente completa los datos del inmueble y su disponibilidad, y el pedido se envía a Yesica por WhatsApp.
+  (function(){
+    var TZ = 'America/Argentina/Buenos_Aires';
+    var DIAS_ADELANTE = 30, AVISO_PREVIO_H = 3;
+    // Fin de semana largo: sin atención desde el sábado 7 a las 13:00 hasta el miércoles 11 a las 10:00.
+    var SIN_ATENCION_DESDE = new Date('2026-11-07T13:00:00-03:00').getTime();
+    var SIN_ATENCION_HASTA = new Date('2026-11-11T10:00:00-03:00').getTime();
+    var NUM = '5491121641641';
+    // Franjas horarias para ir a tasar, en minutos desde las 00:00: [desde, hasta]
+    var SEMANA = [[600,780],[780,960],[960,1080]];   // lunes a viernes: 10 a 13, 13 a 16, 16 a 18
+    var SABADO = [[600,780]];                        // sábados: 10 a 13
+    var DIA = ['dom','lun','mar','mié','jue','vie','sáb'];
+    var DIA_LARGO = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+
+    var form = document.getElementById('tas-form');
+    if (!form) return;
+    var elDays = document.getElementById('t-days'), elFr = document.getElementById('t-franjas'), msg = document.getElementById('t-msg');
+
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function hh(min){ return Math.floor(min / 60); }
+    function etiqueta(f){ return hh(f[0]) + ' a ' + hh(f[1]) + ' h'; }
+    function hoyAR(){
+      var p = new Intl.DateTimeFormat('en-CA', {timeZone: TZ}).format(new Date()).split('-');
+      return {y:+p[0], m:+p[1], d:+p[2]};
+    }
+    function v(id){ return document.getElementById(id).value.trim(); }
+
+    var t0 = hoyAR(), ahora = Date.now(), days = [];
+    for (var i = 0; i <= DIAS_ADELANTE; i++) {
+      var dt = new Date(Date.UTC(t0.y, t0.m - 1, t0.d + i)), wd = dt.getUTCDay();
+      if (wd === 0) continue;
+      var key = dt.getUTCFullYear() + '-' + pad(dt.getUTCMonth() + 1) + '-' + pad(dt.getUTCDate());
+      var fr = (wd === 6 ? SABADO : SEMANA).map(function(f){
+        var ini = new Date(key + 'T' + pad(hh(f[0])) + ':00:00-03:00').getTime();
+        return {f:f, ok: ini >= ahora + AVISO_PREVIO_H * 3600000 && !(ini >= SIN_ATENCION_DESDE && ini < SIN_ATENCION_HASTA)};
+      });
+      fr.forEach(function(x){ x.ok0 = x.ok; });
+      if (fr.some(function(x){ return x.ok; })) days.push({key:key, wd:wd, d:dt.getUTCDate(), m:dt.getUTCMonth() + 1, fr:fr});
+    }
+    var todosLosDias = days.slice();   // antes de descontar lo que ya tiene programado Yesica
+
+    var on = {};    // día elegido: key -> true
+    var sel = {};   // key -> índices de franjas elegidas
+    var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var hoyClave = t0.y + '-' + pad(t0.m) + '-' + pad(t0.d);
+    var ult = new Date(Date.UTC(t0.y, t0.m - 1, t0.d + DIAS_ADELANTE));
+    var minMes = t0.y * 12 + (t0.m - 1), maxMes = ult.getUTCFullYear() * 12 + ult.getUTCMonth();
+    var vistaMes = days.length ? (+days[0].key.slice(0, 4)) * 12 + (+days[0].key.slice(5, 7) - 1) : minMes;
+    var elMes = document.getElementById('t-cal-mes'), calPrev = document.getElementById('t-cal-prev'),
+        calNext = document.getElementById('t-cal-next'), elVacio = document.getElementById('t-fr-vacio');
+    calPrev.addEventListener('click', function(){ if (vistaMes > minMes) { vistaMes--; renderDays(); } });
+    calNext.addEventListener('click', function(){ if (vistaMes < maxMes) { vistaMes++; renderDays(); } });
+    function find(k){ for (var i = 0; i < days.length; i++) if (days[i].key === k) return days[i]; }
+
+    function renderDays(){
+      elDays.innerHTML = '';
+      var y = Math.floor(vistaMes / 12), mes = vistaMes % 12;
+      elMes.textContent = MESES[mes] + ' ' + y;
+      calPrev.disabled = vistaMes <= minMes; calNext.disabled = vistaMes >= maxMes;
+      var offset = (new Date(Date.UTC(y, mes, 1)).getUTCDay() + 6) % 7;      // la semana empieza el lunes
+      var total = new Date(Date.UTC(y, mes + 1, 0)).getUTCDate();
+      for (var i = 0; i < offset; i++) elDays.appendChild(document.createElement('span'));
+      for (var d = 1; d <= total; d++) {
+        var clave = y + '-' + pad(mes + 1) + '-' + pad(d), day = find(clave);
+        var b = document.createElement('button');
+        b.type = 'button'; b.textContent = d; b.className = 'cal-dia' + (clave === hoyClave ? ' hoy' : '');
+        var largo = DIA_LARGO[new Date(Date.UTC(y, mes, d)).getUTCDay()] + ' ' + d + ' de ' + MESES[mes];
+        if (!day) { b.disabled = true; b.className += ' off'; b.setAttribute('aria-label', largo + ', no disponible'); }
+        else {
+          if ((sel[clave] || []).length) b.className += ' has';
+          b.setAttribute('aria-pressed', on[clave] ? 'true' : 'false');
+          b.setAttribute('aria-label', largo);
+          (function(k){ b.addEventListener('click', function(){
+            if (on[k]) { delete on[k]; delete sel[k]; } else on[k] = true;
+            msg.textContent = ''; renderDays(); renderFr();
+          }); })(clave);
+        }
+        elDays.appendChild(b);
+      }
+    }
+    function renderFr(){
+      elFr.innerHTML = '';
+      if (elVacio) elVacio.hidden = days.some(function(d){ return on[d.key]; });
+      days.forEach(function(day){
+        if (!on[day.key]) return;
+        var row = document.createElement('div'); row.className = 'frow';
+        var lab = document.createElement('b'); lab.textContent = DIA_LARGO[day.wd] + ' ' + day.d + '/' + day.m; row.appendChild(lab);
+        var box = document.createElement('div'); box.className = 'fbtns';
+        day.fr.forEach(function(x, ix){
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'fbtn'; b.textContent = etiqueta(x.f);
+          b.setAttribute('aria-pressed', (sel[day.key] || []).indexOf(ix) > -1 ? 'true' : 'false');
+          if (!x.ok) b.disabled = true;
+          b.addEventListener('click', function(){
+            var a = sel[day.key] || [], p = a.indexOf(ix);
+            if (p > -1) a.splice(p, 1); else a.push(ix);
+            a.sort(function(m, n){ return m - n; });
+            sel[day.key] = a; msg.textContent = ''; renderFr(); renderDays();
+          });
+          box.appendChild(b);
+        });
+        row.appendChild(box); elFr.appendChild(row);
+      });
+    }
+    if (!days.length) elDays.innerHTML = '<p class="help">No hay días disponibles por ahora. Enviá tu pedido y coordinamos por WhatsApp.</p>';
+    renderDays(); renderFr();
+
+    // Las tasaciones NO leen la agenda de Yesica: puede ir otro asesor. Si algún día se quiere que las franjas respeten una agenda,
+    // poner TASACION_USA_AGENDA en true (una franja queda en gris si no queda al menos 1 hora libre).
+    var TASACION_USA_AGENDA = false;
+    var TASACION_MIN = 60;
+    function libreEnFranja(ocup, f){
+      var iv = ocup.map(function(o){ return [Math.max(o[0], f[0]), Math.min(o[1], f[1])]; })
+                   .filter(function(o){ return o[1] > o[0]; }).sort(function(a, b){ return a[0] - b[0]; });
+      var usado = 0, fin = -1;
+      iv.forEach(function(o){ var d = Math.max(o[0], fin); if (o[1] > d) usado += o[1] - d; fin = Math.max(fin, o[1]); });
+      return (f[1] - f[0]) - usado;
+    }
+    function aplicarAgenda(ocupados){
+      var porDia = {};
+      todosLosDias.forEach(function(day){
+        var ini = new Date(day.key + 'T00:00:00-03:00').getTime(), fin = ini + 86400000;
+        ocupados.forEach(function(o){
+          var s = new Date(o.s).getTime(), e = new Date(o.e).getTime();
+          if (isNaN(s) || isNaN(e) || e <= ini || s >= fin) return;
+          (porDia[day.key] = porDia[day.key] || []).push([Math.round((Math.max(s, ini) - ini) / 60000), Math.round((Math.min(e, fin) - ini) / 60000)]);
+        });
+      });
+      days = todosLosDias.filter(function(day){
+        day.fr.forEach(function(x){ x.ok = x.ok0 && libreEnFranja(porDia[day.key] || [], x.f) >= TASACION_MIN; });
+        return day.fr.some(function(x){ return x.ok; });
+      });
+      Object.keys(on).forEach(function(k){ if (!find(k)) { delete on[k]; delete sel[k]; } });
+      Object.keys(sel).forEach(function(k){ var d = find(k); if (d) sel[k] = sel[k].filter(function(ix){ return d.fr[ix].ok; }); });
+      renderDays(); renderFr();
+    }
+    if (TASACION_USA_AGENDA && SCRIPT_URL) {
+      fetch(SCRIPT_URL + (SCRIPT_URL.indexOf('?') > -1 ? '&' : '?') + 'accion=agenda&t=' + Date.now())
+        .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+        .then(function(d){ if (d && d.ok && d.ocupados) aplicarAgenda(d.ocupados); })
+        .catch(function(){ /* si falla la lectura, se muestran todas las franjas y Yesica confirma igual */ });
+    }
+
+    var enviadoFirma = '';
+    function leer(){
+      msg.className = 'msg';
+      var op = (form.querySelector('input[name="t-op"]:checked') || {}).value || '';
+      if (!v('t-dir')) { msg.textContent = 'Indicá la dirección del inmueble.'; document.getElementById('t-dir').focus(); return null; }
+      if (!v('t-name')) { msg.textContent = 'Escribí tu nombre.'; document.getElementById('t-name').focus(); return null; }
+      if (v('t-phone').replace(/\D/g, '').length < 8) { msg.textContent = 'Escribí tu número de celular con código de área.'; document.getElementById('t-phone').focus(); return null; }
+      var elegidos = days.filter(function(d){ return (sel[d.key] || []).length; });
+      if (days.length && !elegidos.length) { msg.textContent = 'Marcá al menos un día y una franja horaria para ir a tasar.'; return null; }
+      if (!document.getElementById('t-ok').checked) { msg.textContent = 'Para enviar, aceptá el aviso de privacidad.'; document.getElementById('t-ok').focus(); return null; }
+      msg.textContent = '';
+      var lineas = elegidos.map(function(d){
+        return '- ' + DIA_LARGO[d.wd] + ' ' + d.d + '/' + d.m + ': ' + sel[d.key].map(function(ix){ return etiqueta(d.fr[ix].f); }).join(' / ');
+      });
+      var amb = v('t-amb'), m2 = v('t-m2');
+      var text = 'Hola Yesica, quiero solicitar una tasación.\n' +
+        'Quiero: ' + op + '\n' +
+        'Tipo de propiedad: ' + v('t-tipo') + '\n' +
+        'Dirección: ' + v('t-dir') + '\n' +
+        (amb ? 'Ambientes: ' + amb + '\n' : '') +
+        (m2 ? 'Superficie: ' + m2 + ' m²\n' : '') +
+        'Nombre: ' + v('t-name') + '\n' +
+        'Celular: ' + v('t-phone') + '\n' +
+        (lineas.length ? 'Días y horarios para ir a tasar:\n' + lineas.join('\n') + '\n' : '') +
+        'Quedo a la espera de tu contacto. ¡Gracias!';
+      return {
+        asunto: 'Nueva solicitud de tasación - ' + v('t-name'),
+        url: 'https://wa.me/' + NUM + '?text=' + encodeURIComponent(text),
+        datos: {
+          'Quiere': op, 'Tipo de propiedad': v('t-tipo'), 'Dirección': v('t-dir'),
+          'Ambientes': amb || '-', 'Superficie (m2)': m2 || '-',
+          'Nombre': v('t-name'), 'Celular': v('t-phone'),
+          'Días y horarios para ir a tasar': lineas.join('\n') || '-',
+          'Aceptó el aviso de privacidad': 'Sí'
+        }
+      };
+    }
+    var sbtn = form.querySelector('button[type=submit]'), wbtn = document.getElementById('t-wsp');
+    // «Enviar solicitud»: le llega a Yesica por mail y al panel.
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = leer(); if (!d) return;
+      var firma = JSON.stringify(d.datos);
+      if (enviadoFirma === firma) { msg.className = 'msg ok'; msg.textContent = '✓ Esta solicitud ya fue enviada. Yesica te contacta para confirmarla.'; return; }
+      sbtn.disabled = true; sbtn.textContent = 'Enviando…';
+      d.datos['Canal'] = 'Botón Enviar solicitud';
+      registrar(d.asunto, d.datos, msg).then(function(res){ sbtn.disabled = false; sbtn.textContent = 'Enviar solicitud'; if (res.ok) enviadoFirma = firma; });
+    });
+    // «Escribir por WhatsApp»: abre el chat con el pedido escrito. Si todavía no se envió, también lo registra para que no se pierda.
+    wbtn.addEventListener('click', function(){
+      var d = leer(); if (!d) return;
+      var firma = JSON.stringify(d.datos);
+      abrirWhatsApp(window.open('', '_blank'), d.url);
+      if (enviadoFirma !== firma) {
+        d.datos['Canal'] = 'Botón WhatsApp';
+        registrar(d.asunto, d.datos, document.createElement('p')).then(function(res){ if (res.ok) enviadoFirma = firma; });
+      }
+    });
+  })();
+
+  // Isologo en 3D: se inclina con el mouse o el dedo y, en reposo, se mece suavemente.
+  (function(){
+    var hero = document.getElementById('hero'), orb = document.getElementById('orb');
+    if (!hero || !orb) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var rx = 0, ry = 0, tx = 0, ty = 0, active = false, visible = true, running = false, t0 = performance.now();
+    function loop(now){
+      if (!visible) { running = false; return; }
+      if (!active) {                       // reposo: balanceo lento
+        var s = (now - t0) / 1000;
+        tx = Math.sin(s * 0.7) * 16; ty = Math.cos(s * 0.5) * 6;
+      }
+      rx += (ty - rx) * 0.08; ry += (tx - ry) * 0.08;
+      orb.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      orb.style.setProperty('--gx', (30 - ry * 1.4).toFixed(1) + '%');
+      orb.style.setProperty('--gy', (22 + rx * 1.6).toFixed(1) + '%');
+      requestAnimationFrame(loop);
+    }
+    function start(){ if (!running) { running = true; requestAnimationFrame(loop); } }
+    function aim(e){
+      var r = hero.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
+      tx = Math.max(-1, Math.min(1, nx * 2)) * 28; ty = -Math.max(-1, Math.min(1, ny * 2)) * 20;
+      active = true;
+    }
+    hero.addEventListener('pointermove', aim);
+    hero.addEventListener('pointerdown', aim);
+    hero.addEventListener('pointerleave', function(){ active = false; t0 = performance.now(); });
+    hero.addEventListener('pointerup', function(e){ if (e.pointerType !== 'mouse') active = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; if (visible) start(); }, {threshold:0}).observe(hero);
+    }
+    start();
+  })();
+
+  // Aparición suave de los bloques al hacer scroll.
+  (function(){
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var vh = window.innerHeight || 800;
+    var movil = (window.innerWidth || 800) <= 640;
+    var els = document.querySelectorAll(movil ? '.vcard, .review, .contact, .tpanel, .sec-head' : '.tile, .vitem, .vcard, .stat, .review, .contact, .tpanel, .sec-head');
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(x){
+        if (!x.isIntersecting) return;
+        var el = x.target; el.classList.add('in'); io.unobserve(el);
+        setTimeout(function(){ el.classList.remove('rv', 'in'); }, 900);
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    for (var i = 0; i < els.length; i++) {
+      if (els[i].getBoundingClientRect().top < vh) continue;   // lo que ya se ve al cargar no se anima
+      els[i].classList.add('rv'); io.observe(els[i]);
+    }
+  })();
+
+  // Menú de la barra: se abre y cierra en el celular, y resalta la sección que se está viendo.
+  (function(){
+    var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+    if (!burger || !menu) return;
+    function setOpen(o){
+      menu.classList.toggle('open', o);
+      burger.setAttribute('aria-expanded', o ? 'true' : 'false');
+      burger.setAttribute('aria-label', o ? 'Cerrar menú' : 'Abrir menú');
+    }
+    burger.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    menu.addEventListener('click', function(e){ if (e.target.tagName === 'A') setOpen(false); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+    document.addEventListener('click', function(e){ if (!menu.contains(e.target) && !burger.contains(e.target)) setOpen(false); });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 1100) setOpen(false); });
+
+    if (!('IntersectionObserver' in window)) return;
+    var links = menu.querySelectorAll('a'), map = {};
+    for (var i = 0; i < links.length; i++) {
+      var id = links[i].getAttribute('href').slice(1), sec = document.getElementById(id);
+      if (sec) map[id] = links[i];
+    }
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(x){
+        if (!x.isIntersecting) return;
+        for (var k in map) map[k].classList.remove('on');
+        var a = map[x.target.id]; if (a) a.classList.add('on');
+      });
+    }, {rootMargin:'-35% 0px -60% 0px'});
+    for (var id2 in map) io.observe(document.getElementById(id2));
+  })();
+
+  // Mapa de propiedades: pines con el isologo; se pueden filtrar por tipo, dormitorios y precio.
+  // Al tocar un pin se ve el aviso de Adinco o se elige la propiedad para la visita.
+  (function(){
+    var caja = document.getElementById('prop-map-box');
+    if (!caja || typeof L === 'undefined') return;
+    var nota = document.getElementById('map-note'), filtros = document.getElementById('map-filters');
+    var fT = document.getElementById('f-tipo'), fD = document.getElementById('f-dorm'), fP = document.getElementById('f-precio');
+    var CLAVE = 'rcGeo2', REINTENTO = 6 * 3600 * 1000, cache = {};
+    try { cache = JSON.parse(localStorage.getItem(CLAVE) || '{}'); } catch (e) { cache = {}; }
+    function guardar(){ try { localStorage.setItem(CLAVE, JSON.stringify(cache)); } catch (e) {} }
+    function sinPiso(d){ return d.replace(/,?\s*\d+\s*°.*$/, ''); }
+    var CIUDAD = 'Ciudad Autónoma de Buenos Aires, Argentina';
+    var VISTA = '&countrycodes=ar&bounded=1&viewbox=-58.54,-34.51,-58.33,-34.71';
+    function pesos(n){ return '$ ' + Number(n).toLocaleString('es-AR'); }
+    function usd(n){ return 'U$D ' + Number(n).toLocaleString('es-AR'); }
+
+    var fila = Promise.resolve();
+    function consulta(url){
+      var mia = fila.then(function(){
+        return fetch(url, {headers: {'Accept': 'application/json'}}).then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+          .then(function(res){ return {c: (res && res[0]) ? [parseFloat(res[0].lat), parseFloat(res[0].lon)] : null}; })
+          .catch(function(){ return {c: null}; });
+      });
+      fila = mia.then(function(){ return new Promise(function(ok){ setTimeout(ok, 1100); }); });   // 1 consulta por segundo
+      return mia;
+    }
+    // Ubicación: lat/lng del archivo si existen; si no, se busca y se recuerda en el navegador.
+    function ubicar(x){
+      if (typeof x.lat === 'number' && typeof x.lng === 'number') return Promise.resolve({c: [x.lat, x.lng], exacta: true});
+      var dir = sinPiso(x.direccion), previo = cache[dir];
+      if (previo && (previo.c || (Date.now() - previo.t) < REINTENTO)) return Promise.resolve({c: previo.c, exacta: false});
+      var base = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1';
+      var formas = [
+        base + VISTA + '&street=' + encodeURIComponent(dir) + '&city=' + encodeURIComponent('Buenos Aires') + '&country=Argentina',
+        base + VISTA + '&q=' + encodeURIComponent(dir + ', ' + (x.barrio ? x.barrio + ', ' : '') + CIUDAD),
+        base + '&countrycodes=ar&q=' + encodeURIComponent(dir + ', ' + (x.barrio ? x.barrio + ', ' : '') + 'Buenos Aires, Argentina')
+      ];
+      var i = 0;
+      function probar(){
+        return consulta(formas[i]).then(function(r){
+          if (r.c) { cache[dir] = {c: r.c, t: Date.now()}; guardar(); return {c: r.c, exacta: false}; }
+          if (++i < formas.length) return probar();
+          cache[dir] = {c: null, t: Date.now()}; guardar(); return {c: null};
+        });
+      }
+      return probar();
+    }
+
+    var mapa, items = [], entradas = [], ubicando = true;
+    function contenido(x, exacta){
+      var d = document.createElement('div'); d.className = 'pop';
+      var t = document.createElement('strong'); t.textContent = x.tipo + ' · ' + x.direccion; d.appendChild(t);
+      var s = document.createElement('span'); s.textContent = [x.barrio, x.detalle || x.m2].filter(Boolean).join(' · '); d.appendChild(s);
+      if (x.precio) { var pr = document.createElement('em'); pr.className = 'pop-precio'; pr.textContent = usd(x.precio); d.appendChild(pr);
+        if (x.expensas) { var ex = document.createElement('small'); ex.className = 'pop-exp'; ex.textContent = 'Expensas: ' + pesos(x.expensas) + ' por mes'; d.appendChild(ex); } }
+      if (!exacta) { var ap = document.createElement('small'); ap.className = 'pop-aprox'; ap.textContent = 'Ubicación aproximada'; d.appendChild(ap); }
+      var acc = document.createElement('div'); acc.className = 'pop-acc';
+      if (x.link) {
+        var a = document.createElement('a'); a.className = 'pop-link'; a.href = x.link; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = 'Ver publicación en Adinco'; acc.appendChild(a);
+      }
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'pop-btn'; b.textContent = 'Elegir para mi visita';
+      b.addEventListener('click', function(){ elegir(x); }); acc.appendChild(b);
+      var bn = document.createElement('button'); bn.type = 'button'; bn.className = 'pop-btn'; bn.textContent = 'Preguntale a Nina';
+      bn.addEventListener('click', function(){ if (mapa) mapa.closePopup(); if (window.ninaProp) window.ninaProp(x.direccion); }); acc.appendChild(bn);
+      d.appendChild(acc); return d;
+    }
+    function elegir(x){
+      var sel = document.getElementById('v-sel'); if (!sel || sel.hidden) return;
+      var et = etiquetaProp(x);
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].text === et) { sel.selectedIndex = i; sel.dispatchEvent(new Event('change')); break; }
+      }
+      if (mapa) mapa.closePopup();
+      document.getElementById('v-name').scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+
+    // --- Filtros ---
+    function opcion(sel, valor, texto){ var o = document.createElement('option'); o.value = valor; o.textContent = texto; sel.appendChild(o); }
+    function llenarFiltros(){
+      var tipos = [], dorms = [], precios = [];
+      items.forEach(function(x){
+        if (tipos.indexOf(x.tipo) < 0) tipos.push(x.tipo);
+        if (typeof x.dorm === 'number' && dorms.indexOf(x.dorm) < 0) dorms.push(x.dorm);
+        if (x.precio) precios.push(x.precio);
+      });
+      tipos.sort().forEach(function(v){ opcion(fT, v, v); });
+      dorms.sort(function(a, b){ return a - b; }).forEach(function(v){ opcion(fD, String(v), v === 0 ? 'Monoambiente' : v + (v === 1 ? ' dormitorio' : ' dormitorios')); });
+      if (precios.length > 1) {
+        var min = Math.min.apply(null, precios), max = Math.max.apply(null, precios);
+        [50000, 60000, 75000, 100000, 125000, 150000, 200000, 250000, 300000, 400000, 500000]
+          .filter(function(v){ return v >= min && v < max; })
+          .forEach(function(v){ opcion(fP, String(v), 'Hasta ' + usd(v)); });
+      }
+      fT.parentNode.hidden = tipos.length < 2;
+      fD.parentNode.hidden = dorms.length < 2;
+      fP.parentNode.hidden = fP.options.length < 2;
+      filtros.hidden = fT.parentNode.hidden && fD.parentNode.hidden && fP.parentNode.hidden;
+    }
+    function coincide(x){
+      if (fT.value && x.tipo !== fT.value) return false;
+      if (fD.value && String(x.dorm) !== fD.value) return false;
+      if (fP.value && !(x.precio && x.precio <= Number(fP.value))) return false;
+      return true;
+    }
+    function aplicar(){
+      var visibles = [];
+      entradas.forEach(function(en){
+        if (coincide(en.x)) { if (!mapa.hasLayer(en.m)) en.m.addTo(mapa); visibles.push(en.m); }
+        else if (mapa.hasLayer(en.m)) en.m.remove();
+      });
+      mapa.closePopup();
+      if (visibles.length) mapa.fitBounds(L.featureGroup(visibles).getBounds().pad(0.3), {maxZoom: 16});
+      if (ubicando) return;
+      var coinciden = items.filter(coincide).length, sinPin = items.filter(function(x){ return coincide(x) && !entradas.some(function(en){ return en.x === x; }); }).length;
+      var txt = coinciden === 0 ? 'No hay propiedades con esos filtros.' : (coinciden === 1 ? '1 propiedad' : coinciden + ' propiedades') + (coinciden === items.length ? '' : ' de ' + items.length);
+      if (sinPin > 0) txt += ' · ' + sinPin + (sinPin === 1 ? ' no se pudo ubicar en el mapa; elegila en el formulario de visita.' : ' no se pudieron ubicar en el mapa; elegilas en el formulario de visita.');
+      nota.textContent = txt;
+    }
+    [fT, fD, fP].forEach(function(s){ s.addEventListener('change', aplicar); });
+    document.getElementById('f-clear').addEventListener('click', function(){ fT.value = ''; fD.value = ''; fP.value = ''; aplicar(); });
+
+    function iniciar(lista){
+      if (!lista || !lista.length) { caja.hidden = true; return; }
+      items = lista; caja.hidden = false; llenarFiltros();
+      mapa = L.map('prop-map', {scrollWheelZoom: false}).setView([-34.5627, -58.4577], 14);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+      }).addTo(mapa);
+      var icono = L.icon({iconUrl: 'favicon.png', iconSize: [46, 46], iconAnchor: [23, 23], popupAnchor: [0, -24], className: 'pin-img'});
+      Promise.all(items.map(function(x){
+        return ubicar(x).then(function(u){
+          var c = u && u.c; if (!c) return;
+          var m = L.marker(c, {icon: icono, title: etiquetaProp(x), alt: etiquetaProp(x)});
+          m.bindPopup(contenido(x, u.exacta), {maxWidth: 260});
+          entradas.push({x: x, m: m});
+          aplicar();
+        });
+      })).then(function(){ ubicando = false; aplicar(); });
+    }
+    fetch('propiedades.json', {cache: 'no-cache'}).then(function(r){ if (!r.ok) throw new Error('sin lista'); return r.json(); }).then(iniciar).catch(function(){ caja.hidden = true; });
+  })();
+
+  // Sucursales: el mapa de Google cambia según la sucursal elegida.
+  (function(){
+    var btns = document.querySelectorAll('.branch'), frame = document.getElementById('gmap'),
+        ir = document.getElementById('branch-go'), ver = document.getElementById('branch-view');
+    if (!btns.length || !frame) return;
+    function elegir(b){
+      var dir = b.getAttribute('data-dir');
+      for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i] === b ? 'true' : 'false');
+      frame.src = 'https://www.google.com/maps?q=' + encodeURIComponent(dir) + '&hl=es&z=16&output=embed';
+      ir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(dir);
+      ver.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(dir);
+    }
+    for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function(){ elegir(this); });
+  })();
+
+  // Nina: asistente virtual con respuestas predefinidas. Funciona en el navegador: no envía ni guarda lo que se escribe.
+  (function(){
+    var panel = document.getElementById('nina'), fab = document.getElementById('fab');
+    if (!panel || !fab) return;
+    var msgs = document.getElementById('nina-msgs'), chips = document.getElementById('nina-chips'),
+        form = document.getElementById('nina-form'), inp = document.getElementById('nina-in'),
+        wa = document.getElementById('nina-wa');
+    var NUM = '5491121641641';
+    var DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var HOR = {1:[600,1080], 2:[600,1080], 3:[600,1080], 4:[600,1080], 5:[600,1080], 6:[600,780]};   // minutos desde las 00:00
+    var FERIADO_DESDE = Date.parse('2026-11-07T13:00:00-03:00'), FERIADO_HASTA = Date.parse('2026-11-11T10:00:00-03:00');
+    function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function norm(s){ return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim().replace(/\b(q|k)\b/g, 'que').replace(/\bkiero\b/g, 'quiero').replace(/\b(xq|pq)\b/g, 'porque'); }
+    function pad(n){ return n < 10 ? '0' + n : '' + n; }
+    function waLink(texto){ return 'https://wa.me/' + NUM + '?text=' + encodeURIComponent(texto); }
+
+    // --- Horario de atención (hora de Argentina, sin horario de verano) ---
+    function atendiendo(ts){
+      var d = new Date(ts - 3 * 3600000), h = HOR[d.getUTCDay()];
+      if (!h || (ts >= FERIADO_DESDE && ts < FERIADO_HASTA)) return false;
+      var m = d.getUTCHours() * 60 + d.getUTCMinutes();
+      return m >= h[0] && m < h[1];
+    }
+    function proximaApertura(ts){
+      var base = new Date(ts - 3 * 3600000); base.setUTCHours(0, 0, 0, 0);
+      for (var i = 0; i <= 14; i++) {
+        var dia = base.getTime() + i * 86400000, h = HOR[new Date(dia).getUTCDay()];
+        if (!h) continue;
+        var abre = dia + h[0] * 60000 + 3 * 3600000;
+        if (abre <= ts || (abre >= FERIADO_DESDE && abre < FERIADO_HASTA)) continue;
+        return abre;
+      }
+      return null;
+    }
+    function cuando(abre, ts){
+      var f = new Date(abre - 3 * 3600000), hoy = new Date(ts - 3 * 3600000);
+      var dif = Math.round((Date.UTC(f.getUTCFullYear(), f.getUTCMonth(), f.getUTCDate()) - Date.UTC(hoy.getUTCFullYear(), hoy.getUTCMonth(), hoy.getUTCDate())) / 86400000);
+      var hora = pad(f.getUTCHours()) + ':' + pad(f.getUTCMinutes());
+      if (dif === 0) return 'hoy a las ' + hora;
+      if (dif === 1) return 'mañana a las ' + hora;
+      return 'el ' + DIAS[f.getUTCDay()] + ' ' + f.getUTCDate() + '/' + (f.getUTCMonth() + 1) + ' a las ' + hora;
+    }
+    function estado(){
+      var ts = Date.now();
+      if (atendiendo(ts)) return 'Yesica está atendiendo ahora.';
+      var a = proximaApertura(ts);
+      return 'Ahora estamos fuera de horario' + (a ? ': Yesica retoma ' + cuando(a, ts) + '.' : '.');
+    }
+
+    // --- Propiedades (las mismas que muestra la página) ---
+    var propiedades = null;
+    function cargarPropiedades(){
+      if (propiedades) return Promise.resolve(propiedades);
+      return fetch('propiedades.json', {cache: 'no-cache'}).then(function(r){ if (!r.ok) throw new Error('sin lista'); return r.json(); })
+        .then(function(l){ propiedades = l; return l; }).catch(function(){ return null; });
+    }
+    function respPropiedades(){
+      return cargarPropiedades().then(function(l){
+        if (!l || !l.length) return [{p: 'Podés ver las propiedades disponibles en el mapa de <a href="#visita">Coordiná tu visita</a>.'}];
+        var items = l.map(function(x){
+          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) : '', x.expensas && typeof x.expensas === 'number' ? 'expensas ' + dinero(x.expensas) + ' por mes' : ''].filter(Boolean).join(' · ');
+          return '<strong>' + esc(x.tipo) + ' · ' + esc(x.direccion) + '</strong>' + (det ? '<br>' + esc(det) : '') + (x.link ? '<br><a href="' + esc(x.link) + '" target="_blank" rel="noopener">Ver publicación</a>' : '');
+        });
+        return [{p: 'Estas son las propiedades en venta que tenemos hoy:'}, {ul: items}, {p: 'Los precios están en dólares y pueden cambiar. Si querés saber más de una, tocala y preguntame lo que quieras (expensas, cochera, dormitorios…):'}, {bt: l.map(function(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; })}, {p: 'También las ves en el mapa de <a href="#visita">Coordiná tu visita</a>, con filtros.'}];
+      });
+    }
+
+    // --- Temas y respuestas (mismo contenido que las preguntas frecuentes) ---
+    var TEMAS = [
+      {id:'comprar', chip:'Cómo comprar', kw:['comprar|4','compra|3','como comprar|5','quiero comprar|5','proceso de compra|6','como es la compra|6','pasos|3','proceso|3','comprador|3','como funciona|3'],
+       r:[{p:'<strong>Cómo es la compra, paso a paso:</strong>'},{ul:['<strong>Visita:</strong> conocés la propiedad (30 minutos).','<strong>Reserva:</strong> se entrega en dólares billetes, en efectivo, y la oferta queda sujeta a la aceptación del propietario.','<strong>Respuesta del propietario:</strong> tiene 7 días hábiles. Si no acepta, la reserva se devuelve de inmediato, sin cargo ni intereses.','<strong>Refuerzo de la reserva:</strong> se acuerda en cada caso; consultalo con Yesica.','<strong>Escritura:</strong> dentro de los 60 días corridos desde la aceptación, ante el escribano que designe el comprador.','<strong>Honorarios:</strong> 4% + IVA el comprador y 3% + IVA el vendedor, al firmar la escritura.']},{p:'La información es orientativa: rige el contrato de reserva. Más detalle en <a href="#condiciones">Cómo comprar y vender</a>.'}]},
+      {id:'honorarios', chip:'Honorarios', kw:['honorarios|4','comision|4','comisiones|4','cuanto cobran|5','cobran|3','porcentaje|3','iva|3','cuanto se paga de comision|6'],
+       r:[{p:'Los honorarios son del <strong>4% + IVA para el comprador</strong> y del <strong>3% + IVA para el vendedor</strong>, calculados sobre el valor total de la operación.'},{p:'Se abonan al firmar la escritura, en la misma moneda en que se realiza la operación.'}]},
+      {id:'reserva', chip:'Reserva', kw:['reserva|4','reservar|4','sena|4','oferta|3','ofertar|4','hacer una oferta|6','refuerzo|4','guarda|2'],
+       r:[{p:'La reserva se entrega en <strong>dólares billetes, en efectivo</strong>, y la oferta queda sujeta a la aceptación del propietario. Los montos quedan en guarda del corredor y se descuentan del precio.'},{p:'El propietario tiene 7 días hábiles para responder. Si no acepta, la reserva se devuelve de inmediato, sin cargo ni intereses.'},{p:'El refuerzo de la reserva se acuerda en cada caso. Para el detalle de tu operación, consultá con Yesica.'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar por la reserva de una propiedad.')]}]},
+      {id:'arrepentimiento', chip:null, kw:['arrepiento|5','arrepentir|5','arrepentirme|6','desistir|5','desisto|5','pierdo la sena|7','pierdo la reserva|7','me echo atras|7','echo atras|6','si no compro|5','si no se hace|5','incumplimiento|5'],
+       r:[{p:'Las condiciones de la reserva y de la operación están detalladas en el contrato de reserva. Para tu caso, lo mejor es consultarlo con Yesica:'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar por las condiciones de la reserva.')]}]},
+      {id:'escritura', chip:'Escritura', kw:['escritura|4','escribano|4','escriturar|4','escrituracion|4','gastos de escrituracion|6','sellos|3','cedular|4','boleto|3','posesion|3','cuanto tarda|3','60 dias|4'],
+       r:[{p:'La escritura se firma dentro de los <strong>60 días corridos</strong> desde la aceptación de la reserva, ante el <strong>escribano que designe el comprador</strong>. El lugar de la firma lo define el vendedor, dentro de la jurisdicción de ese escribano.'},{p:'Los gastos y honorarios de la escrituración se soportan según los usos y costumbres y lo que marca la ley. El impuesto cedular, si corresponde, lo paga el vendedor.'},{p:'La propiedad se entrega desocupada, libre de deuda y con impuestos y expensas al día.'}]},
+      {id:'pago', chip:'Moneda y forma de pago', kw:['dolares|3','dolar|3','pesos|3','moneda|4','efectivo|3','transferencia|3','como se paga|5','forma de pago|5','pagar|2','pago|2','billetes|3'],
+       r:[{p:'La reserva se entrega en <strong>dólares billetes, en efectivo</strong>, y el precio total se paga al momento de la posesión y la firma de la escritura. Los honorarios se abonan en la misma moneda de la operación.'},{p:'Para la forma de pago de tu operación, consultá con Yesica.'}]},
+      {id:'financiacion', chip:null, kw:['hipotecario|5','hipoteca|5','credito|4','creditos|4','banco|3','permuta|5','permutar|5','financiacion|5','financiar|5','financiado|5','cuotas|4'],
+       r:[{p:'Sobre crédito hipotecario, permuta o financiación, depende de cada operación. Consultalo con Yesica:'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar por crédito hipotecario, permuta o financiación.')]}]},
+      {id:'documentacion', chip:'Documentación', kw:['documentacion|4','papeles|3','documentos|3','titulo|3','reglamento|3','planos|3','que necesito para vender|6','que piden para vender|6','libre deuda|4','origen de fondos|5','uif|4','requisitos|3','requisito|3','que piden|3'],
+       r:[{p:'<strong>Vendedor:</strong> título de propiedad, reglamento de copropiedad y planos, si los hubiere. La venta se hace con títulos perfectos, libre de deuda y gravamen, y la documentación necesaria se presenta dentro de los 5 días hábiles de aceptada la reserva.'},{p:'<strong>Comprador:</strong> declara el origen lícito de los fondos y presenta la documentación que se le solicite, según la normativa de la UIF para corredores inmobiliarios.'}]},
+      {id:'exclusiva', chip:'Autorización de venta', kw:['exclusiva|5','exclusividad|5','autorizacion|4','autorizacion de venta|6','120 dias|5','firmar autorizacion|5','contrato de venta|4'],
+       r:[{p:'Para vender con nosotros se firma una <strong>autorización de venta exclusiva</strong>, por <strong>120 días corridos</strong>. Durante ese plazo nos ocupamos de exhibir el inmueble, colocar carteles, publicar, recibir la reserva y confeccionar el boleto de compraventa.'},{p:'Los honorarios del vendedor son del 3% + IVA del precio de venta. Para el detalle de tu caso, consultá con Yesica.'}]},
+      {id:'vender', chip:'Quiero vender', kw:['vender|4','vendo|4','vender mi|5','quiero vender|6','publicar|3','valor de mi|3','poner en venta|6'],
+       r:[{p:'Para vender tu propiedad, el primer paso es la <strong>tasación, sin cargo y en 24 hs</strong>, con informe firmado por un matriculado. Pedila en <a href="#tasacion">Tasá tu propiedad</a>.'},{p:'Después se firma una autorización de venta exclusiva (120 días) y nos ocupamos de la publicación, las visitas, la reserva y el boleto. Honorarios del vendedor: 3% + IVA.'}]},
+      {id:'visitas', chip:'Coordinar una visita', kw:['visita|3','visitas|3','visitar|3','conocer|3','coordinar|3','agendar|3','turno|3','cita|2','recorrer|2','ir a ver|3','quiero ver|3','conocer la propiedad|4','ver la propiedad|4','ver un departamento|4','ver el departamento|4','puedo ir a ver|4'],
+       r:[{p:'Elegí la propiedad, el día en el calendario y los horarios en que podés. Cada visita dura <strong>30 minutos</strong>.'},{p:'Enviás la solicitud (o le escribís por WhatsApp) y Yesica te confirma o te propone otro horario. No es una reserva automática. Lo hacés en <a href="#visita">Coordiná tu visita</a>.'}]},
+      {id:'tipos', chip:null, kw:['que tipos|5','tipos de propiedad|6','venden casas|5','venden locales|5','venden terrenos|5','venden ph|5','venden departamentos|5','trabajan con|4','que venden|5'],
+       r:[{p:'Trabajamos con departamentos, casas, PH, locales, terrenos y cocheras. Mirá las disponibles en el mapa de <a href="#visita">Coordiná tu visita</a>.'}]},
+      {id:'negociable', chip:null, kw:['negociable|6','negociables|6','negociar|6','negociacion|5','rebaja|5','rebajan|5','descuento|5','mejor precio|6','bajan el precio|7','bajar el precio|7','pueden bajar|6','regatear|6','contraoferta|6','propuesta|2'],
+       r:[{p:'Las ofertas se presentan mediante una reserva, que queda sujeta a la aceptación del propietario. Si querés hacer una propuesta, consultalo con Yesica:'},{a:['Consultarle a Yesica', waLink('Hola Yesica, quería consultar si el precio es negociable.')]}]},
+      {id:'alquiler', chip:null, kw:['alquilar|4','alquiler|4','alquileres|4','alquilan|5','alquilo|4','locacion|4','inquilino|4','inquilinos|4'],
+       r:[{p:'Yesica se dedica a la <strong>venta</strong> de propiedades. Para alquileres, escribile a Magali: ella te ayuda con alquileres de viviendas y locales.'},{a:['Ver la página de Magali', 'https://romancifrepropiedades-sketch.github.io/magali-romancifre/']}]},
+      {id:'derivar', chip:null, kw:['abl|4','impuestos|3','inmobiliario|3','seguro|3','mudanza|3','reformas|4','pintar|4','pintura|4','comision a propietarios|8','honorarios a propietarios|8'],
+       r:[]},
+      {id:'tasacion', chip:'Tasación', kw:['tasacion|3','tasar|3','tasarme|3','valuacion|3','valuar|3','cuanto vale|3','cuanto sale mi|3','vender mi|4','matriculado|3','informe profesional|3','tasan|3','tasaciones|3','vender|3','vendo|3','cuanto puedo pedir|5','cuanto pedir|4','gratis|2','sin cargo|3','cuanto vale mi|4'],
+       r:[{p:'La tasación es <strong>sin cargo</strong> y se hace <strong>en 24 hs</strong>, con un informe profesional firmado por un matriculado.'},{p:'Completá el formulario en <a href="#tasacion">Tasá tu propiedad</a> y elegí cuándo podemos ir a verla.'}]},
+      {id:'horarios', chip:'Horarios de atención', kw:['horario|3','horarios|3','atienden|3','atencion|3','atender|2','abren|3','abierto|3','cerrado|3','feriado|3','fin de semana|3','sabado|2','domingo|2','que hora|3'],
+       r:function(){ var ts = Date.now(), a = proximaApertura(ts); return [{p:'Yesica atiende de <strong>lunes a viernes de 10 a 18 h</strong> y <strong>sábados de 10 a 13 h</strong>.'},{p: atendiendo(ts) ? 'Ahora está atendiendo: podés escribirle por WhatsApp.' : 'Ahora estamos fuera de horario' + (a ? ': retoma ' + cuando(a, ts) + '.' : '.') + ' Podés dejar tu consulta por WhatsApp y te responde apenas vuelva.'}]; }},
+      {id:'servicios', chip:'Servicios para propietarios', kw:['servicios|3','servicio|2','propietario|3','propietarios|3','publicar|3','fotografia|3','fotos|2','360|3','tour|3','matterport|3','ricoh|3','publicidad|3','arquitecto|3','escribania|3','big data|3','market|2','puesta en valor|3','mi propiedad|4','mi departamento|3','mi casa|3','mi inmueble|4','mi local|3','alquilar mi|4','publican|3','publicacion|2','como publican|4','tengo una propiedad|4','soy propietario|4','soy propietaria|4'],
+       r:[{p:'Para propietarios: análisis de mercado con big data, puesta en valor con un arquitecto, tour virtual 360° con tecnología RICOH y MATTERPORT, fotografía inmobiliaria profesional, asesoría integral con convenio con Escribanía y asesoría contable, y publicidad digital para posicionar tu unidad al tope del ranking de los portales.'},{p:'Más en <a href="#agregamos-valor">Agregamos valor a tu inmueble</a>.'}]},
+      {id:'propiedades', chip:'Propiedades en venta', kw:['propiedades|3','propiedad|2','disponible|3','disponibles|3','departamento|2','departamentos|2','depto|2','deptos|2','venta|2','en venta|3','tienen|1','lista|1','precio|2','precios|2','dormitorio|2','dormitorios|2','ambientes|2','que hay|3','oficina|1'],
+       r:respPropiedades},
+      {id:'sucursales', chip:'Sucursales', kw:['sucursal|3','sucursales|3','direccion|3','donde estan|3','ubicacion|3','belgrano|2','colegiales|3','como llegar|3','mapa|2','oficinas|2','donde queda|4','queda|2','como llego|4','llego|3','inmobiliaria|1'],
+       r:[{p:'<strong>Sucursal Belgrano:</strong> Av. Olazábal 2690.<br><strong>Sucursal Colegiales:</strong> Ciudad de la Paz 1384.'},{p:'Mirá el mapa y cómo llegar en <a href="#sucursales">Nuestras sucursales</a>.'}]},
+      {id:'privacidad', chip:'Mis datos', kw:['privacidad|3','datos|2','personales|3','informacion personal|3'],
+       r:[{p:'Usamos tus datos solo para responder tu consulta y coordinar la visita o la tasación. Este chat no guarda lo que escribís: solo le llega a Yesica si vos tocás «Que me contacte Yesica» y aceptás enviar tus datos. Más en el <a href="privacidad.html">aviso de privacidad</a>.'}]},
+      {id:'contacto', chip:'Contacto', kw:['contacto|3','mail|3','correo|3','email|3','instagram|3','telefono|3','celular|2','llamar|3','numero|2'],
+       r:[{p:'Podés escribirle a Yesica por WhatsApp, o por mail a <a href="mailto:yesica@romancifre.com.ar">yesica@romancifre.com.ar</a>. También estamos en <a href="https://www.instagram.com/romancifrepropiedades/" target="_blank" rel="noopener">Instagram</a>.'}]},
+      {id:'humano', chip:null, kw:['persona|3','humano|3','asesora|3','yesica|3','hablar con|3','atienda|2','agente|3','alguien|2','hablar|2'],
+       r:function(){ return [{p:'Claro. ' + estado() + ' Podés escribirle directamente por WhatsApp:'},{a:['Hablar por WhatsApp con Yesica', waLink('Hola Yesica, quiero hablar con vos.')]},{p:'O dejame tus datos y Yesica te escribe ella:'},{bt:[['Que me contacte Yesica', pedirContacto]]}]; }},
+      {id:'contactame', chip:null, kw:['contacten|4','contacte|4','contactenme|4','contactame|4','me contacten|5','me llamen|5','llamen|3','llamame|3','que me llamen|5','me escriban|5','escriban|3','dejar mis datos|5','dejo mis datos|5','dejar mi telefono|5','dejar mi numero|5'],
+       r:function(){ return [{p:'Con gusto: dejame tu nombre y celular y le paso tu consulta a Yesica, con lo que hablamos.'},{bt:[['Dejar mis datos', mostrarContacto]]}]; }},
+      {id:'saludo', chip:null, kw:['hola|3','buenas|3','buen dia|3','buenos dias|3','buenas tardes|3','buenas noches|3','hey|2'],
+       r:function(){ return [{p:'¡Hola! Soy Nina, la asistente virtual de Yesica. ' + estado() + ' Elegí un tema o escribime tu pregunta.'}]; }},
+      {id:'gracias', chip:null, kw:['gracias|3','genial|2','perfecto|2','excelente|2','buenisimo|2','listo|1'],
+       r:[{p:'¡De nada! Si necesitás algo más, estoy acá. Y si querés hablar con Yesica, escribile por WhatsApp.'}]}
+    ];
+    var PRINCIPALES = ['comprar','honorarios','visitas','propiedades','vender','tasacion','horarios'];
+    function tema(id){ for (var i = 0; i < TEMAS.length; i++) if (TEMAS[i].id === id) return TEMAS[i]; }
+
+    // ¿Difieren en una sola letra (de más, de menos o cambiada)? Sirve para errores de tipeo: "requicitos", "depocito".
+    function distancia1(a, b){
+      if (Math.abs(a.length - b.length) > 1) return false;
+      var i = 0; while (i < a.length && i < b.length && a.charAt(i) === b.charAt(i)) i++;
+      if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+      return a.length > b.length ? a.slice(i + 1) === b.slice(i) : b.slice(i + 1) === a.slice(i);
+    }
+    // Además de una letra de más, de menos o cambiada, acepta dos letras seguidas intercambiadas ("ambinetes").
+    function parecida(a, b){
+      if (distancia1(a, b)) return true;
+      if (a.length !== b.length) return false;
+      var i = 0; while (i < a.length && a.charAt(i) === b.charAt(i)) i++;
+      return i < a.length - 1 && a.charAt(i) === b.charAt(i + 1) && a.charAt(i + 1) === b.charAt(i) && a.slice(i + 2) === b.slice(i + 2);
+    }
+    // Corrige errores de tipeo en las palabras que se usan para buscar ("domitorios" → "dormitorios").
+    var VOCAB = ['dormitorio','dormitorios','ambiente','ambientes','habitacion','habitaciones','monoambiente','departamento','departamentos','cochera','terraza','ascensor','propiedad','propiedades','amoblado','luminoso','balcon'];
+    var NOFUZZY = ['cuantos','cuantas','cuanto','cuales','donde','quien','quienes'];   // palabras comunes que no se corrigen
+    function corregir(tx){
+      return tx.split(' ').map(function(tk){
+        if (tk.length < 6 || VOCAB.indexOf(tk) > -1 || NOFUZZY.indexOf(tk) > -1) return tk;
+        for (var i = 0; i < VOCAB.length; i++) if (VOCAB[i].length >= 6 && parecida(tk, VOCAB[i])) return VOCAB[i];
+        return tk;
+      }).join(' ');
+    }
+    function puntuarLista(tx, lista, minimo){
+      var tokens = tx.split(' '), mejor = null, puntos = 0;
+      lista.forEach(function(tm){
+        var frases = 0, porPalabra = {};   // cada palabra del mensaje cuenta una sola vez, con su mejor coincidencia
+        tm.kw.forEach(function(k){
+          var pr = k.split('|'), w = +pr[1] || 1, kw = pr[0];
+          if (kw.indexOf(' ') > -1) { if (tx.indexOf(kw) > -1) frases += w + 1; return; }
+          for (var i = 0; i < tokens.length; i++) {
+            var tk = tokens[i];
+            if (tk === kw || (tk.length >= 5 && kw.length >= 5 && (tk.indexOf(kw) === 0 || kw.indexOf(tk) === 0)) || (tk.length >= 6 && kw.length >= 6 && NOFUZZY.indexOf(tk) < 0 && parecida(tk, kw))) {
+              if (!porPalabra[i] || porPalabra[i] < w) porPalabra[i] = w;
+              break;
+            }
+          }
+        });
+        var s = frases; for (var q in porPalabra) s += porPalabra[q];
+        if (s > puntos) { puntos = s; mejor = tm; }
+      });
+      return puntos >= minimo ? mejor : null;
+    }
+    function puntuar(tx){ return puntuarLista(tx, TEMAS, 2); }
+
+    // --- Datos de cada propiedad (salen de propiedades.json) ---
+    var hist = [], enviado = false;   // la conversación vive solo en esta pestaña; se envía únicamente si la persona lo pide
+    var ultima = null;   // última propiedad de la que se habló: sirve para preguntas de seguimiento
+    var STOP = ['avenida','calle','piso','dpto','depto','departamento','local','pasaje'];
+    function etiq(x){ return x.tipo + ' · ' + x.direccion; }
+    function dinero(n){ return '$ ' + Number(n).toLocaleString('es-AR'); }
+    function usd(n){ return 'U$D ' + Number(n).toLocaleString('es-AR'); }
+    function rotulo(x){ return x.direccion + ' (' + x.tipo.toLowerCase() + (x.precio ? ' · ' + usd(x.precio) : '') + ')'; }
+    function fmt(v){ if (v === true) return 'Sí'; if (v === false) return 'No'; if (v === null || v === undefined || v === '') return null; return String(v); }
+    function dato(key){ return function(x){ return fmt(x[key]); }; }
+    var ATRIBUTOS = [
+      {id:'precio', label:'Precio', chip:'Precio', kw:['precio|3','precios|3','cuesta|3','cuanto sale|4','cuanto cuesta|4','cuanto es|2','valor|2','vale|3','monto|2'],
+       val:function(x){ return x.precio ? usd(x.precio) + (x.expensas && typeof x.expensas === 'number' ? ' (expensas: ' + dinero(x.expensas) + ' por mes)' : '') : null; }},
+      {id:'expensas', label:'Expensas', chip:'Expensas', kw:['expensa|3','expensas|3'],
+       val:function(x){ if (!x.expensas) return null; return typeof x.expensas === 'number' ? dinero(x.expensas) + ' por mes' : String(x.expensas); }},
+      {id:'superficie', label:'Superficie', chip:'Superficie', kw:['metros|3','m2|3','superficie|3','tamano|3','metraje|3','cuantos metros|4','grande|2'],
+       val:function(x){ if (x.m2) return fmt(x.m2); var m = /(\d+)\s*m²/i.exec(x.detalle || ''); return m ? m[1] + ' m²' : null; }},
+      {id:'ambientes', label:'Ambientes', chip:'Ambientes', kw:['ambientes|3','ambiente|3','dormitorios|3','dormitorio|3','dorm|3','habitaciones|3','habitacion|3','cuartos|3','cuarto|2'],
+       val:function(x){ var a = []; if (x.ambientes) a.push(x.ambientes + ' ambientes'); if (x.dorm === 0) a.push('monoambiente'); else if (x.dorm) a.push(x.dorm + (x.dorm == 1 ? ' dormitorio' : ' dormitorios')); return a.length ? a.join(', ') : null; }},
+      {id:'banos', label:'Baños', chip:'Baños', kw:['bano|3','banos|3'], val:dato('banos')},
+      {id:'cochera', label:'Cochera', chip:'Cochera', kw:['cochera|3','cocheras|3','garage|3','garaje|3','estacionamiento|3','guardar el auto|4'], val:dato('cochera')},
+      {id:'baulera', label:'Baulera', chip:'Baulera', kw:['baulera|3','bauleras|3','baulero|3'], val:dato('baulera')},
+      {id:'balcon', label:'Balcón, terraza o patio', chip:'Balcón o patio', kw:['balcon|3','terraza|3','patio|3','jardin|3','parrilla|3','quincho|3','espacio exterior|4'], val:dato('balcon')},
+      {id:'piso', label:'Piso', chip:'Piso', kw:['piso|3','planta|2','que piso|4','altura|2'], val:dato('piso')},
+      {id:'ascensor', label:'Ascensor', chip:'Ascensor', kw:['ascensor|3','escalera|2','escaleras|2'], val:dato('ascensor')},
+      {id:'luz', label:'Luminosidad y orientación', chip:'Luminosidad', kw:['luminoso|3','luminosa|3','luz|2','sol|2','orientacion|3','frente|2','contrafrente|3','ventanas|2','ventilacion|2','oscuro|2'], val:dato('luminosidad')},
+      {id:'antiguedad', label:'Antigüedad', chip:'Antigüedad', kw:['antiguedad|3','antiguo|2','estrenar|3','a estrenar|3','construccion|2'], val:dato('antiguedad')},
+      {id:'amoblado', label:'Amoblado y equipamiento', chip:'Amoblado', kw:['amoblado|3','amueblado|3','muebles|3','equipado|3','cocina|2','heladera|3','lavarropas|2','vacio|2'], val:dato('amoblado')},
+      {id:'aire', label:'Aire acondicionado', chip:'Aire acondicionado', kw:['aire|3','acondicionado|3','split|3'], val:dato('aire')},
+      {id:'calefaccion', label:'Calefacción', chip:'Calefacción', kw:['calefaccion|3','calefactor|3','estufa|2','gas|2','radiador|2','losa radiante|4'], val:dato('calefaccion')},
+      {id:'servicios', label:'Servicios', chip:'Servicios', kw:['servicios|3','incluye|2','incluido|3','incluidos|3','agua|2','internet|2','abl|3','impuestos|3'], val:dato('servicios')},
+      {id:'uso', label:'Uso y habilitación', chip:'Uso y habilitación', kw:['rubro|3','rubros|3','habilitacion|3','habilitado|3','actividad|3','gastronomia|3','uso|2','vidriera|3','salida de humo|4','consultorio|3','apto|2'], val:dato('uso')},
+      {id:'mascotas', label:'Mascotas', chip:'Mascotas', kw:['mascota|3','mascotas|3','perro|3','perros|3','gato|3','gatos|3'],
+       val:dato('mascotas')},
+      {id:'disponibilidad', label:'Disponibilidad', chip:'Disponibilidad', kw:['disponible|3','disponibilidad|3','a partir de cuando|4','desde cuando|4','cuando puedo|3','cuando se puede|3','cuando esta|3','ingreso inmediato|4','libre|2','mudar|3','mudarme|3','entrega|3','ocupada|3','ocupado|3','desocupada|3','alquilada|3','alquilado|3'], val:dato('disponibilidad')},
+      {id:'visita', label:'Coordinar visita', chip:'Coordinar visita', kw:['visita|3','visitar|3','visitas|3','conocer|3','coordinar|3','recorrer|3','ir a ver|4','quiero ver|4','agendar|3'], val:function(){ return null; }}
+    ];
+    function atributo(id){ for (var i = 0; i < ATRIBUTOS.length; i++) if (ATRIBUTOS[i].id === id) return ATRIBUTOS[i]; }
+
+    // Reconoce de qué propiedad se habla: por número de puerta, por la calle, o por una pista (local, departamento, cantidad de dormitorios)
+    function palabrasCalle(x){ return norm(x.direccion).split(' ').filter(function(w){ return w.length >= 4 && !/^\d+$/.test(w) && STOP.indexOf(w) < 0; }); }
+    function numeroCasa(x){ var m = norm(x.direccion).match(/\b\d{3,5}\b/); return m ? m[0] : ''; }
+    function refinar(tx, tokens, c){
+      var f = c, t;
+      if (tokens.indexOf('local') > -1 || tokens.indexOf('locales') > -1) { t = f.filter(function(x){ return x.tipo === 'Local'; }); if (t.length) f = t; }
+      else if (/\b(departamento|departamentos|depto|deptos|dpto|depa|depas)\b/.test(tx)) { t = f.filter(function(x){ return x.tipo === 'Departamento'; }); if (t.length) f = t; }
+      else if (/\b(terreno|terrenos|lote|lotes)\b/.test(tx)) { t = f.filter(function(x){ return x.tipo === 'Terreno'; }); if (t.length) f = t; }
+      else if (/\b(cochera|cocheras)\b/.test(tx)) { t = f.filter(function(x){ return x.tipo === 'Cochera'; }); if (t.length) f = t; }
+      var m = /\b(\d) (dorm|dormitorio|dormitorios)\b/.exec(tx);
+      if (m) { t = f.filter(function(x){ return x.dorm == +m[1]; }); if (t.length) f = t; }
+      return f;
+    }
+    function detectarProp(tx, l){
+      var tokens = tx.split(' ');
+      var numeros = tokens.filter(function(w){ return /^\d{3,5}$/.test(w); });
+      var porNum = l.filter(function(x){ var n = numeroCasa(x); return n && numeros.indexOf(n) > -1; });
+      if (porNum.length === 1) return {uno: porNum[0]};
+      if (porNum.length > 1) {
+        var porCalleNum = porNum.filter(function(x){ return palabrasCalle(x).some(function(w){ return tokens.indexOf(w) > -1; }); });
+        if (porCalleNum.length === 1) return {uno: porCalleNum[0]};
+        if (porCalleNum.length > 1) return {varias: porCalleNum};
+      }
+      if (numeros.length) return null;   // menciona otra numeración (por ej. una sucursal): no es una de las propiedades
+      var c = l.filter(function(x){ return palabrasCalle(x).some(function(w){ return tokens.some(function(tk){ return tk === w || (tk.length >= 5 && w.length >= 5 && (tk.indexOf(w) === 0 || w.indexOf(tk) === 0)); }); }); });
+      if (c.length > 1) c = refinar(tx, tokens, c);
+      return c.length === 1 ? {uno: c[0]} : (c.length > 1 ? {varias: c} : null);
+    }
+    function porPista(tx, l){
+      var c = refinar(tx, tx.split(' '), l);
+      return c.length === 1 && c.length < l.length ? c[0] : null;
+    }
+    function extraDe(x, tx){
+      var tokens = tx.split(' '), lista = x.extra || [];
+      for (var i = 0; i < lista.length; i++) {
+        var ks = String(lista[i].kw || '').split(',');
+        for (var j = 0; j < ks.length; j++) {
+          var k = norm(ks[j]); if (!k) continue;
+          if (k.indexOf(' ') > -1 ? tx.indexOf(k) > -1 : tokens.indexOf(k) > -1) return lista[i].a;
+        }
+      }
+      return null;
+    }
+    // --- Búsqueda: "busco un 2 ambientes con patio" ---
+    var NUMS = {un:1, uno:1, dos:2, tres:3, cuatro:4, cinco:5};
+    var RE_AMB = /\b(\d|un|uno|dos|tres|cuatro|cinco) (ambiente|ambientes|amb)\b/;
+    var RE_DORM = /\b(\d|un|uno|dos|tres|cuatro) (dorm|dormitorio|dormitorios|habitacion|habitaciones|cuarto|cuartos)\b/;
+    var BUSCABLES = {cochera:'cochera', balcon:'patio, balcón o terraza', ascensor:'ascensor', amoblado:'amoblado', aire:'aire acondicionado', calefaccion:'calefacción'};
+    var KEYS = {cochera:'cochera', balcon:'balcon', ascensor:'ascensor', amoblado:'amoblado', aire:'aire', calefaccion:'calefaccion'};
+    function numero(s){ return /^\d$/.test(s) ? +s : NUMS[s]; }
+    function criterios(texto, tx){
+      var cr = {feats: []}, m;
+      if (/\bmonoambiente/.test(tx)) cr.amb = 1;
+      if ((m = RE_AMB.exec(tx))) cr.amb = numero(m[1]);
+      if ((m = RE_DORM.exec(tx))) cr.dorm = numero(m[1]);
+      if (/\b(local|locales)\b/.test(tx)) cr.tipo = 'Local';
+      else if (/\b(terreno|terrenos|lote|lotes)\b/.test(tx)) cr.tipo = 'Terreno';
+      else if (/\b(cochera|cocheras)\b/.test(tx) && !/\b(con|tenga|tiene)\b/.test(tx)) cr.tipo = 'Cochera';
+      else if (/\b(casa|casas)\b/.test(tx)) cr.tipo = 'Casa';
+      else if (/\b(ph|oficina|oficinas)\b/.test(tx)) cr.tipo = /\bph\b/.test(tx) ? 'PH' : 'Oficina';
+      else if (/\b(departamento|departamentos|depto|deptos|dpto|depa|depas)\b/.test(tx)) cr.tipo = 'Departamento';
+      m = /(hasta|menos de|maximo|max|presupuesto de|no mas de)\s*\$?\s*([\d.]+)\s*(mil|millon|millones)?/i.exec(String(texto).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''));
+      if (m) { var n = +m[2].replace(/\./g, ''); if (m[3] === 'mil') n *= 1000; else if (m[3]) n *= 1000000; else if (n < 10000) n *= 1000; if (n >= 20000) cr.max = n; }
+      Object.keys(BUSCABLES).forEach(function(id){ if (puntuarLista(tx, [atributo(id)], 2)) cr.feats.push(id); });
+      var verbo = /\b(busco|buscando|busca|necesito|necesitamos|buscamos|quiero|queria|quisiera|quisieramos|tienen|tenes|tenemos|hay|alguno|alguna|disponible|disponibles)\b/.test(tx);
+      cr.fuerte = !!(cr.amb || cr.dorm || cr.max || (verbo && (cr.feats.length || cr.tipo)));
+      return cr.fuerte ? cr : null;
+    }
+    function describir(cr){
+      var d = [];
+      if (cr.amb) d.push(cr.amb === 1 ? 'monoambiente' : cr.amb + ' ambientes');
+      if (cr.dorm) d.push(cr.dorm + (cr.dorm === 1 ? ' dormitorio' : ' dormitorios'));
+      if (cr.tipo) d.push(cr.tipo.toLowerCase());
+      cr.feats.forEach(function(f){ d.push('con ' + BUSCABLES[f]); });
+      if (cr.max) d.push('hasta ' + usd(cr.max));
+      return d.join(', ');
+    }
+    function coincide(x, cr){
+      if (cr.tipo && x.tipo !== cr.tipo) return false;
+      if ((cr.amb || cr.dorm) && ['Local', 'Terreno', 'Cochera', 'Oficina'].indexOf(x.tipo) > -1) return false;
+      if (cr.dorm && x.dorm != cr.dorm) return false;
+      if (cr.amb) {
+        if (x.ambientes) { if (+x.ambientes !== cr.amb) return false; }
+        else if (x.dorm === undefined || x.dorm !== Math.max(cr.amb - 1, 0)) return false;   // 2 ambientes = 1 dormitorio
+      }
+      if (cr.max && x.precio && x.precio > cr.max) return false;
+      for (var i = 0; i < cr.feats.length; i++) { var v = x[KEYS[cr.feats[i]]]; if (v === false || /^no\b/i.test(String(v))) return false; }
+      return true;
+    }
+    function conocidos(x, cr){ return cr.feats.filter(function(f){ var v = x[KEYS[f]]; return v !== undefined && v !== null && v !== ''; }).length; }
+    function respBusqueda(lista, cr, texto){
+      var res = lista.filter(function(x){ return coincide(x, cr); });
+      res.sort(function(a, b){ return conocidos(b, cr) - conocidos(a, cr); });
+      var desc = describir(cr), faltan = false, bloquesR;
+      var consulta = {a: ['Dejarle mi búsqueda a Yesica', waLink('Hola Yesica, estoy buscando: ' + texto)]};
+      function botones(l){ return {bt: l.map(function(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; })}; }
+      if (!res.length) {
+        bloquesR = [{p: 'Hoy no tengo una propiedad que cumpla con lo que buscás (' + esc(desc) + '). Son las que tengo disponibles:'}, botones(lista), {p: 'Si querés, dejale tu búsqueda a Yesica y te avisa cuando entre algo así.'}, consulta];
+      } else {
+        var lineas = res.map(function(x){
+          var det = [x.detalle || x.m2, x.precio ? usd(x.precio) : ''].filter(Boolean).join(' · ');
+          var fs = cr.feats.map(function(f){ var v = x[KEYS[f]]; if (v === undefined || v === null || v === '') { faltan = true; return esc(BUSCABLES[f]) + ': a confirmar'; } return esc(BUSCABLES[f]) + ': ' + esc(fmt(v)); });
+          return '<strong>' + esc(etiq(x)) + '</strong><br>' + esc(det) + (fs.length ? '<br>' + fs.join('<br>') : '');
+        });
+        bloquesR = [{p: 'Con lo que buscás (' + esc(desc) + ') tengo ' + (res.length === 1 ? '1 opción' : res.length + ' opciones') + ':'}, {ul: lineas}];
+        if (faltan) bloquesR.push({p: 'De algunas todavía no tengo cargado ese dato: Yesica te lo confirma.'});
+        bloquesR.push({p: 'Tocá una para ver más:'}, botones(res), consulta);
+      }
+      agregar('bot', bloques(bloquesR)); ultima = null; pintarChips();
+    }
+    // --- "Que me contacte Yesica": deja nombre y celular, y la conversación llega a Yesica (solo si la persona acepta) ---
+    function transcripcion(){ var s = hist.map(function(h){ return (h.yo ? 'Persona: ' : 'Nina: ') + h.t; }).join('\n'); return s.length > 3500 ? '…' + s.slice(-3500) : s; }
+    function preguntasPersona(){ return hist.filter(function(h){ return h.yo; }).map(function(h){ return h.t; }).join(' / ').slice(0, 350); }
+    function mostrarContacto(){
+      if (enviado) { agregar('bot', bloques([{p: 'Ya le llegó tu consulta a Yesica: te va a escribir por WhatsApp.'}])); return; }
+      var d = document.createElement('div'); d.className = 'nina-lead';
+      d.innerHTML = '<p>Dejame tus datos y le paso tu consulta a Yesica con lo que hablamos, así te escribe directamente.</p>' +
+        '<label>Nombre<input type="text" name="n" autocomplete="name" maxlength="80"></label>' +
+        '<label>Celular (con característica)<input type="tel" name="c" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="11 1234 5678"></label>' +
+        '<label class="chk"><input type="checkbox" name="ok"><span>Acepto que Yesica reciba mis datos y esta conversación para contactarme. <a href="privacidad.html" target="_blank" rel="noopener">Aviso de privacidad</a></span></label>' +
+        '<p class="lead-err" role="alert" hidden></p><button type="button" class="nina-btn alt lead-go">Enviar a Yesica</button>';
+      agregar('bot nm-nohist', d);
+      var go = d.querySelector('.lead-go'), err = d.querySelector('.lead-err');
+      function falla(tx){ err.textContent = tx; err.hidden = false; msgs.scrollTop = msgs.scrollHeight; }
+      go.addEventListener('click', function(){
+        var n = d.querySelector('[name=n]').value.trim(), c = d.querySelector('[name=c]').value.trim(), ok = d.querySelector('[name=ok]').checked;
+        if (n.length < 2) return falla('Escribí tu nombre.');
+        if (c.replace(/\D/g, '').length < 8) return falla('Revisá el celular: tiene que incluir la característica.');
+        if (!ok) return falla('Para enviarlo tenés que aceptar el uso de tus datos.');
+        err.hidden = true; go.disabled = true; go.textContent = 'Enviando…';
+        var datos = {'Nombre': n, 'Celular': c, 'Propiedad consultada': ultima ? etiq(ultima) + (ultima.link ? ' ' + ultima.link : '') : '', 'Conversación': transcripcion(), 'Origen': 'Nina (chat de la página)', 'Consentimiento': 'Aceptó el aviso de privacidad'};
+        var envio = window.rcEnviar ? window.rcEnviar('Consulta desde Nina: ' + n, datos) : Promise.resolve({ok: false, sinServicio: true});
+        envio.then(function(r){
+          d.innerHTML = '';
+          if (r.ok) {
+            enviado = true;
+            d.appendChild(bloques([{p: '¡Listo, ' + esc(n) + '! Yesica recibió tu consulta y te escribe por WhatsApp. ' + esc(estado())}]));
+          } else {
+            var pp = preguntasPersona();
+            d.appendChild(bloques([
+              {p: r.sinServicio ? 'Para que Yesica te contacte, mandale este mensaje por WhatsApp (ya está escrito con tus datos):' : 'No pude enviarlo desde acá. Mandáselo a Yesica por WhatsApp, ya está escrito con tus datos:'},
+              {a: ['Enviar a Yesica por WhatsApp', waLink('Hola Yesica, soy ' + n + ' (' + c + '). Hablé con Nina' + (ultima ? ' sobre ' + etiq(ultima) : '') + (pp ? ': ' + pp : '') + '. Quiero que me contacten.')]}
+            ]));
+          }
+          msgs.scrollTop = msgs.scrollHeight;
+        });
+      });
+      setTimeout(function(){ var f = d.querySelector('[name=n]'); if (f) f.focus(); }, 60);
+    }
+    function pedirContacto(){ agregar('yo nm-nohist', 'Quiero que Yesica me contacte'); setTimeout(mostrarContacto, 250); }
+    function titulo(x){ return '<strong>' + esc(etiq(x)) + '</strong>'; }
+    function resumenProp(x){
+      var det = [x.barrio, x.detalle || x.m2].filter(Boolean).join(' · ');
+      var res = [{p: titulo(x) + (det ? '<br>' + esc(det) : '')}];
+      var lineas = [];
+      ['precio','expensas','banos','piso','cochera','baulera','balcon','ascensor','luz','antiguedad','amoblado','aire','calefaccion','servicios','uso','mascotas','disponibilidad'].forEach(function(id){
+        var a = atributo(id), v = a.val(x); if (v) lineas.push('<strong>' + esc(a.label) + ':</strong> ' + esc(v));
+      });
+      if (lineas.length) res.push({ul: lineas});
+      if (x.link) res.push({p: '<a href="' + esc(x.link) + '" target="_blank" rel="noopener">Ver publicación completa</a>'});
+      res.push({p: 'Preguntame lo que quieras de esta propiedad, o coordiná una visita.'});
+      return res;
+    }
+    // Otros datos que se mencionan en la misma pregunta (por ejemplo "cochera o baulera").
+    function otrosAtributos(tx, a){
+      return ATRIBUTOS.filter(function(o){ return o.id !== a.id && o.id !== 'visita' && o.id !== 'precio' && puntuarLista(tx, [o], 3); }).slice(0, 3);
+    }
+    function respProp(x, a, pregunta){
+      var tx = norm(pregunta), res;
+      var extra = extraDe(x, tx);
+      if (extra) res = [{p: titulo(x) + '<br>' + esc(extra)}];
+      else if (a && a.id === 'visita') res = [{p: 'Para visitar <strong>' + esc(etiq(x)) + '</strong>, escribile a Yesica con la propiedad ya indicada, o pedí tu horario desde <a href="#visita">Coordiná tu visita</a>.'}, {a: ['Pedir visita por WhatsApp', waLink('Hola Yesica, quiero coordinar una visita. Propiedad: ' + etiq(x) + (x.link ? ' ' + x.link : ''))]}];
+      else if (a) {
+        var juntos = [a].concat(otrosAtributos(corregir(norm(pregunta)), a));
+        var filasD = juntos.map(function(at){ return {at: at, v: at.val(x)}; });
+        var conDato = filasD.filter(function(f){ return f.v; }), sinDato = filasD.filter(function(f){ return !f.v; });
+        var general = [];
+        if (!sinDato.length) res = [{p: titulo(x) + '<br>' + conDato.map(function(f){ return esc(f.at.label) + ': ' + esc(f.v); }).join('<br>')}];
+        else res = general.concat(
+          conDato.length ? [{p: titulo(x) + '<br>' + conDato.map(function(f){ return esc(f.at.label) + ': ' + esc(f.v); }).join('<br>')}] : [],
+          [{p: (conDato.length ? 'Lo demás' : 'De <strong>' + esc(etiq(x)) + '</strong>') + ' (' + sinDato.map(function(f){ return esc(f.at.label.toLowerCase()); }).join(', ') + ') no lo tengo cargado. Yesica te lo confirma:'},
+           {a: ['Consultarle a Yesica', waLink('Hola Yesica, le pregunté a Nina por ' + etiq(x) + ': "' + pregunta + '" y no tenía el dato.')]}]);
+      } else res = resumenProp(x);
+      agregar('bot', bloques(res)); ultima = x; pintarChipsProp(x);
+    }
+    function preguntarCual(cands, a, pregunta){
+      agregar('bot', bloques([{p: '¿De cuál propiedad?'}, {bt: cands.map(function(x){ return [rotulo(x), function(){ agregar('yo', x.direccion); respProp(x, a, pregunta); }]; })}]));
+    }
+
+    // --- Interfaz ---
+    function bloques(arr){
+      var d = document.createElement('div');
+      arr.forEach(function(b){
+        if (b.p) { var p = document.createElement('p'); p.innerHTML = b.p; d.appendChild(p); }
+        else if (b.ul) { var u = document.createElement('ul'); b.ul.forEach(function(h){ var li = document.createElement('li'); li.innerHTML = h; u.appendChild(li); }); d.appendChild(u); }
+        else if (b.bt) { b.bt.forEach(function(x){ var bb = document.createElement('button'); bb.type = 'button'; bb.className = 'nina-btn alt'; bb.textContent = x[0]; bb.addEventListener('click', x[1]); d.appendChild(bb); }); }
+        else if (b.a) { var a = document.createElement('a'); a.className = 'nina-btn'; a.href = b.a[1]; a.target = '_blank'; a.rel = 'noopener'; a.textContent = b.a[0]; d.appendChild(a); }
+      });
+      return d;
+    }
+    function textoPlano(el){
+      var c = el.cloneNode(true);
+      [].forEach.call(c.querySelectorAll('p,li,button'), function(e){ e.appendChild(document.createTextNode(' ')); });
+      [].forEach.call(c.querySelectorAll('br'), function(e){ e.parentNode.replaceChild(document.createTextNode(' '), e); });
+      return String(c.textContent).replace(/\s+/g, ' ').trim();
+    }
+    function agregar(clase, contenido){
+      var m = document.createElement('div'); m.className = 'nm ' + clase;
+      if (typeof contenido === 'string') m.textContent = contenido; else m.appendChild(contenido);
+      if (clase.indexOf('nm-esc') < 0 && clase.indexOf('nm-nohist') < 0) hist.push({yo: clase.split(' ')[0] === 'yo', t: textoPlano(m).slice(0, 500)});
+      msgs.appendChild(m); msgs.scrollTop = msgs.scrollHeight; return m;
+    }
+    function responderConTema(tm){
+      ultima = null; if (tm.id !== 'propiedades') pintarChips();
+      var r = typeof tm.r === 'function' ? tm.r() : tm.r;
+      return Promise.resolve(r).then(function(arr){ agregar('bot', bloques(arr)); });
+    }
+    function sinRespuesta(pregunta){
+      agregar('bot', bloques([
+        {p: 'No tengo esa información. Yesica te la confirma: escribile por WhatsApp y le llega tu pregunta.'},
+        {a: ['Preguntarle a Yesica', waLink('Hola Yesica, le pregunté a Nina: "' + pregunta + '" y no tenía la respuesta.')]},
+        {bt: [['Que me contacte Yesica', pedirContacto]]}
+      ]));
+    }
+    function pintarChips(){
+      chips.innerHTML = '';
+      PRINCIPALES.forEach(function(id){
+        var tm = tema(id), b = document.createElement('button'); b.type = 'button'; b.textContent = tm.chip;
+        b.addEventListener('click', function(){ preguntar(tm.chip, tm); });
+        chips.appendChild(b);
+      });
+      var c = document.createElement('button'); c.type = 'button'; c.textContent = 'Que me contacte Yesica'; c.addEventListener('click', pedirContacto); chips.appendChild(c);
+    }
+    function pintarChipsProp(x){
+      chips.innerHTML = '';
+      function chip(txt, fn){ var b = document.createElement('button'); b.type = 'button'; b.textContent = txt; b.addEventListener('click', fn); chips.appendChild(b); }
+      ATRIBUTOS.forEach(function(a){ if (a.id !== 'precio' && a.id !== 'visita' && a.val(x)) chip(a.chip, function(){ preguntar(a.chip + ' de ' + x.direccion, null, {prop: x, attr: a}); }); });
+      chip('Coordinar visita', function(){ preguntar('Quiero visitar ' + x.direccion, null, {prop: x, attr: atributo('visita')}); });
+      chip('Que me contacte Yesica', pedirContacto);
+      chip('Otra propiedad', function(){ ultima = null; pintarChips(); preguntar('Ver otras propiedades', tema('propiedades')); });
+      chip('Volver a los temas', function(){ ultima = null; pintarChips(); });
+    }
+    function procesar(texto, forzado, directo){
+      if (directo && directo.prop) return respProp(directo.prop, directo.attr, texto);
+      if (forzado) return responderConTema(forzado);
+      return cargarPropiedades().then(function(l){
+        var lista = l || [], tx = corregir(norm(texto)), tokens = tx.split(' ');
+        var a = puntuarLista(tx.replace(RE_AMB, ' ').replace(RE_DORM, ' ').replace(/\bmonoambiente\w*/g, ' ').replace(/\s+/g, ' ').trim(), ATRIBUTOS, 2), tm = puntuar(tx);
+        var cr = lista.length ? criterios(texto, tx) : null, deUna = /\b(el de|la de|ese|esa|este|esta)\b/.test(tx);
+        var det = lista.length ? detectarProp(tx, lista) : null;
+        if (det && det.uno && (a || !tm)) return respProp(det.uno, a, texto);
+        if (det && det.varias && (a || !tm)) return preguntarCual(det.varias, a, texto);
+        if (tm && /\b(local|locales)\b/.test(tx) && !/\b(sucursal|sucursales)\b/.test(tx) && ['requisitos','costos','contrato','ingresos'].indexOf(tm.id) > -1) tm = tema('local');   // pide condiciones de un local
+        var hayLocal = lista.some(function(x){ return x.tipo === 'Local'; });
+        if (tm && tm.id === 'vender') cr = null;   // "quiero vender mi departamento" no es una búsqueda
+        if (cr && !deUna && !(det && det.uno)) { respBusqueda(lista, cr, texto); if (tm && (tm.id === 'local' || tm.id === 'comprar')) return responderConTema(tm); return; }
+        if (a && a.id === 'disponibilidad' && lista.length && /\b(cuando|partir|desde|fecha|inmediato|inmediata|ingresar|entrar|mudar|mudarme|ocupada|ocupado|ocupadas|libre|libres|desocupada|desocupado|alquilada|alquilado|alquiladas)\b/.test(tx) && !(ultima && tokens.length <= 8 && !/\b(estan|disponibles|todas|todos|propiedades|departamentos)\b/.test(tx))) {
+          var pistaD = porPista(tx, lista);
+          if (pistaD) return respProp(pistaD, a, texto);
+          agregar('bot', bloques([{p: 'Esta es la disponibilidad de cada propiedad:'}, {ul: lista.map(function(x){ return '<strong>' + esc(etiq(x)) + '</strong><br>' + esc(a.val(x) || 'A confirmar con Yesica'); })}, {p: 'Los departamentos para ingreso inmediato se pueden visitar y alquilar ya. Si te interesa una, tocala para ver más:'}, {bt: lista.map(function(x){ return [rotulo(x), function(){ agregar('yo', 'Quiero saber de ' + x.direccion); respProp(x, null, 'Quiero saber de ' + x.direccion); }]; })}]));
+          ultima = null; pintarChips(); return;
+        }
+        if (a && lista.length) {
+          var pista = porPista(tx, lista);
+          if (pista) return respProp(pista, a, texto);
+          var esPolitica = /\b(quien|cargo|inquilino|propietario|ordinarias|extraordinarias|incluidas|incluido|incluye|incluyen)\b/.test(tx);
+          if (ultima && tokens.length <= 8 && !(tm && (tm.id === 'propiedades' || (tm.id === 'gastos' && esPolitica)))) return respProp(ultima, a, texto);
+        }
+        if (tm && tm.id === 'local' && hayLocal) respBusqueda(lista, {feats: [], tipo: 'Local', fuerte: true}, texto);   // primero el local disponible, después las condiciones
+        if (tm && tm.id === 'derivar') return sinRespuesta(texto);   // tema que todavía no se le enseñó: lo contesta Yesica
+        if (tm) return responderConTema(tm);
+        if (a && lista.length) return preguntarCual(lista, a, texto);
+        sinRespuesta(texto);
+      });
+    }
+    function preguntar(texto, forzado, directo){
+      agregar('yo', texto);
+      var espera = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
+      var escribiendo = agregar('bot nm-esc', 'Nina está escribiendo…');
+      setTimeout(function(){
+        escribiendo.remove();
+        procesar(texto, forzado, directo);
+      }, espera);
+    }
+    var iniciado = false;
+    function abrir(){
+      panel.hidden = false; fab.setAttribute('aria-expanded', 'true');
+      if (!iniciado) {
+        iniciado = true; pintarChips();
+        agregar('bot', bloques([{p: '¡Hola! Soy <strong>Nina</strong>, la asistente virtual de Yesica. ' + esc(estado()) + ' Elegí un tema o escribime tu pregunta.'}, {p: '<small>Soy un asistente virtual: la información es orientativa y Yesica confirma los detalles.</small>'}]));
+      }
+      setTimeout(function(){ inp.focus(); }, 50);
+    }
+    function cerrar(){ panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.focus(); }
+    fab.addEventListener('click', function(){ if (panel.hidden) abrir(); else cerrar(); });
+    // Lo usa el mapa: abre el chat ya posicionado en una propiedad.
+    window.ninaProp = function(direccion){
+      cargarPropiedades().then(function(l){
+        var x = (l || []).filter(function(y){ return y.direccion === direccion; })[0];
+        if (panel.hidden) abrir();
+        if (x) preguntar('Quiero saber de ' + x.direccion, null, {prop: x, attr: null});
+      });
+    };
+    document.getElementById('nina-x').addEventListener('click', cerrar);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) cerrar(); });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var txt = inp.value.trim(); if (!txt) return;
+      inp.value = ''; preguntar(txt, null);
+    });
+    // Al tocar un enlace interno dentro del chat, se cierra para ver la sección.
+    msgs.addEventListener('click', function(e){
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (a) { panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); }
+    });
+  })();
+</script>
+</body>
+</html>
