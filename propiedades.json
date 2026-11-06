@@ -116,7 +116,9 @@
   "antiguedad": "4 años",
   "precio": 225000,
   "moneda": "USD",
-  "link": "https://propiedades.adinco.net/aviso/departamento-venta-palermo-palermo-capital-federal-1dorm-1bano--6528849"
+  "link": "https://propiedades.adinco.net/aviso/departamento-venta-palermo-palermo-capital-federal-1dorm-1bano--6528849",
+  "lat": -34.5722963,
+  "lng": -58.4409052
  },
  {
   "operacion": "venta",
