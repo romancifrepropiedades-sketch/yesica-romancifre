@@ -580,7 +580,9 @@ footer{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
 @media (max-width:560px){ .t-agenda{grid-template-columns:1fr} }
 
 /* ===== Celular: formularios compactos y fáciles de tocar ===== */
-.fgrid3{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0 12px}
+.fgrid3{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:0 12px}
+.amens{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+.amens .chip span{display:inline-flex; align-items:center; min-height:44px; padding:8px 14px; font-size:.9rem}
 .seg-2{grid-template-columns:repeat(2, 1fr) !important}
 .fbtn{min-height:44px}
 @media (max-width:900px){
@@ -985,10 +987,23 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
               <label for="t-baul">Baulera</label>
               <select id="t-baul"><option value="">Elegí</option><option>Sí</option><option>No</option></select>
             </div>
-            <div class="field">
-              <label for="t-amen">Amenities</label>
-              <select id="t-amen"><option value="">Elegí</option><option>Sí</option><option>No</option></select>
+          </div>
+          <div class="field full">
+            <label id="t-amen-lab">Amenities <span class="opt">(opcional, podés elegir varios)</span></label>
+            <div class="amens" role="group" aria-labelledby="t-amen-lab" id="t-amens">
+              <label class="chip"><input type="checkbox" name="t-amen" value="Pileta"><span>Pileta</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Parrilla"><span>Parrilla</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Gimnasio"><span>Gimnasio</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="SUM"><span>SUM</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Solárium"><span>Solárium</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Laundry"><span>Laundry</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Seguridad 24 hs"><span>Seguridad 24 hs</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Cowork"><span>Cowork</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Salón de juegos"><span>Salón de juegos</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Terraza común"><span>Terraza común</span></label>
+              <label class="chip"><input type="checkbox" name="t-amen" value="Ninguno"><span>Ninguno</span></label>
             </div>
+            <input id="t-amen-otro" type="text" maxlength="80" placeholder="Otros (ej: sauna, bicicletero)" autocomplete="off" style="margin-top:10px">
           </div>
 
           <h3>Tus datos</h3>
@@ -1633,6 +1648,19 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       return {y:+p[0], m:+p[1], d:+p[2]};
     }
     function v(id){ return document.getElementById(id).value.trim(); }
+    // Amenities: casillas elegidas (o "Ninguno") más lo que se escriba en "Otros".
+    function amenities(){
+      var a = [].map.call(document.querySelectorAll('#t-amens input:checked'), function(i){ return i.value; });
+      var otro = v('t-amen-otro');
+      if (otro && a.indexOf('Ninguno') < 0) a.push(otro);
+      return a.join(', ');
+    }
+    [].forEach.call(document.querySelectorAll('#t-amens input'), function(i){
+      i.addEventListener('change', function(){
+        if (!i.checked) return;
+        [].forEach.call(document.querySelectorAll('#t-amens input'), function(o){ if (o !== i && (i.value === 'Ninguno' || o.value === 'Ninguno')) o.checked = false; });
+      });
+    });
 
     var t0 = hoyAR(), ahora = Date.now(), days = [];
     for (var i = 0; i <= DIAS_ADELANTE; i++) {
@@ -1771,7 +1799,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         'Dirección: ' + v('t-dir') + '\n' +
         (amb ? 'Ambientes: ' + amb + '\n' : '') +
         (m2 ? 'Superficie: ' + m2 + ' m²\n' : '') +
-        (v('t-coch') ? 'Cochera: ' + v('t-coch') + '\n' : '') + (v('t-baul') ? 'Baulera: ' + v('t-baul') + '\n' : '') + (v('t-amen') ? 'Amenities: ' + v('t-amen') + '\n' : '') +
+        (v('t-coch') ? 'Cochera: ' + v('t-coch') + '\n' : '') + (v('t-baul') ? 'Baulera: ' + v('t-baul') + '\n' : '') + (amenities() ? 'Amenities: ' + amenities() + '\n' : '') +
         'Nombre: ' + v('t-name') + '\n' +
         'Celular: ' + v('t-phone') + '\n' +
         (lineas.length ? 'Días y horarios para ir a tasar:\n' + lineas.join('\n') + '\n' : '') +
@@ -1782,7 +1810,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         datos: {
           'Quiere': op, 'Tipo de propiedad': v('t-tipo'), 'Dirección': v('t-dir'),
           'Ambientes': amb || '-', 'Superficie (m2)': m2 || '-',
-          'Cochera': v('t-coch') || '-', 'Baulera': v('t-baul') || '-', 'Amenities': v('t-amen') || '-',
+          'Cochera': v('t-coch') || '-', 'Baulera': v('t-baul') || '-', 'Amenities': amenities() || '-',
           'Nombre': v('t-name'), 'Celular': v('t-phone'),
           'Días y horarios para ir a tasar': lineas.join('\n') || '-',
           'Aceptó el aviso de privacidad': 'Sí'
