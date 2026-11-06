@@ -580,6 +580,7 @@ footer{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
 @media (max-width:560px){ .t-agenda{grid-template-columns:1fr} }
 
 /* ===== Celular: formularios compactos y fáciles de tocar ===== */
+.fgrid3{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0 12px}
 .seg-2{grid-template-columns:repeat(2, 1fr) !important}
 .fbtn{min-height:44px}
 @media (max-width:900px){
@@ -973,6 +974,20 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
             <div class="field full">
               <label for="t-m2">Metros cuadrados <span class="opt">(opcional)</span></label>
               <input id="t-m2" type="number" inputmode="numeric" min="1" max="100000" placeholder="Ej: 65" autocomplete="off">
+            </div>
+          </div>
+          <div class="fgrid3">
+            <div class="field">
+              <label for="t-coch">Cochera</label>
+              <select id="t-coch"><option value="">Elegí</option><option>Sí</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="t-baul">Baulera</label>
+              <select id="t-baul"><option value="">Elegí</option><option>Sí</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="t-amen">Amenities</label>
+              <select id="t-amen"><option value="">Elegí</option><option>Sí</option><option>No</option></select>
             </div>
           </div>
 
@@ -1756,6 +1771,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         'Dirección: ' + v('t-dir') + '\n' +
         (amb ? 'Ambientes: ' + amb + '\n' : '') +
         (m2 ? 'Superficie: ' + m2 + ' m²\n' : '') +
+        (v('t-coch') ? 'Cochera: ' + v('t-coch') + '\n' : '') + (v('t-baul') ? 'Baulera: ' + v('t-baul') + '\n' : '') + (v('t-amen') ? 'Amenities: ' + v('t-amen') + '\n' : '') +
         'Nombre: ' + v('t-name') + '\n' +
         'Celular: ' + v('t-phone') + '\n' +
         (lineas.length ? 'Días y horarios para ir a tasar:\n' + lineas.join('\n') + '\n' : '') +
@@ -1766,6 +1782,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         datos: {
           'Quiere': op, 'Tipo de propiedad': v('t-tipo'), 'Dirección': v('t-dir'),
           'Ambientes': amb || '-', 'Superficie (m2)': m2 || '-',
+          'Cochera': v('t-coch') || '-', 'Baulera': v('t-baul') || '-', 'Amenities': v('t-amen') || '-',
           'Nombre': v('t-name'), 'Celular': v('t-phone'),
           'Días y horarios para ir a tasar': lineas.join('\n') || '-',
           'Aceptó el aviso de privacidad': 'Sí'
