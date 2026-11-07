@@ -2545,9 +2545,15 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       var r = typeof tm.r === 'function' ? tm.r() : tm.r;
       return Promise.resolve(r).then(function(arr){ agregar('bot', bloques(arr)); });
     }
+    // Insultos y malas palabras: Nina no los contesta ni los comenta; responde una sola línea neutra y vuelve al tema.
+    var RE_INSULTO = /\b(put[oa]s?|putit[oa]s?|hdp|lpm|ctm|hij[oa] de put\w*|la put\w*|concha\w*|conchetumare|forr[oa]\w*|pelotud\w*|boludo\w*|boluda\w*|idiot\w*|imbecil\w*|estupid\w*|tarad[oa]s?|inutil\w*|basura|mierda|mogolic\w*|retrasad[oa]s?|sorete|pij[ao]s?|verga|garch[ao]s?|trolo\w*)\b/;
+    function esInsulto(texto){ return RE_INSULTO.test(norm(texto)); }
+    function respuestaInsulto(){
+      agregar('bot nm-nohist', bloques([{p: 'No puedo responder mensajes con insultos. Si tenés una consulta sobre propiedades en venta, visitas o tasaciones, escribila y te ayudo.'}]));
+    }
     function sinRespuesta(pregunta){
       agregar('bot', bloques([
-        {p: 'No tengo esa información. Yesica te la confirma: escribile por WhatsApp y le llega tu pregunta.'},
+        {p: 'Eso no lo sé. Te recomiendo consultarlo con Yesica: escribile por WhatsApp y le llega tu pregunta.'},
         {a: ['Preguntarle a Yesica', waLink('Hola Yesica, le pregunté a Nina: "' + pregunta + '" y no tenía la respuesta.')]},
         {bt: [['Que me contacte Yesica', pedirContacto]]}
       ]));
@@ -2571,6 +2577,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       chip('Volver a los temas', function(){ ultima = null; pintarChips(); });
     }
     function procesar(texto, forzado, directo){
+      if (!forzado && !directo && esInsulto(texto)) return respuestaInsulto();
       if (directo && directo.prop) return respProp(directo.prop, directo.attr, texto);
       if (forzado) return responderConTema(forzado);
       return cargarPropiedades().then(function(l){
@@ -2580,6 +2587,8 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
         var det = lista.length ? detectarProp(tx, lista) : null;
         if (det && det.uno && (a || !tm)) return respProp(det.uno, a, texto);
         if (det && det.varias && (a || !tm)) return preguntarCual(det.varias, a, texto);
+        // Un propietario que quiere vender, tasar o poner su propiedad en alquiler no busca propiedades: va directo al tema.
+        if (tm && /\b(vender|vendo|vendemos|tasar|tasarme|tasacion|tasaciones|alquilar mi|poner en alquiler|dar en alquiler|publicar mi)\b/.test(tx) && ['tasacion', 'servicios', 'vender'].indexOf(tm.id) > -1) return responderConTema(tm);
         if (tm && /\b(local|locales)\b/.test(tx) && !/\b(sucursal|sucursales)\b/.test(tx) && ['requisitos','costos','contrato','ingresos'].indexOf(tm.id) > -1) tm = tema('local');   // pide condiciones de un local
         var hayLocal = lista.some(function(x){ return x.tipo === 'Local'; });
         if (tm && tm.id === 'vender') cr = null;   // "quiero vender mi departamento" no es una búsqueda
@@ -2604,7 +2613,7 @@ button.fab{border:0; font:inherit; font-weight:700; cursor:pointer}
       });
     }
     function preguntar(texto, forzado, directo){
-      agregar('yo', texto);
+      agregar(!forzado && !directo && esInsulto(texto) ? 'yo nm-nohist' : 'yo', texto);
       var espera = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350;
       var escribiendo = agregar('bot nm-esc', 'Nina está escribiendo…');
       setTimeout(function(){
